@@ -7,10 +7,13 @@
 
 import UIKit
 
-class ModuleBuilder {
-    static func build() -> MyView {
-        let presenter = MyPresenter()
-        let view = MyView(presenter: presenter)
+final class ModuleBuilder {
+    static func build() -> ViewController {
+        
+        // MARK: - Override methods
+        let presenter = MyPresenterImpl()
+        let view = ViewController(presenter: presenter)
+        
         presenter.view = view
         return view
     }

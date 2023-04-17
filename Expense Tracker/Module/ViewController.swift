@@ -7,10 +7,14 @@
 
 import UIKit
 
-class MyView: UIViewController {
-    var presenter: MyPresenter?
+final class ViewController: UIViewController {
     
-    init(presenter: MyPresenter) {
+    // MARK: - Public properties
+    var presenter: MyPresenterImpl?
+    
+    
+    // MARK: - Init
+    init(presenter: MyPresenterImpl) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -19,6 +23,7 @@ class MyView: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -12,13 +12,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
+        let presenter = MyPresenterImpl()
+        
+        let controller = ViewController(presenter: presenter)
+        
+        presenter.view = controller
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        let view = ModuleBuilder.build()
-        window?.rootViewController = view
+        window?.rootViewController = controller
         window?.makeKeyAndVisible()
+        
         return true
     }
-
 }
 

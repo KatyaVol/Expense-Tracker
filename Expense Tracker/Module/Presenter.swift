@@ -7,6 +7,12 @@
 
 import UIKit
 
-class MyPresenter {
-    weak var view: MyView?
+protocol MyPresenterProtocol: AnyObject{
+    
+}
+
+final class MyPresenterImpl: MyPresenterProtocol {
+    
+    // MARK: - Public properties
+    weak var view: ViewController?
 }
