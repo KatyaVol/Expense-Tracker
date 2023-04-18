@@ -7,16 +7,22 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+
+protocol ViewControllerProtocol: AnyObject {
+    
+}
+
+final class ViewController: UIViewController, ViewControllerProtocol {
     
     // MARK: - Public properties
-    var presenter: MyPresenterImpl?
+    var presenter: ISettingsPresenter?
     
     
     // MARK: - Init
-    init(presenter: MyPresenterImpl) {
+    init(presenter: ISettingsPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
+        self.presenter?.view = self
     }
     
     required init?(coder: NSCoder) {
@@ -26,5 +32,6 @@ final class ViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }

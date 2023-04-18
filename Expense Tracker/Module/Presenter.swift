@@ -7,12 +7,13 @@
 
 import UIKit
 
-protocol MyPresenterProtocol: AnyObject{
+protocol ISettingsPresenter: AnyObject{
+    var view: ViewControllerProtocol? { get set }
     
 }
 
-final class MyPresenterImpl: MyPresenterProtocol {
+final class SettingsPresenterImpl: ISettingsPresenter {
     
     // MARK: - Public properties
-    weak var view: ViewController?
+    internal weak var view: ViewControllerProtocol?
 }
