@@ -15,14 +15,13 @@ protocol ViewControllerProtocol: AnyObject {
 final class ViewController: UIViewController, ViewControllerProtocol {
     
     // MARK: - Public properties
-    var presenter: ISettingsPresenter?
+    var presenter: SettingsPresenterProtocol?
     
     
     // MARK: - Init
-    init(presenter: ISettingsPresenter) {
+    init(presenter: SettingsPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
-        self.presenter?.view = self
     }
     
     required init?(coder: NSCoder) {

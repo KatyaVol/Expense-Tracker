@@ -8,17 +8,15 @@
 import UIKit
 
 final class ModuleBuilder {
-    func build() -> UIViewController {
+    static func build() -> UIViewController {
         
         // MARK: - Override methods
-        let presenter = SettingsPresenterImpl()
+        let presenter = SettingsPresenter()
         let viewController = ViewController(presenter: presenter)
-        
         
         viewController.view.backgroundColor = .white
         
-        viewController.presenter = presenter
-        presenter.view = viewController
+        presenter.injectView(viewController)
         return viewController
     }
 }

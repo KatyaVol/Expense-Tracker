@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09234BEE29ED6DCC002A9E9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* ViewController.swift */; };
-		09234BF029ED7221002A9E9C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* Presenter.swift */; };
-		09234BF229ED7A63002A9E9C /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* ModuleBuilder.swift */; };
+		09234BEE29ED6DCC002A9E9C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */; };
+		09234BF029ED7221002A9E9C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */; };
+		09234BF229ED7A63002A9E9C /* SettingsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
 		099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CD29EAC585009F1A2E /* SceneDelegate.swift */; };
 		099471D529EAC587009F1A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099471D429EAC587009F1A2E /* Assets.xcassets */; };
@@ -17,9 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		09234BED29ED6DCC002A9E9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		09234BEF29ED7221002A9E9C /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		09234BF129ED7A63002A9E9C /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleBuilder.swift; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		099471CB29EAC585009F1A2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		099471CD29EAC585009F1A2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,9 +42,9 @@
 		09234BEC29ED6D8E002A9E9C /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				09234BED29ED6DCC002A9E9C /* ViewController.swift */,
-				09234BEF29ED7221002A9E9C /* Presenter.swift */,
-				09234BF129ED7A63002A9E9C /* ModuleBuilder.swift */,
+				09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */,
+				09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */,
+				09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -156,11 +156,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09234BEE29ED6DCC002A9E9C /* ViewController.swift in Sources */,
+				09234BEE29ED6DCC002A9E9C /* SettingsViewController.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
-				09234BF029ED7221002A9E9C /* Presenter.swift in Sources */,
-				09234BF229ED7A63002A9E9C /* ModuleBuilder.swift in Sources */,
+				09234BF029ED7221002A9E9C /* SettingsPresenter.swift in Sources */,
+				09234BF229ED7A63002A9E9C /* SettingsModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
