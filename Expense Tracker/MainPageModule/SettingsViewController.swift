@@ -8,11 +8,9 @@
 import UIKit
 
 
-protocol ViewControllerProtocol: AnyObject {
-    
-}
+protocol SettingsViewControllerProtocol: AnyObject {}
 
-final class ViewController: UIViewController, ViewControllerProtocol {
+final class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
     
     // MARK: - Public properties
     var presenter: SettingsPresenterProtocol?

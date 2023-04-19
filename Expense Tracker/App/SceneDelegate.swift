@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         
-        let viewController = ModuleBuilder.build()
+        let viewController = SettingsModuleBuilder.build()
         
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = viewController

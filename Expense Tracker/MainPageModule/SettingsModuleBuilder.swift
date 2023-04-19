@@ -7,12 +7,13 @@
 
 import UIKit
 
-final class ModuleBuilder {
+final class SettingsModuleBuilder {
+    
     static func build() -> UIViewController {
         
         // MARK: - Override methods
         let presenter = SettingsPresenter()
-        let viewController = ViewController(presenter: presenter)
+        let viewController = SettingsViewController(presenter: presenter)
         
         viewController.view.backgroundColor = .white
         

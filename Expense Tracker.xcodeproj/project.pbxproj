@@ -39,14 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09234BEC29ED6D8E002A9E9C /* Module */ = {
+		09234BEC29ED6D8E002A9E9C /* MainPageModule */ = {
 			isa = PBXGroup;
 			children = (
 				09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */,
 				09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */,
 				09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */,
 			);
-			path = Module;
+			path = MainPageModule;
 			sourceTree = "<group>";
 		};
 		09234BF329ED7BB0002A9E9C /* App */ = {
@@ -78,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				09234BF329ED7BB0002A9E9C /* App */,
-				09234BEC29ED6D8E002A9E9C /* Module */,
+				09234BEC29ED6D8E002A9E9C /* MainPageModule */,
 				099471D429EAC587009F1A2E /* Assets.xcassets */,
 				099471D629EAC587009F1A2E /* LaunchScreen.storyboard */,
 				099471D929EAC587009F1A2E /* Info.plist */,
