@@ -116,3 +116,7 @@ xcuserdata/
 # Игнорировать файлы сгенерированные CocoaPods
 Pods/
 
+.DS_Store
+**/.DS_Store
+
+
