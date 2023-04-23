@@ -72,8 +72,8 @@
 		097BFAA729F5A27700945B9D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				09B264C329F5A9BA00FC1B2E /* Localizable.strings */,
 				09B264CC29F5CF1300FC1B2E /* Strings.swift */,
+				09B264C329F5A9BA00FC1B2E /* Localizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
