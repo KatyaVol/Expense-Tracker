@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol SettingsViewControllerProtocol: AnyObject {}
+protocol MainPageViewControllerProtocol: AnyObject {}
 
-final class SettingsViewController: UIViewController, SettingsViewControllerProtocol {
+final class MainPageViewController: UIViewController, MainPageViewControllerProtocol {
     // MARK: - Public properties
-    var presenter: SettingsPresenterProtocol?
+    var presenter: MainPagePresenterProtocol?
 
     // MARK: - Init
-    init(presenter: SettingsPresenterProtocol) {
+    init(presenter: MainPagePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }

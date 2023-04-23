@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09234BEE29ED6DCC002A9E9C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */; };
-		09234BF029ED7221002A9E9C /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */; };
-		09234BF229ED7A63002A9E9C /* SettingsModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */; };
+		09234BEE29ED6DCC002A9E9C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* MainPageViewController.swift */; };
+		09234BF029ED7221002A9E9C /* MainPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* MainPagePresenter.swift */; };
+		09234BF229ED7A63002A9E9C /* MainPageModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* MainPageModuleBuilder.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
 		099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CD29EAC585009F1A2E /* SceneDelegate.swift */; };
 		099471D529EAC587009F1A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099471D429EAC587009F1A2E /* Assets.xcassets */; };
@@ -19,9 +19,9 @@
 
 /* Begin PBXFileReference section */
 		045E2FABEE8789F6A4EA8E30 /* Pods-Expense Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.debug.xcconfig"; sourceTree = "<group>"; };
-		09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleBuilder.swift; sourceTree = "<group>"; };
+		09234BED29ED6DCC002A9E9C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		09234BEF29ED7221002A9E9C /* MainPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagePresenter.swift; sourceTree = "<group>"; };
+		09234BF129ED7A63002A9E9C /* MainPageModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageModuleBuilder.swift; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		099471CB29EAC585009F1A2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		099471CD29EAC585009F1A2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,14 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09234BEC29ED6D8E002A9E9C /* MainPageModule */ = {
+		09234BEC29ED6D8E002A9E9C /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				09234BED29ED6DCC002A9E9C /* SettingsViewController.swift */,
-				09234BEF29ED7221002A9E9C /* SettingsPresenter.swift */,
-				09234BF129ED7A63002A9E9C /* SettingsModuleBuilder.swift */,
+				09234BED29ED6DCC002A9E9C /* MainPageViewController.swift */,
+				09234BEF29ED7221002A9E9C /* MainPagePresenter.swift */,
+				09234BF129ED7A63002A9E9C /* MainPageModuleBuilder.swift */,
 			);
-			path = MainPageModule;
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		09234BF329ED7BB0002A9E9C /* App */ = {
@@ -61,6 +61,46 @@
 				099471CD29EAC585009F1A2E /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		097BFAA729F5A27700945B9D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		097BFAA829F5A28500945B9D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				097BFAA929F5A31900945B9D /* Core */,
+				097BFAAA29F5A33D00945B9D /* Presentation */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		097BFAA929F5A31900945B9D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				09234BF329ED7BB0002A9E9C /* App */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		097BFAAA29F5A33D00945B9D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				097BFAAB29F5A39100945B9D /* Modules */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		097BFAAB29F5A39100945B9D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				09234BEC29ED6D8E002A9E9C /* MainPage */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		099471BF29EAC585009F1A2E = {
@@ -84,8 +124,8 @@
 		099471CA29EAC585009F1A2E /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				09234BF329ED7BB0002A9E9C /* App */,
-				09234BEC29ED6D8E002A9E9C /* MainPageModule */,
+				097BFAA729F5A27700945B9D /* Resource */,
+				097BFAA829F5A28500945B9D /* Source */,
 				099471D429EAC587009F1A2E /* Assets.xcassets */,
 				099471D629EAC587009F1A2E /* LaunchScreen.storyboard */,
 				099471D929EAC587009F1A2E /* Info.plist */,
@@ -225,11 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09234BEE29ED6DCC002A9E9C /* SettingsViewController.swift in Sources */,
+				09234BEE29ED6DCC002A9E9C /* MainPageViewController.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
-				09234BF029ED7221002A9E9C /* SettingsPresenter.swift in Sources */,
-				09234BF229ED7A63002A9E9C /* SettingsModuleBuilder.swift in Sources */,
+				09234BF029ED7221002A9E9C /* MainPagePresenter.swift in Sources */,
+				09234BF229ED7A63002A9E9C /* MainPageModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
