@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class SettingsModuleBuilder {
+final class MainPageModuleBuilder {
     static func build() -> UIViewController {
         // MARK: - Override methods
-        let presenter = SettingsPresenter()
-        let viewController = SettingsViewController(presenter: presenter)
+        let presenter = MainPagePresenter()
+        let viewController = MainPageViewController(presenter: presenter)
         viewController.view.backgroundColor = .white
         presenter.injectView(viewController)
         return viewController

@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let viewController = SettingsModuleBuilder.build()
+        let viewController = MainPageModuleBuilder.build()
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()

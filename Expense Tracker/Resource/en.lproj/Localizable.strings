@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Expense Tracker
+
+  Created by Ekaterina Volobueva on 23.04.2023.
+  
+*/
+"welcome_message" = "Welcome to our app!";
+"sign_up" = "Sign Up";
+"login" = "Login";
