@@ -10,14 +10,12 @@ import UIKit
 protocol AddExpenseViewControllerProtocol: AnyObject {}
 
 final class AddExpenseViewController: UIViewController,
-                                    AddExpenseViewControllerProtocol {
-
-    // MARK: - Public properties
-
-    private var presenter: AddExpensePresenterProtocol?
-
+                                      AddExpenseViewControllerProtocol {
+    
     // MARK: - Private properties
-
+    
+    private let presenter: AddExpensePresenterProtocol
+    
     private lazy var myButton: UIButton = {
         let myButton = UIButton()
         myButton.setTitle(Strings.signUpButtonTitle, for: .normal)
@@ -27,18 +25,19 @@ final class AddExpenseViewController: UIViewController,
         myButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return myButton
     }()
-
+    
     // MARK: - Init
-
+    
     init(presenter: AddExpensePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Override methods
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,10 +10,11 @@ import UIKit
 final class AddExpenseModuleBuilder {
     static func build() -> UIViewController {
         
-        // MARK: - Override methods
+        // MARK: - Assembly
         
-        let presenter = AddExpensePresenter()
-        let viewController = AddExpenseViewController(presenter: presenter)
+        let presenter: AddExpensePresenterProtocol = AddExpensePresenter()
+        let viewController: AddExpenseViewControllerProtocol & UIViewController = AddExpenseViewController(presenter: presenter)
+        presenter.view = viewController
         return viewController
     }
 }

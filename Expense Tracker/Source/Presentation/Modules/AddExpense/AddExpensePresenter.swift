@@ -6,11 +6,13 @@
 //
 import UIKit
 
-protocol AddExpensePresenterProtocol: AnyObject {}
+protocol AddExpensePresenterProtocol: AnyObject {
+    var view: AddExpenseViewControllerProtocol? { get set }
+}
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
     
-    // MARK: - Private properties
+    // MARK: - Properties
     
-     weak var view: AddExpenseViewControllerProtocol?
+    weak var view: AddExpenseViewControllerProtocol?  
 }
