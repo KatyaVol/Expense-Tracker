@@ -7,15 +7,17 @@
 
 import UIKit
 
-protocol MainPageViewControllerProtocol: AnyObject {}
+protocol AddExpenseViewControllerProtocol: AnyObject {}
 
-final class MainPageViewController: UIViewController,
-                                    MainPageViewControllerProtocol {
+final class AddExpenseViewController: UIViewController,
+                                    AddExpenseViewControllerProtocol {
+
     // MARK: - Public properties
-    var presenter: MainPagePresenterProtocol?
-    
+
+    private var presenter: AddExpensePresenterProtocol?
+
     // MARK: - Private properties
-    
+
     private lazy var myButton: UIButton = {
         let myButton = UIButton()
         myButton.setTitle(Strings.signUpButtonTitle, for: .normal)
@@ -25,16 +27,19 @@ final class MainPageViewController: UIViewController,
         myButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return myButton
     }()
-    
+
     // MARK: - Init
-    init(presenter: MainPagePresenterProtocol) {
+
+    init(presenter: AddExpensePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     // MARK: - Override methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(myButton)
