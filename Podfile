@@ -1,6 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 
-platform :ios, '16.0'
+#platform :ios, '16.0'
 
 target 'Expense Tracker' do
 
@@ -8,7 +8,7 @@ target 'Expense Tracker' do
   use_frameworks!
 
 # Pods for Expense Tracker
-pod 'SwiftLint'
+# pod 'SwiftLint'
 
 
 end
