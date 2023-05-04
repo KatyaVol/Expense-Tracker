@@ -10,7 +10,7 @@ import UIKit
 protocol AddExpenseViewControllerProtocol: AnyObject {}
 
 final class AddExpenseViewController: UIViewController,
-                                      AddExpenseViewControllerProtocol {
+                                      AddExpenseViewControllerProtocol, AddExpenseViewDelegate {
     
     // MARK: - Private properties
     
@@ -36,12 +36,10 @@ final class AddExpenseViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addExpenseView.myButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        addExpenseView.delegate = self
     }
     
-    // MARK: - Private func
-    
-    @objc private func buttonTapped() {
-        print("Button tapped!")
-    }
+    func buttonDidTap() {
+            print("Button tapped!")
+        }
 }

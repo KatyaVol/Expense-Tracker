@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddExpenseViewDelegate: AnyObject {
+    func buttonDidTap()
+}
+
 class AddExpenseView: UIView {
     
     // MARK: - UI Elements
@@ -20,12 +24,17 @@ class AddExpenseView: UIView {
         return myButton
     }()
     
+    // MARK: - Delegate
+    
+    weak var delegate: AddExpenseViewDelegate?
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
         setupAutoLayout()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +47,10 @@ class AddExpenseView: UIView {
         addSubview(myButton)
     }
     
+    private func setupActions() {
+      myButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             myButton.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -46,4 +59,9 @@ class AddExpenseView: UIView {
             myButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
+    
+    @objc private func buttonTapped() {
+        delegate?.buttonDidTap()
+    }
 }
+
