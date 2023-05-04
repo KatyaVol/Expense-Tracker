@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol MainPageViewControllerProtocol: AnyObject {}
+protocol AddExpenseViewControllerProtocol: AnyObject {}
 
-final class MainPageViewController: UIViewController,
-                                    MainPageViewControllerProtocol {
-    // MARK: - Public properties
-    var presenter: MainPagePresenterProtocol?
+final class AddExpenseViewController: UIViewController,
+                                      AddExpenseViewControllerProtocol {
     
     // MARK: - Private properties
+    
+    private let presenter: AddExpensePresenterProtocol
     
     private lazy var myButton: UIButton = {
         let myButton = UIButton()
@@ -27,14 +27,18 @@ final class MainPageViewController: UIViewController,
     }()
     
     // MARK: - Init
-    init(presenter: MainPagePresenterProtocol) {
+    
+    init(presenter: AddExpensePresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    // MARK: - Override methods
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(myButton)
