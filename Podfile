@@ -8,7 +8,7 @@ target 'Expense Tracker' do
   use_frameworks!
 
 # Pods for Expense Tracker
-pod 'SwiftLint'
+# pod 'SwiftLint'
 
 
 end
