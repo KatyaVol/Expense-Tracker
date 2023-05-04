@@ -30,10 +30,12 @@ final class AddExpenseViewController: UIViewController,
 
     // MARK: - Life Cycle
     
+    override func loadView() {
+        view = addExpenseView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(addExpenseView)
-        addExpenseView.frame = view.bounds
         addExpenseView.myButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
