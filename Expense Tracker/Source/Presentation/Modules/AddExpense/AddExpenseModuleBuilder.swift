@@ -12,8 +12,8 @@ final class AddExpenseModuleBuilder {
         
         // MARK: - Assembly
         
-        let presenter: AddExpensePresenterProtocol = AddExpensePresenter()
-        let viewController: AddExpenseViewControllerProtocol & UIViewController = AddExpenseViewController(presenter: presenter)
+        let presenter = AddExpensePresenter()
+        let viewController = AddExpenseViewController(presenter: presenter)
         presenter.view = viewController
         return viewController
     }
