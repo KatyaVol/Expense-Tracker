@@ -8,33 +8,34 @@
 import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
-    func buttonDidTap()
+     func didTapSaveButton()
 }
 
-class AddExpenseView: UIView {
+final class AddExpenseView: UIView {
     
     // MARK: - UI Elements
     
-    let myButton: UIButton = {
-        let myButton = UIButton()
-        myButton.setTitle(Strings.signUpButtonTitle, for: .normal)
-        myButton.translatesAutoresizingMaskIntoConstraints = false
-        myButton.backgroundColor = .systemMint
-        myButton.setTitleColor(.white, for: .normal)
-        return myButton
+    private lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Strings.signUpButtonTitle, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemMint
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        return button
     }()
     
     // MARK: - Delegate
     
-    weak var delegate: AddExpenseViewDelegate?
+    private weak var delegate: AddExpenseViewDelegate?
     
     // MARK: - Init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(delegate: AddExpenseViewDelegate ) {
+        self.delegate = delegate
+        super.init(frame: .zero)
         setupSubviews()
         setupAutoLayout()
-        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -44,24 +45,20 @@ class AddExpenseView: UIView {
     // MARK: - Private func
     
     private func setupSubviews() {
-        addSubview(myButton)
-    }
-    
-    private func setupActions() {
-      myButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        addSubview(saveButton)
     }
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            myButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            myButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            myButton.widthAnchor.constraint(equalToConstant: 200),
-            myButton.heightAnchor.constraint(equalToConstant: 40)
+            saveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            saveButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            saveButton.widthAnchor.constraint(equalToConstant: 200),
+            saveButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     @objc private func buttonTapped() {
-        delegate?.buttonDidTap()
+        delegate?.didTapSaveButton()
     }
 }
 
