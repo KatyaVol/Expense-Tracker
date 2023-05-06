@@ -17,6 +17,8 @@
 		09B264C129F5A9BA00FC1B2E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09B264C329F5A9BA00FC1B2E /* Localizable.strings */; };
 		09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B264CC29F5CF1300FC1B2E /* Strings.swift */; };
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
+		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
+		09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B112A06A30A00619F6B /* TabBarController.swift */; };
 		BD4BBDE6CCD27F7940F34E93 /* Pods_Expense_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604997D45E042619E849777C /* Pods_Expense_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		09B264CB29F5CB7F00FC1B2E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CC29F5CF1300FC1B2E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		09F49B112A06A30A00619F6B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		604997D45E042619E849777C /* Pods_Expense_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expense_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2065F209B01B4AF2A81CE62 /* Pods-Expense Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		F68F0174143A973FF91DBF53 /* Pods-Expense Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.release.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
 				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
 				09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */,
+				09F49B0F2A069E8000619F6B /* AppCoordinator.swift */,
+				09F49B112A06A30A00619F6B /* TabBarController.swift */,
 			);
 			path = AddExpense;
 			sourceTree = "<group>";
@@ -280,7 +286,9 @@
 				09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
+				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
+				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
