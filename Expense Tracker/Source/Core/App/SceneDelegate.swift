@@ -8,13 +8,16 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
     var window: UIWindow?
+    let appCoordinator = AppCoordinator()
+    
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let viewController = AddExpenseModuleBuilder.build()
+        let viewController = appCoordinator.startApplication()
         
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = viewController
