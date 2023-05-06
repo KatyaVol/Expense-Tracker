@@ -9,29 +9,27 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    let addExpenseViewController = AddExpenseModuleBuilder.build()
-    let reportViewController = ReportViewController()
-    let settingsViewController = SettingsViewController()
+    private let addExpenseViewController = AddExpenseModuleBuilder.build()
+    private let reportViewController = ReportViewController()
+    private let settingsViewController = SettingsViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTabBarItems()
-        
-        
     }
     
     //MARK: - Private func
     
     private func setupTabBarItems() {
-        reportViewController.tabBarItem     = UITabBarItem(title: "Отчет",
-                                                           image: UIImage(systemName: "chart.bar.xaxis"), selectedImage: UIImage(systemName: "chart.bar.xaxis"))
+        reportViewController.tabBarItem = UITabBarItem(title: "Отчет",
+                                                           image: UIImage(systemName: "chart.bar.xaxis"),
+                                                           selectedImage: UIImage(systemName: "chart.bar.xaxis"))
         
         addExpenseViewController.tabBarItem = UITabBarItem(title: "Добавить",
                                                            image: UIImage(systemName: "plus"),
                                                            selectedImage: UIImage(systemName: "plus"))
         
-        settingsViewController.tabBarItem   = UITabBarItem(title: "Настройки",
+        settingsViewController.tabBarItem = UITabBarItem(title: "Настройки",
                                                            image: UIImage(systemName: "gear"),
                                                            selectedImage: UIImage(systemName: "gear"))
         viewControllers = [reportViewController,
