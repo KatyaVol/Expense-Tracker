@@ -21,17 +21,17 @@ final class TabBarController: UITabBarController {
     //MARK: - Private func
     
     private func setupTabBarItems() {
-        reportViewController.tabBarItem = UITabBarItem(title: "Отчет",
-                                                           image: UIImage(systemName: "chart.bar.xaxis"),
-                                                           selectedImage: UIImage(systemName: "chart.bar.xaxis"))
+        reportViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("report", comment: ""),
+                                                       image: UIImage(named: "icon_report"),
+                                                       tag: 0)
         
-        addExpenseViewController.tabBarItem = UITabBarItem(title: "Добавить",
-                                                           image: UIImage(systemName: "plus"),
-                                                           selectedImage: UIImage(systemName: "plus"))
+        addExpenseViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("add", comment: ""),
+                                                           image: UIImage(named: "icon_ add"),
+                                                           tag: 1)
         
-        settingsViewController.tabBarItem = UITabBarItem(title: "Настройки",
-                                                           image: UIImage(systemName: "gear"),
-                                                           selectedImage: UIImage(systemName: "gear"))
+        settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("settings", comment: ""),
+                                                         image: UIImage(named: "icon_settings"),
+                                                         tag: 2)
         viewControllers = [reportViewController,
                            addExpenseViewController,
                            settingsViewController]

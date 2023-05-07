@@ -8,3 +8,6 @@
 "welcome_message" = "Welcome to our app!";
 "sign_up" = "Sign Up";
 "login" = "Login";
+"report" = "Report";
+"add" = "Add";
+"settings" = "Settings";
