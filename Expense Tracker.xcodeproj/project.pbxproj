@@ -60,10 +60,10 @@
 		09234BEC29ED6D8E002A9E9C /* AddExpense */ = {
 			isa = PBXGroup;
 			children = (
-				09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */,
-				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
-				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
 				09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */,
+				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
+				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
+				09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */,
 			);
 			path = AddExpense;
 			sourceTree = "<group>";
