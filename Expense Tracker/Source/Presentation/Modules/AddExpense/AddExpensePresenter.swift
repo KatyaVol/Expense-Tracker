@@ -14,5 +14,6 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     // MARK: - Properties
     
-    weak var view: AddExpenseViewControllerProtocol?  
+    weak var view: AddExpenseViewControllerProtocol?
+    var coordinator: AddExpenseCoordinatorProtocol?
 }
