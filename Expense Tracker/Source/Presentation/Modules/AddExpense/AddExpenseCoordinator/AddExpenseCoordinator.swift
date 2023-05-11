@@ -18,7 +18,8 @@ final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
     func pushCategory(with model: Category) {
-        //пока что останется пустой
+    //пока что останется пустой
     }
 }
