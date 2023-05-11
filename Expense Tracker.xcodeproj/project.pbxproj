@@ -17,6 +17,8 @@
 		099471D529EAC587009F1A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099471D429EAC587009F1A2E /* Assets.xcassets */; };
 		09B264C129F5A9BA00FC1B2E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09B264C329F5A9BA00FC1B2E /* Localizable.strings */; };
 		09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B264CC29F5CF1300FC1B2E /* Strings.swift */; };
+		09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB32A0C0DF100EB4B95 /* Category.swift */; };
+		09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */; };
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
 		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
 		09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B112A06A30A00619F6B /* TabBarController.swift */; };
@@ -37,6 +39,8 @@
 		09B264C229F5A9BA00FC1B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CB29F5CB7F00FC1B2E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CC29F5CF1300FC1B2E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		09B84CB32A0C0DF100EB4B95 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCoordinator.swift; sourceTree = "<group>"; };
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09F49B112A06A30A00619F6B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -61,9 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */,
-				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
-				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
 				09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */,
+				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
+				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
+				09B84CAF2A0C0BC000EB4B95 /* AddExpenseCoordinator */,
 			);
 			path = AddExpense;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 				097BFAA929F5A31900945B9D /* Core */,
 				09F49B142A06E51600619F6B /* Services */,
 				097BFAAA29F5A33D00945B9D /* Presentation */,
+				09B84CB22A0C0DB900EB4B95 /* Models */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -149,6 +155,22 @@
 				099471D929EAC587009F1A2E /* Info.plist */,
 			);
 			path = "Expense Tracker";
+			sourceTree = "<group>";
+		};
+		09B84CAF2A0C0BC000EB4B95 /* AddExpenseCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */,
+			);
+			path = AddExpenseCoordinator;
+			sourceTree = "<group>";
+		};
+		09B84CB22A0C0DB900EB4B95 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				09B84CB32A0C0DF100EB4B95 /* Category.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		09F49B132A06E49E00619F6B /* TabBarController */ = {
@@ -315,9 +337,11 @@
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
+				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
+				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
 			);
