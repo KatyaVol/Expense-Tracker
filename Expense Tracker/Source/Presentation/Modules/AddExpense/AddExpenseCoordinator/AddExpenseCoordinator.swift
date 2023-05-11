@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol AddExpenseCoordinatorProtocol: CoordinatorProtocol {
+    func pushCategory(with model: Category)
+    // Пока что здесь будет один метод . Может в будущем добавим сюда другие методы
+}
+
 final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
-    var navigationController: UINavigationController
+    private(set) var navigationController: UINavigationController
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

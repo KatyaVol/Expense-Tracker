@@ -6,9 +6,7 @@
 //
 import UIKit
 
-protocol AddExpensePresenterProtocol: AnyObject {
-    var view: AddExpenseViewControllerProtocol? { get set }
-}
+protocol AddExpensePresenterProtocol: AnyObject {}
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
     

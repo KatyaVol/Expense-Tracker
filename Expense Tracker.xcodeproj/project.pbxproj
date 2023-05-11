@@ -17,7 +17,6 @@
 		099471D529EAC587009F1A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099471D429EAC587009F1A2E /* Assets.xcassets */; };
 		09B264C129F5A9BA00FC1B2E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09B264C329F5A9BA00FC1B2E /* Localizable.strings */; };
 		09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B264CC29F5CF1300FC1B2E /* Strings.swift */; };
-		09B84CB12A0C0BD900EB4B95 /* AddExpenseCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB02A0C0BD900EB4B95 /* AddExpenseCoordinatorProtocol.swift */; };
 		09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB32A0C0DF100EB4B95 /* Category.swift */; };
 		09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */; };
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
@@ -40,7 +39,6 @@
 		09B264C229F5A9BA00FC1B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CB29F5CB7F00FC1B2E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CC29F5CF1300FC1B2E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		09B84CB02A0C0BD900EB4B95 /* AddExpenseCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		09B84CB32A0C0DF100EB4B95 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCoordinator.swift; sourceTree = "<group>"; };
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 		09B84CAF2A0C0BC000EB4B95 /* AddExpenseCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				09B84CB02A0C0BD900EB4B95 /* AddExpenseCoordinatorProtocol.swift */,
 				09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */,
 			);
 			path = AddExpenseCoordinator;
@@ -341,7 +338,6 @@
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
-				09B84CB12A0C0BD900EB4B95 /* AddExpenseCoordinatorProtocol.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
