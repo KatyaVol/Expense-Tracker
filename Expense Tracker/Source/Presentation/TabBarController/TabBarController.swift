@@ -16,6 +16,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBarItems()
+        setupTabBarAppearance()
     }
     
     //MARK: - Private func
@@ -36,18 +37,34 @@ final class TabBarController: UITabBarController {
                            addExpenseViewController,
                            settingsViewController]
     }
+    
+    private func setupTabBarAppearance() {
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.turquoiseColor], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.turquoiseColor], for: .selected)
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.stackedLayoutAppearance.normal.iconColor = Colors.turquoiseColor
+            appearance.stackedLayoutAppearance.selected.iconColor = Colors.turquoiseColor
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: Colors.turquoiseColor]
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: Colors.turquoiseColor]
+            self.tabBar.standardAppearance = appearance
+        } else {
+            self.tabBar.tintColor = Colors.turquoiseColor
+        }
+    }
 }
 
 final class ReportViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.systemBackground
     }
 }
 
 final class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.systemBackground
     }
 }

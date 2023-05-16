@@ -20,6 +20,6 @@ final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
     }
     
     func pushCategory(with model: Category) {
-    //пока что останется пустой
+        //пока что останется пустой
     }
 }
