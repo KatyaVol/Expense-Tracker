@@ -45,6 +45,9 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
+}
+
+extension UIColor {
     static let lightTurquoiseColor = UIColor.hexStringToUIColor(hex: "#48CAD2")
     static let darkTurquoiseColor = UIColor.hexStringToUIColor(hex: "#3EB8C0")
 }
