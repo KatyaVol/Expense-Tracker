@@ -11,5 +11,6 @@ class CategoryViewController {
     
     func test() {
         print("first category")
+        print("second category")
     }
 }
