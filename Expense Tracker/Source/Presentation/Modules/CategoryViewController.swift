@@ -10,6 +10,7 @@ import UIKit
 class CategoryViewController {
     
     func test() {
+        print("Empty")
         print("Category number 1")
     }
 }
