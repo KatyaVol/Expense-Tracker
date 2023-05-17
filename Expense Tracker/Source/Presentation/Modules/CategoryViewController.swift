@@ -9,5 +9,7 @@ import UIKit
 
 class CategoryViewController {
     
-    func test() {}
+    func test() {
+        print("Category number 1")
+    }
 }
