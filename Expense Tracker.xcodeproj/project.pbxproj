@@ -17,8 +17,6 @@
 		099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CD29EAC585009F1A2E /* SceneDelegate.swift */; };
 		099471D529EAC587009F1A2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099471D429EAC587009F1A2E /* Assets.xcassets */; };
 		09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACC81A2A1511320082343F /* CategoryViewController.swift */; };
-		09ACC81E2A1563300082343F /* NewTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACC81D2A1563300082343F /* NewTestFile.swift */; };
-		09ACC8212A1564C00082343F /* SecondTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09ACC8202A1564C00082343F /* SecondTestFile.swift */; };
 		09B264C129F5A9BA00FC1B2E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09B264C329F5A9BA00FC1B2E /* Localizable.strings */; };
 		09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B264CC29F5CF1300FC1B2E /* Strings.swift */; };
 		09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB32A0C0DF100EB4B95 /* Category.swift */; };
@@ -43,8 +41,6 @@
 		099471D429EAC587009F1A2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		099471D929EAC587009F1A2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09ACC81A2A1511320082343F /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		09ACC81D2A1563300082343F /* NewTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestFile.swift; sourceTree = "<group>"; };
-		09ACC8202A1564C00082343F /* SecondTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTestFile.swift; sourceTree = "<group>"; };
 		09B264C229F5A9BA00FC1B2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CB29F5CB7F00FC1B2E /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		09B264CC29F5CF1300FC1B2E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -134,8 +130,6 @@
 		097BFAAB29F5A39100945B9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				09ACC81F2A15643E0082343F /* SecondNewTestFile */,
-				09ACC81C2A1562EB0082343F /* NewTestFile */,
 				09ACC81A2A1511320082343F /* CategoryViewController.swift */,
 				09234BEC29ED6D8E002A9E9C /* AddExpense */,
 			);
@@ -178,22 +172,6 @@
 				099471D929EAC587009F1A2E /* Info.plist */,
 			);
 			path = "Expense Tracker";
-			sourceTree = "<group>";
-		};
-		09ACC81C2A1562EB0082343F /* NewTestFile */ = {
-			isa = PBXGroup;
-			children = (
-				09ACC81D2A1563300082343F /* NewTestFile.swift */,
-			);
-			path = NewTestFile;
-			sourceTree = "<group>";
-		};
-		09ACC81F2A15643E0082343F /* SecondNewTestFile */ = {
-			isa = PBXGroup;
-			children = (
-				09ACC8202A1564C00082343F /* SecondTestFile.swift */,
-			);
-			path = SecondNewTestFile;
 			sourceTree = "<group>";
 		};
 		09B84CAF2A0C0BC000EB4B95 /* AddExpenseCoordinator */ = {
@@ -385,13 +363,11 @@
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
-				09ACC81E2A1563300082343F /* NewTestFile.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
-				09ACC8212A1564C00082343F /* SecondTestFile.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
@@ -577,7 +553,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Ekaterina-Volobueva.Expense-Tracker";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ekaterina-Volobueva.Expense-Tracker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
