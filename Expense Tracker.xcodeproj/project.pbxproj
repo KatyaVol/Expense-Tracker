@@ -11,6 +11,7 @@
 		09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */; };
 		09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */; };
 		092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */; };
+		094224F82A195FD000BEC368 /* AddExpenseCollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094224F72A195FD000BEC368 /* AddExpenseCollectionViewCell+Extension.swift */; };
 		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
 		096854A029F7FFF400969D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */; };
 		098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */; };
@@ -34,6 +35,7 @@
 		09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensePresenter.swift; sourceTree = "<group>"; };
 		09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseModuleBuilder.swift; sourceTree = "<group>"; };
 		092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		094224F72A195FD000BEC368 /* AddExpenseCollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddExpenseCollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
 		0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -95,8 +97,17 @@
 			isa = PBXGroup;
 			children = (
 				09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */,
+				094224F62A195F8D00BEC368 /* AddExpenseCollectionViewCell+Extension */,
 			);
 			path = AddExpenseCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		094224F62A195F8D00BEC368 /* AddExpenseCollectionViewCell+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				094224F72A195FD000BEC368 /* AddExpenseCollectionViewCell+Extension.swift */,
+			);
+			path = "AddExpenseCollectionViewCell+Extension";
 			sourceTree = "<group>";
 		};
 		097BFAA729F5A27700945B9D /* Resource */ = {
@@ -378,6 +389,7 @@
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
+				094224F82A195FD000BEC368 /* AddExpenseCollectionViewCell+Extension.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,

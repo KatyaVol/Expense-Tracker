@@ -33,7 +33,7 @@ final class AddExpenseView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .red
         collectionView.register(AddExpenseCollectionViewCell.self,
-                                forCellWithReuseIdentifier: "AddExpenseCollectionViewCell")
+                                forCellWithReuseIdentifier: AddExpenseCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -71,8 +71,8 @@ final class AddExpenseView: UIView {
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
@@ -91,7 +91,7 @@ extension AddExpenseView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "AddExpenseCollectionViewCell",
+            withReuseIdentifier: AddExpenseCollectionViewCell.identifier,
             for: indexPath) as! AddExpenseCollectionViewCell
         return cell
     }
@@ -101,7 +101,7 @@ extension AddExpenseView: UICollectionViewDataSource {
 
 extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     
-    private var inset: CGFloat {return 10 }
+    private var inset: CGFloat { return 10 }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.bounds.height - inset * 2

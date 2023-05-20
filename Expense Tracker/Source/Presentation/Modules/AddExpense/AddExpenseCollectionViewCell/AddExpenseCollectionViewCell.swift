@@ -9,6 +9,8 @@ import UIKit
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customizeCell()
