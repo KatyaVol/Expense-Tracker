@@ -11,6 +11,8 @@
 		09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */; };
 		09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */; };
 		092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */; };
+		094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094224F72A195FD000BEC368 /* UIView+Extension.swift */; };
+		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
 		096854A029F7FFF400969D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */; };
 		098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
@@ -33,6 +35,8 @@
 		09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensePresenter.swift; sourceTree = "<group>"; };
 		09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseModuleBuilder.swift; sourceTree = "<group>"; };
 		092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		094224F72A195FD000BEC368 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
 		0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,10 +74,11 @@
 		09234BEC29ED6D8E002A9E9C /* AddExpense */ = {
 			isa = PBXGroup;
 			children = (
-				09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */,
 				09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */,
 				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
 				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
+				09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */,
+				093E3C462A180F510086B7F7 /* AddExpenseCollectionViewCell */,
 				09B84CAF2A0C0BC000EB4B95 /* AddExpenseCoordinator */,
 			);
 			path = AddExpense;
@@ -86,6 +91,14 @@
 				099471CD29EAC585009F1A2E /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		093E3C462A180F510086B7F7 /* AddExpenseCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */,
+			);
+			path = AddExpenseCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		097BFAA729F5A27700945B9D /* Resource */ = {
@@ -139,6 +152,7 @@
 		098BA6CE2A0EBD0C0007C633 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				094224F72A195FD000BEC368 /* UIView+Extension.swift */,
 				098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
@@ -361,11 +375,13 @@
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
+				09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
+				094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
