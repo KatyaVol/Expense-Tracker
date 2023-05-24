@@ -23,6 +23,9 @@
 		09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B264CC29F5CF1300FC1B2E /* Strings.swift */; };
 		09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB32A0C0DF100EB4B95 /* Category.swift */; };
 		09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */; };
+		09DA2F7E2A1B793900758A46 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F7D2A1B793900758A46 /* Expense.swift */; };
+		09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */; };
+		09DA2F832A1BA1B500758A46 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F822A1BA1B500758A46 /* DetailTableViewCell.swift */; };
 		09DB34322A10E630001964D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB34312A10E630001964D5 /* Colors.swift */; };
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
 		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
@@ -50,6 +53,9 @@
 		09B264CC29F5CF1300FC1B2E /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		09B84CB32A0C0DF100EB4B95 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		09B84CB52A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCoordinator.swift; sourceTree = "<group>"; };
+		09DA2F7D2A1B793900758A46 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		09DA2F822A1BA1B500758A46 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		09DB34312A10E630001964D5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */,
+				09DA2F7F2A1B9ADA00758A46 /* AddExpenseTableViewCell */,
 			);
 			path = AddExpenseCollectionViewCell;
 			sourceTree = "<group>";
@@ -200,8 +207,18 @@
 			isa = PBXGroup;
 			children = (
 				09B84CB32A0C0DF100EB4B95 /* Category.swift */,
+				09DA2F7D2A1B793900758A46 /* Expense.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		09DA2F7F2A1B9ADA00758A46 /* AddExpenseTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */,
+				09DA2F822A1BA1B500758A46 /* DetailTableViewCell.swift */,
+			);
+			path = AddExpenseTableViewCell;
 			sourceTree = "<group>";
 		};
 		09DB34302A10E603001964D5 /* Theme */ = {
@@ -377,6 +394,7 @@
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
 				09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
+				09DA2F7E2A1B793900758A46 /* Expense.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
@@ -387,6 +405,8 @@
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
+				09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */,
+				09DA2F832A1BA1B500758A46 /* DetailTableViewCell.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

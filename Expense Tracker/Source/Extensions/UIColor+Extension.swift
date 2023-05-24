@@ -51,6 +51,8 @@ extension UIColor {
 extension UIColor {
     static let lightTurquoiseColor = UIColor.hexStringToUIColor(hex: "#48CAD2")
     static let darkTurquoiseColor = UIColor.hexStringToUIColor(hex: "#3EB8C0")
+    
+    static let customGrayColor = UIColor.hexStringToUIColor(hex: "#757070")
 }
 
 

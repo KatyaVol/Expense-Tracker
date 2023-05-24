@@ -31,7 +31,7 @@ final class AddExpenseView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .white
         collectionView.register(AddExpenseCollectionViewCell.self,
                                 forCellWithReuseIdentifier: AddExpenseCollectionViewCell.identifier)
         collectionView.dataSource = self
@@ -70,10 +70,10 @@ final class AddExpenseView: UIView {
             saveButton.widthAnchor.constraint(equalToConstant: 200),
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            collectionView.heightAnchor.constraint(equalToConstant: 150)
+            collectionView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
     
@@ -104,8 +104,9 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     private var inset: CGFloat { return 10 }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.bounds.height - inset * 2
-        return CGSize(width: height * 2, height: height)
+        
+        let height = collectionView.bounds.height - inset * 2 // учитываются отступы
+        return CGSize(width: UIScreen.main.bounds.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -118,5 +119,4 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
        inset
     }
-
 }
