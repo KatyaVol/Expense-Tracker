@@ -8,23 +8,36 @@
 import UIKit
 
 enum ExpenseDetailType {
+    case category
     case date
     case amount
     case note
 }
 
-struct Expense {
-    let categoryImage: UIImage
-    let date: Date
-    let amount: Double
-    let note: String?
-    let isAmountSet: Bool
+struct ExpenseDetail {
+    let type: ExpenseDetailType
+    let title: String
+    let image: UIImage?
+    let text: String?
+}
+
+func makeExpenseDetails() -> [ExpenseDetail] {
+    let categoryDetail = ExpenseDetail(type: .category,
+                                       title: "Категория",
+                                       image: UIImage(named: "icon_operations"),
+                                       text: nil)
+    let dateDetail = ExpenseDetail(type: .date,
+                                   title: "Дата",
+                                   image: nil,
+                                   text: "Добавить")
+    let amountDetail = ExpenseDetail(type: .amount,
+                                     title: "Сумма",
+                                     image: nil,
+                                     text: "Добавить можно все что угодно")
+    let noteDetail = ExpenseDetail(type: .note,
+                                   title: "Примечание",
+                                   image: nil,
+                                   text: "Добавить")
     
-    static func makeExpense() -> [Expense] {
-        var expenseModel = [Expense]()
-        
-        expenseModel.append(Expense(categoryImage: UIImage(named: "icon_operations")!, date: Date(), amount: 0, note: "Добавить", isAmountSet: false))
-        
-        return expenseModel
-    }
+    return [categoryDetail, dateDetail, amountDetail, noteDetail]
 }

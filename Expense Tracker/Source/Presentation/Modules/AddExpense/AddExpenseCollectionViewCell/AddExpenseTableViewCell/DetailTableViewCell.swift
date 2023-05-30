@@ -11,7 +11,7 @@ final class DetailTableViewCell: UITableViewCell {
     
     // MARK: - UI Elements
     
-    private let descriptionLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -24,14 +24,21 @@ final class DetailTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textColor = UIColor.customGrayColor
         label.textAlignment = .right
+        label.numberOfLines = 0
         return label
+    }()
+    
+    private let container: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         layout()
     }
     
@@ -39,41 +46,36 @@ final class DetailTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
+    func setDetailText(_ text: String, for description: String) {
+         titleLabel.text = description
+        detailLabel.text = text
+    }
+    
     // MARK: - Private func
     
     private func layout() {
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(detailLabel)
+        contentView.addSubview(container)
+        container.addSubview(titleLabel)
+        container.addSubview(detailLabel)
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            detailLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            detailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
+            titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -106.5),
+                        
+            
+            detailLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8.5),
+            detailLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16.5),
+            detailLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
             detailLabel.widthAnchor.constraint(equalToConstant: 110)
         ])
-    }
-    
-    //MARK: - funk
-    
-    func setDetailText(_ text: String, for type: ExpenseDetailType) {
-        switch type {
-        case .date:
-            descriptionLabel.text = "Дата"
-            detailLabel.text = text
-        case .amount:
-            descriptionLabel.text = "Сумма"
-            detailLabel.text = text == "0" ? "Добавить" : String(format: "%.2f", Double(text) ?? 0.0)
-        case .note:
-            descriptionLabel.text = "Примечание"
-            detailLabel.text = text.isEmpty ? "Добавить" : text
-        }
-    }
-    
-    func setDescriptionText(_ text: String) {
-        descriptionLabel.text = text
     }
 }

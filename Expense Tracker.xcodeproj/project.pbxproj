@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */; };
 		09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */; };
 		09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */; };
 		09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
 		09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
 		09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensePresenter.swift; sourceTree = "<group>"; };
 		09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseModuleBuilder.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */,
+				091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */,
 				09DA2F7F2A1B9ADA00758A46 /* AddExpenseTableViewCell */,
 			);
 			path = AddExpenseCollectionViewCell;
@@ -406,6 +409,7 @@
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
 				09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */,
+				091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */,
 				09DA2F832A1BA1B500758A46 /* DetailTableViewCell.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
 			);

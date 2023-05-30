@@ -14,7 +14,7 @@ final class CategoryTableViewCell: UITableViewCell {
     private let categoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = . white
+        imageView.backgroundColor = .systemBackground
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -22,16 +22,22 @@ final class CategoryTableViewCell: UITableViewCell {
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Категория"
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.numberOfLines = 0
         return label
+    }()
+    
+    private let container: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         layout()
     }
     
@@ -39,27 +45,36 @@ final class CategoryTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private func
+    //MARK: - Public Methods
     
-    private func layout() {
-        contentView.addSubview(categoryImageView)
-        contentView.addSubview(categoryLabel)
-        
-        NSLayoutConstraint.activate([
-            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            categoryImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            categoryImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            categoryImageView.widthAnchor.constraint(equalToConstant: 24),
-            
-            categoryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8)
-        ])
+    func setCategoryImage(_ image: UIImage, text: String) {
+        categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
+        categoryImageView.tintColor = Colors.elementsGrayColor
+        categoryLabel.text = text
     }
     
-    //MARK: - func
+    // MARK: - Private Methods
     
-    func setCategoryImage(_ image: UIImage) {
-        categoryImageView.image = image
+    private func layout() {
+        contentView.addSubview(container)
+        container.addSubview(categoryImageView)
+        container.addSubview(categoryLabel)
+        
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: contentView.topAnchor),
+            container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            
+            categoryImageView.topAnchor.constraint(equalTo: container.topAnchor, constant: 6),
+            categoryImageView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -14),
+            categoryImageView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
+            categoryImageView.widthAnchor.constraint(equalToConstant: 24),
+            
+            categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
+            categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
+            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: 106.5)
+        ])
     }
 }

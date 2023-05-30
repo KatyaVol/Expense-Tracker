@@ -9,17 +9,21 @@ import UIKit
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Private properties
+   
+    private let expenseDetails = makeExpenseDetails()
+    
     // MARK: - UI Elements
-    
-    let expenseModel = Expense.makeExpense()
-    
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
+
+    private lazy var tableView: SelfSizingTableView = {
+        let tableView = SelfSizingTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
         tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
         tableView.dataSource = self
-        tableView.delegate = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 17)
         return tableView
     }()
     
@@ -34,7 +38,7 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Private func
+    // MARK: - Private Methods
     
     private func customizeCell() {
         contentView.backgroundColor = .systemGray6
@@ -53,61 +57,24 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
 extension AddExpenseCollectionViewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return expenseDetails.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let expense = expenseModel[0]
+        let expenseDetail = expenseDetails[indexPath.row]
         
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "d MMMM yyyy"
-            formatter.locale = Locale(identifier: "ru_RU")
-            return formatter
-        }()
-    
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
-            cell.selectionStyle = .none
-            cell.setCategoryImage(expense.categoryImage)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as! DetailTableViewCell
-            cell.selectionStyle = .none
-            switch indexPath.row {
-            case 1:
-                let dateString: String
-                if Calendar.current.isDateInToday(expense.date) {
-                    dateString = "Сегодня"
+        if expenseDetail.type == .category {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+                    cell.selectionStyle = .none
+            cell.setCategoryImage(expenseDetail.image ?? UIImage(named: "icon_operations")!, text: expenseDetail.title)
+                    return cell
                 } else {
-                    dateString = dateFormatter.string(from: expense.date)
+                    let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as! DetailTableViewCell
+                    cell.selectionStyle = .none
+                    cell.setDetailText(expenseDetail.text ?? "Добавить", for: expenseDetail.title)
+                    return cell
                 }
-                cell.setDetailText(dateString, for: .date)
-            case 2:
-                let amountString: String
-                if expense.isAmountSet{
-                    amountString = String(format: "%.2f", expense.amount)
-                } else {
-                    amountString = "0"
-                }
-                cell.setDetailText(amountString, for: .amount)
-            case 3:
-                let noteString = expense.note ?? "Добавить"
-                cell.setDetailText(noteString, for: .note)
-            default:
-                break
             }
-            return cell
         }
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension AddExpenseCollectionViewCell: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.height / 4
-    }
-}
 
