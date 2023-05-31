@@ -11,4 +11,7 @@ struct Colors {
     static let turquoiseColor = UIColor.colorWith(light: UIColor.lightTurquoiseColor, dark: UIColor.darkTurquoiseColor)
     
     static let tabBarTextColor = UIColor.colorWith(light: UIColor.lightTurquoiseColor, dark: UIColor.darkTurquoiseColor)
+    
+    static let elementsGrayColor = UIColor.colorWith(light: UIColor.customGrayColor, dark: .systemGray2)
+    
 }

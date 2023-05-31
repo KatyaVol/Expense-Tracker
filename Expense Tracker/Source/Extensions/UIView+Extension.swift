@@ -12,3 +12,9 @@ extension UIView {
         return String(describing: self)
     }
 }
+
+extension UIView {
+    func addSubviews(_ views: [UIView]) {
+        views.forEach { addSubview($0) }
+    }
+}

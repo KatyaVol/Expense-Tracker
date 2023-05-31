@@ -13,6 +13,10 @@ protocol AddExpenseViewDelegate: AnyObject {
 
 final class AddExpenseView: UIView {
     
+    // MARK: - Private properties
+    
+    private weak var delegate: AddExpenseViewDelegate?
+    
     // MARK: - UI Elements
     
     private lazy var saveButton: UIButton = {
@@ -31,17 +35,13 @@ final class AddExpenseView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(AddExpenseCollectionViewCell.self,
                                 forCellWithReuseIdentifier: AddExpenseCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
     }()
-    
-    // MARK: - Delegate
-    
-    private weak var delegate: AddExpenseViewDelegate?
     
     // MARK: - Init
     
@@ -56,7 +56,7 @@ final class AddExpenseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private func
+    // MARK: - Private methods
     
     private func setupSubviews() {
         addSubview(saveButton)
@@ -65,15 +65,16 @@ final class AddExpenseView: UIView {
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
+            saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             saveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            saveButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             saveButton.widthAnchor.constraint(equalToConstant: 200),
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            collectionView.heightAnchor.constraint(equalToConstant: 150)
+            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor),
+            //collectionView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -101,22 +102,14 @@ extension AddExpenseView: UICollectionViewDataSource {
 
 extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     
-    private var inset: CGFloat { return 10 }
+    private var inset: CGFloat { return 8 }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.bounds.height - inset * 2
-        return CGSize(width: height * 2, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: inset,
-                     left: inset,
-                     bottom: inset,
-                     right: inset)
+        let height = collectionView.bounds.height
+        return CGSize(width: UIScreen.main.bounds.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
        inset
     }
-
 }
