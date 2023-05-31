@@ -61,20 +61,21 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let expenseDetail = expenseDetails[indexPath.row]
         
-        if expenseDetail.type == .category {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
-                    cell.selectionStyle = .none
+        switch expenseDetail.type {
+        case .category:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+            cell.selectionStyle = .none
             cell.setCategoryImage(expenseDetail.image ?? UIImage(named: "icon_operations")!, text: expenseDetail.title)
-                    return cell
-                } else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as! DetailTableViewCell
-                    cell.selectionStyle = .none
-                    cell.setDetailText(expenseDetail.text ?? "Добавить", for: expenseDetail.title)
-                    return cell
-                }
-            }
+            return cell
+            
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as! DetailTableViewCell
+            cell.selectionStyle = .none
+            cell.setDetailText(expenseDetail.text ?? "Добавить", for: expenseDetail.title)
+            return cell
         }
+    }
+}
 

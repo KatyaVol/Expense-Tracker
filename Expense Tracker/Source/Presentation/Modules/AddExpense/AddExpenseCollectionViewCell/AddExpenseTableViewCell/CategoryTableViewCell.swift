@@ -57,8 +57,7 @@ final class CategoryTableViewCell: UITableViewCell {
     
     private func layout() {
         contentView.addSubview(container)
-        container.addSubview(categoryImageView)
-        container.addSubview(categoryLabel)
+            container.addSubviews([categoryImageView, categoryLabel])
         
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -74,7 +73,7 @@ final class CategoryTableViewCell: UITableViewCell {
             categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
             categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: 106.5)
+            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: 106)
         ])
     }
 }

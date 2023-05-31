@@ -49,7 +49,7 @@ final class DetailTableViewCell: UITableViewCell {
     // MARK: - Public Methods
     
     func setDetailText(_ text: String, for description: String) {
-         titleLabel.text = description
+        titleLabel.text = description
         detailLabel.text = text
     }
     
@@ -57,8 +57,7 @@ final class DetailTableViewCell: UITableViewCell {
     
     private func layout() {
         contentView.addSubview(container)
-        container.addSubview(titleLabel)
-        container.addSubview(detailLabel)
+        container.addSubviews([titleLabel, detailLabel])
         
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
@@ -69,11 +68,11 @@ final class DetailTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
             titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -106.5),
-                        
+            titleLabel.trailingAnchor.constraint(equalTo: detailLabel.leadingAnchor, constant: -106),
             
-            detailLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8.5),
-            detailLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16.5),
+            
+            detailLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            detailLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16),
             detailLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
             detailLabel.widthAnchor.constraint(equalToConstant: 110)
         ])
