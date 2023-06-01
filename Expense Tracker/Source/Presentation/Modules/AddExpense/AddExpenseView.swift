@@ -50,10 +50,10 @@ final class AddExpenseView: UIView {
         super.init(frame: .zero)
         setupSubviews()
         setupAutoLayout()
-
+        
         expenseDetails.append(makeExpenseDetails())
         expenseDetails.append(makeExpenseDetails())
-
+        
     }
     
     required init?(coder: NSCoder) {
@@ -113,6 +113,6 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-       inset
+        inset
     }
 }
