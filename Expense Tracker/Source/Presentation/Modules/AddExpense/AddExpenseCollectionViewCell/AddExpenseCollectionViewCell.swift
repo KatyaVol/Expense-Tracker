@@ -11,14 +11,11 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private properties
     
-    //private let expenseDetails = makeExpenseDetails()
-    var expenseDetails: [ExpenseDetail] = [] {
+    private var expenseDetails: [ExpenseDetail] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-
-    
     
     // MARK: - UI Elements
     
@@ -43,6 +40,12 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //    MARK: - Public Methods
+    
+    public func setExpenseDetails(_ details: [ExpenseDetail]) {
+        expenseDetails = details
     }
     
     // MARK: - Private Methods

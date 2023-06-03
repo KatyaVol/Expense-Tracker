@@ -51,9 +51,7 @@ final class AddExpenseView: UIView {
         setupSubviews()
         setupAutoLayout()
         
-        expenseDetails.append(makeExpenseDetails())
-        expenseDetails.append(makeExpenseDetails())
-        
+        expenseDetails = ExpenseDetail.makeExpenseDetails()
     }
     
     required init?(coder: NSCoder) {
@@ -63,8 +61,7 @@ final class AddExpenseView: UIView {
     // MARK: - Private methods
     
     private func setupSubviews() {
-        addSubview(saveButton)
-        addSubview(collectionView)
+        addSubviews([saveButton, collectionView ])
     }
     
     private func setupAutoLayout() {
@@ -78,7 +75,6 @@ final class AddExpenseView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor),
-            //collectionView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -96,7 +92,8 @@ extension AddExpenseView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AddExpenseCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-        cell.expenseDetails = expenseDetails[indexPath.item]
+        let details = expenseDetails[indexPath.item]
+        cell.setExpenseDetails(details)
         return cell
     }
 }
