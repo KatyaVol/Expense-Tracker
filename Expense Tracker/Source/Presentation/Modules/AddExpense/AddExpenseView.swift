@@ -16,7 +16,7 @@ final class AddExpenseView: UIView {
     // MARK: - Private properties
     
     private weak var delegate: AddExpenseViewDelegate?
-    private var expenseDetails: [[ExpenseDetail]] = []
+    private var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
     
     // MARK: - UI Elements
     
@@ -50,8 +50,6 @@ final class AddExpenseView: UIView {
         super.init(frame: .zero)
         setupSubviews()
         setupAutoLayout()
-        
-        expenseDetails = ExpenseDetail.makeExpenseDetails()
     }
     
     required init?(coder: NSCoder) {

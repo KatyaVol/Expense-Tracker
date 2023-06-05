@@ -21,6 +21,8 @@ struct ExpenseDetail {
     let text: String?
     
     static func makeExpenseDetails() -> [[ExpenseDetail]] {
+        var expenseDetails: [[ExpenseDetail]] = []
+        
         let categoryDetail = ExpenseDetail(type: .category,
                                            title: "Категория",
                                            image: UIImage(named: "icon_operations"),
@@ -38,7 +40,12 @@ struct ExpenseDetail {
                                        image: nil,
                                        text: "Добавить")
         
-        return [[categoryDetail, dateDetail, amountDetail, noteDetail], [categoryDetail, dateDetail, amountDetail, noteDetail]]
+        let arrayOfExpenseDetails = [categoryDetail, dateDetail, amountDetail, noteDetail]
+        
+        expenseDetails.append(arrayOfExpenseDetails)
+        expenseDetails.append(arrayOfExpenseDetails)
+        
+        return expenseDetails
     }
 }
 
