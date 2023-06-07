@@ -15,6 +15,8 @@
 		094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094224F72A195FD000BEC368 /* UIView+Extension.swift */; };
 		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
 		096854A029F7FFF400969D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */; };
+		0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */; };
+		0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */; };
 		098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
 		099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CD29EAC585009F1A2E /* SceneDelegate.swift */; };
@@ -43,6 +45,8 @@
 		094224F72A195FD000BEC368 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
 		0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		099471CB29EAC585009F1A2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 			children = (
 				094224F72A195FD000BEC368 /* UIView+Extension.swift */,
 				098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */,
+				0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */,
+				0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -400,8 +406,10 @@
 				09DA2F7E2A1B793900758A46 /* Expense.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
+				0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
+				0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */,
 				094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,

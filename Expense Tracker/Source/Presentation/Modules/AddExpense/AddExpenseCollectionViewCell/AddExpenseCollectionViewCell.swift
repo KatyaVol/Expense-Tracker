@@ -10,19 +10,23 @@ import UIKit
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private properties
-   
-    private let expenseDetails = makeExpenseDetails()
+    
+    private var expenseDetails: [ExpenseDetail] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - UI Elements
-
+    
     private lazy var tableView: SelfSizingTableView = {
         let tableView = SelfSizingTableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
-        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: DetailTableViewCell.identifier)
+        tableView.register(cell: CategoryTableViewCell.self)
+        tableView.register(cell: DetailTableViewCell.self)
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
+        tableView.estimatedRowHeight = 50
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 17, bottom: 0, right: 17)
         return tableView
     }()
@@ -36,6 +40,12 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //    MARK: - Public Methods
+    
+    public func setExpenseDetails(_ details: [ExpenseDetail]) {
+        expenseDetails = details
     }
     
     // MARK: - Private Methods
@@ -65,13 +75,13 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
         
         switch expenseDetail.type {
         case .category:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as! CategoryTableViewCell
+            let cell: CategoryTableViewCell = tableView.dequeueCell(for: indexPath)
             cell.selectionStyle = .none
             cell.setCategoryImage(expenseDetail.image ?? UIImage(named: "icon_operations")!, text: expenseDetail.title)
             return cell
             
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.identifier, for: indexPath) as! DetailTableViewCell
+            let cell: DetailTableViewCell = tableView.dequeueCell(for: indexPath)
             cell.selectionStyle = .none
             cell.setDetailText(expenseDetail.text ?? "Добавить", for: expenseDetail.title)
             return cell

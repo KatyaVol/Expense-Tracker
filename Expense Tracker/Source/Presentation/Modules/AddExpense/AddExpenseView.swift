@@ -16,6 +16,7 @@ final class AddExpenseView: UIView {
     // MARK: - Private properties
     
     private weak var delegate: AddExpenseViewDelegate?
+    private var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
     
     // MARK: - UI Elements
     
@@ -36,8 +37,7 @@ final class AddExpenseView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(AddExpenseCollectionViewCell.self,
-                                forCellWithReuseIdentifier: AddExpenseCollectionViewCell.identifier)
+        collectionView.register(cell: AddExpenseCollectionViewCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -59,8 +59,7 @@ final class AddExpenseView: UIView {
     // MARK: - Private methods
     
     private func setupSubviews() {
-        addSubview(saveButton)
-        addSubview(collectionView)
+        addSubviews([saveButton, collectionView ])
     }
     
     private func setupAutoLayout() {
@@ -74,7 +73,6 @@ final class AddExpenseView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor),
-            //collectionView.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -87,13 +85,13 @@ final class AddExpenseView: UIView {
 
 extension AddExpenseView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return expenseDetails.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: AddExpenseCollectionViewCell.identifier,
-            for: indexPath) as! AddExpenseCollectionViewCell
+        let cell: AddExpenseCollectionViewCell = collectionView.dequeueCell(for: indexPath)
+        let details = expenseDetails[indexPath.item]
+        cell.setExpenseDetails(details)
         return cell
     }
 }
@@ -110,6 +108,6 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-       inset
+        inset
     }
 }
