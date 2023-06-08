@@ -9,6 +9,7 @@ import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
+    func didTapSegmentControl(at index: Int, collectionView: UICollectionView)
 }
 
 final class AddExpenseView: UIView {
@@ -40,8 +41,32 @@ final class AddExpenseView: UIView {
         collectionView.register(cell: AddExpenseCollectionViewCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.isScrollEnabled = false
         return collectionView
     }()
+    
+    private let addLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Добавить"
+        label.font = UIFont.headerFont
+        label.tintColor = .systemBackground
+        return label
+    }()
+    
+    private let moneyBagImage: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "moneyBag"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl(items: ["Доход", "Расход"])
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        return segmentedControl
+    }()
+    
     
     // MARK: - Init
     
@@ -59,7 +84,7 @@ final class AddExpenseView: UIView {
     // MARK: - Private methods
     
     private func setupSubviews() {
-        addSubviews([saveButton, collectionView ])
+        addSubviews([saveButton, collectionView, addLabel, moneyBagImage, segmentedControl])
     }
     
     private func setupAutoLayout() {
@@ -69,16 +94,34 @@ final class AddExpenseView: UIView {
             saveButton.widthAnchor.constraint(equalToConstant: 200),
             saveButton.heightAnchor.constraint(equalToConstant: 40),
             
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            addLabel.topAnchor.constraint(equalTo: topAnchor, constant: 81),
+            addLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            addLabel.widthAnchor.constraint(equalToConstant: 168),
+            
+            moneyBagImage.topAnchor.constraint(equalTo: topAnchor, constant: 73),
+            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 1),
+            moneyBagImage.heightAnchor.constraint(equalToConstant: 51),
+            
+            segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: 28),
+            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
+            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 26),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor)
         ])
     }
     
     @objc private func buttonTapped() {
         delegate?.didTapSaveButton()
     }
+    
+    @objc private func segmentedControlValueChanged(_ segmentedControl: UISegmentedControl) {
+        let selectedIndex = segmentedControl.selectedSegmentIndex
+        delegate?.didTapSegmentControl(at: selectedIndex, collectionView: collectionView)
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource

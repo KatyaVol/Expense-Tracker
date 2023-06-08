@@ -45,7 +45,13 @@ final class AddExpenseViewController: UIViewController,
     // MARK: - AddExpenseViewDelegate
 
 extension AddExpenseViewController: AddExpenseViewDelegate {
+    func didTapSegmentControl(at index: Int, collectionView: UICollectionView) {
+        let indexPath = IndexPath(item: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     func didTapSaveButton() {
-        print("Button taped!")
+        print("Button tapped!")
     }
 }
+
