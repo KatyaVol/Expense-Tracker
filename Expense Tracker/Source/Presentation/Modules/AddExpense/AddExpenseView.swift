@@ -67,7 +67,6 @@ final class AddExpenseView: UIView {
         return segmentedControl
     }()
     
-    
     // MARK: - Init
     
     init(delegate: AddExpenseViewDelegate) {
@@ -113,6 +112,8 @@ final class AddExpenseView: UIView {
         ])
     }
     
+    // MARK: - Actions
+    
     @objc private func buttonTapped() {
         delegate?.didTapSaveButton()
     }
@@ -121,7 +122,6 @@ final class AddExpenseView: UIView {
         let selectedIndex = segmentedControl.selectedSegmentIndex
         delegate?.didTapSegmentControl(at: selectedIndex, collectionView: collectionView)
     }
-    
 }
 
 // MARK: - UICollectionViewDataSource
