@@ -10,4 +10,14 @@
 "login" = "Войти";
 "report" = "Отчет";
 "add" = "Добавить";
+"history" = "История";
 "settings" = "Настройки";
+"income" = "Доход";
+"expense" = "Расход";
+"category_title" = "Категория";
+"date_title" = "Дата";
+"amount_title" = "Сумма";
+"note_title" = "Примечание";
+"date_text" = "Добавить";
+"amount_text" = "Добавить";
+"note_text" = "Добавить";

@@ -9,7 +9,6 @@ import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
-    func didTapSegmentControl(at index: Int, collectionView: UICollectionView)
 }
 
 final class AddExpenseView: UIView {
@@ -48,7 +47,7 @@ final class AddExpenseView: UIView {
     private let addLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Добавить"
+        label.text = NSLocalizedString("add", comment: "")
         label.font = UIFont.headerFont
         label.tintColor = .systemBackground
         return label
@@ -61,7 +60,10 @@ final class AddExpenseView: UIView {
     }()
     
     private lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: ["Доход", "Расход"])
+        let segmentedControl = UISegmentedControl(items: [
+            NSLocalizedString("income", comment: ""),
+            NSLocalizedString("expense", comment: "")
+        ])
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         return segmentedControl
@@ -95,10 +97,9 @@ final class AddExpenseView: UIView {
             
             addLabel.topAnchor.constraint(equalTo: topAnchor, constant: 81),
             addLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            addLabel.widthAnchor.constraint(equalToConstant: 168),
             
             moneyBagImage.topAnchor.constraint(equalTo: topAnchor, constant: 73),
-            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 1),
+            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor),
             moneyBagImage.heightAnchor.constraint(equalToConstant: 51),
             
             segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: 28),
@@ -120,7 +121,8 @@ final class AddExpenseView: UIView {
     
     @objc private func segmentedControlValueChanged(_ segmentedControl: UISegmentedControl) {
         let selectedIndex = segmentedControl.selectedSegmentIndex
-        delegate?.didTapSegmentControl(at: selectedIndex, collectionView: collectionView)
+        let indexPath = IndexPath(item: selectedIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 
