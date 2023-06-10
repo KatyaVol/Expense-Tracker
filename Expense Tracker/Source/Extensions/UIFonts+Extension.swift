@@ -11,4 +11,8 @@ extension UIFont {
     static var headerFont: UIFont {
         return UIFont.systemFont(ofSize: 32, weight: .bold)
     }
+    
+    static var segmentedControlFont: UIFont {
+            return UIFont.systemFont(ofSize: 15)
+        }
 }

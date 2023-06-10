@@ -23,23 +23,24 @@ final class TabBarController: UITabBarController {
     //MARK: - Private func
     
     private func setupTabBarItems() {
-        reportViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("report", comment: ""),
+        reportViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.report,
                                                        image: UIImage(named: "icon_report"),
                                                        tag: 0)
         
-        addExpenseViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("add", comment: ""),
+        addExpenseViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.add,
                                                            image: UIImage(named: "icon_ add"),
                                                            tag: 1)
         
-        historyViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("history", comment: ""),
+        historyViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.history,
                                                         image: UIImage(named: "icon_history"),
                                                         tag: 2)
         
-        settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("settings", comment: ""),
+        settingsViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.settings,
                                                          image: UIImage(named: "icon_settings"),
                                                          tag: 3)
         viewControllers = [reportViewController,
-                           addExpenseViewController, historyViewController,
+                           addExpenseViewController,
+                           historyViewController,
                            settingsViewController]
     }
     

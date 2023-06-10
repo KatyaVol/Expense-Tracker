@@ -22,7 +22,7 @@ final class AddExpenseView: UIView {
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Strings.signUpButtonTitle, for: .normal)
+        button.setTitle(LocalizedStrings.signUpButtonTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.turquoiseColor
         button.setTitleColor(.white, for: .normal)
@@ -47,7 +47,7 @@ final class AddExpenseView: UIView {
     private let addLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = NSLocalizedString("add", comment: "")
+        label.text = LocalizedStrings.add
         label.font = UIFont.headerFont
         label.tintColor = .systemBackground
         return label
@@ -61,9 +61,10 @@ final class AddExpenseView: UIView {
     
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: [
-            NSLocalizedString("income", comment: ""),
-            NSLocalizedString("expense", comment: "")
+            LocalizedStrings.income,
+            LocalizedStrings.expense
         ])
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.segmentedControlFont], for: .normal)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
         return segmentedControl
@@ -99,7 +100,7 @@ final class AddExpenseView: UIView {
             addLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             
             moneyBagImage.topAnchor.constraint(equalTo: topAnchor, constant: 73),
-            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor),
+            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 4),
             moneyBagImage.heightAnchor.constraint(equalToConstant: 51),
             
             segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: 28),
