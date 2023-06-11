@@ -10,4 +10,14 @@
 "login" = "Login";
 "report" = "Report";
 "add" = "Add";
+"history" = "History";
 "settings" = "Settings";
+"income" = "Income";
+"expense" = "Expense";
+"category_title" = "Category";
+"date_title" = "Date";
+"amount_title" = "Amount";
+"note_title" = "Note";
+"date_text" = "Add";
+"amount_text" = "Add";
+"note_text" = "Add";

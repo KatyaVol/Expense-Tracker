@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0916C49F2A312CB40016C7C1 /* UIFonts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */; };
 		091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */; };
 		09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */; };
 		09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFonts+Extension.swift"; sourceTree = "<group>"; };
 		091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
 		09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
 		09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensePresenter.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */,
 				0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */,
 				0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */,
+				0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
+				0916C49F2A312CB40016C7C1 /* UIFonts+Extension.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
 				09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */,
 				091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */,

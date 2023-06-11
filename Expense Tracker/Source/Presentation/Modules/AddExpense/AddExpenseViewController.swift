@@ -46,6 +46,7 @@ final class AddExpenseViewController: UIViewController,
 
 extension AddExpenseViewController: AddExpenseViewDelegate {
     func didTapSaveButton() {
-        print("Button taped!")
+        print("Button tapped!")
     }
 }
+

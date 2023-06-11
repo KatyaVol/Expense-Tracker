@@ -24,21 +24,21 @@ struct ExpenseDetail {
         var expenseDetails: [[ExpenseDetail]] = []
         
         let categoryDetail = ExpenseDetail(type: .category,
-                                           title: "Категория",
+                                           title: LocalizedStrings.categoryTitle,
                                            image: UIImage(named: "icon_operations"),
                                            text: nil)
         let dateDetail = ExpenseDetail(type: .date,
-                                       title: "Дата",
+                                       title: LocalizedStrings.dateTitle,
                                        image: nil,
-                                       text: "Добавить")
+                                       text: LocalizedStrings.dateText)
         let amountDetail = ExpenseDetail(type: .amount,
-                                         title: "Сумма",
+                                         title: LocalizedStrings.amountTitle,
                                          image: nil,
-                                         text: "Добавить можно все что угодно")
+                                         text: LocalizedStrings.amountText)
         let noteDetail = ExpenseDetail(type: .note,
-                                       title: "Примечание",
+                                       title: LocalizedStrings.noteTitle,
                                        image: nil,
-                                       text: "Добавить")
+                                       text: LocalizedStrings.noteText)
         
         let arrayOfExpenseDetails = [categoryDetail, dateDetail, amountDetail, noteDetail]
         

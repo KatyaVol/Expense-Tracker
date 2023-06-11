@@ -12,6 +12,7 @@ final class TabBarController: UITabBarController {
     private let addExpenseViewController = AddExpenseModuleBuilder.build()
     private let reportViewController = ReportViewController()
     private let settingsViewController = SettingsViewController()
+    private let historyViewController = HistoryViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +23,24 @@ final class TabBarController: UITabBarController {
     //MARK: - Private func
     
     private func setupTabBarItems() {
-        reportViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("report", comment: ""),
+        reportViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.report,
                                                        image: UIImage(named: "icon_report"),
                                                        tag: 0)
         
-        addExpenseViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("add", comment: ""),
+        addExpenseViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.add,
                                                            image: UIImage(named: "icon_ add"),
                                                            tag: 1)
         
-        settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString ("settings", comment: ""),
+        historyViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.history,
+                                                        image: UIImage(named: "icon_history"),
+                                                        tag: 2)
+        
+        settingsViewController.tabBarItem = UITabBarItem(title: LocalizedStrings.settings,
                                                          image: UIImage(named: "icon_settings"),
-                                                         tag: 2)
+                                                         tag: 3)
         viewControllers = [reportViewController,
                            addExpenseViewController,
+                           historyViewController,
                            settingsViewController]
     }
     
@@ -63,6 +69,13 @@ final class ReportViewController: UIViewController {
 }
 
 final class SettingsViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.systemBackground
+    }
+}
+
+final class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground
