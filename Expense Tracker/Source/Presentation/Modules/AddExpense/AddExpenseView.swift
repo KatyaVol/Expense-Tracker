@@ -9,6 +9,8 @@ import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
+    func didTapCategoryImage(in cell: AddExpenseCollectionViewCell)
+    func didTapDateLabel(in cell: AddExpenseCollectionViewCell)
 }
 
 final class AddExpenseView: UIView {
@@ -20,13 +22,28 @@ final class AddExpenseView: UIView {
     
     // MARK: - UI Elements
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemBackground
+        return view
+    }()
+
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle(LocalizedStrings.signUpButtonTitle, for: .normal)
+        button.setTitle(LocalizedStrings.saveEntry, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.turquoiseColor
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(buttonTapped),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -66,7 +83,9 @@ final class AddExpenseView: UIView {
         ])
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.segmentedControlFont], for: .normal)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
+        segmentedControl.addTarget(self,
+                                   action: #selector(segmentedControlValueChanged(_:)),
+                                   for: .valueChanged)
         return segmentedControl
     }()
     
@@ -77,8 +96,10 @@ final class AddExpenseView: UIView {
         super.init(frame: .zero)
         setupSubviews()
         setupAutoLayout()
+        setupNotifications()
+        self.addTapGestureToEndEditing()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -86,32 +107,57 @@ final class AddExpenseView: UIView {
     // MARK: - Private methods
     
     private func setupSubviews() {
-        addSubviews([saveButton, collectionView, addLabel, moneyBagImage, segmentedControl])
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubviews([saveButton,
+                                 collectionView,
+                                 addLabel,
+                                 moneyBagImage,
+                                 segmentedControl])
     }
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            saveButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            saveButton.widthAnchor.constraint(equalToConstant: 200),
-            saveButton.heightAnchor.constraint(equalToConstant: 40),
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            addLabel.topAnchor.constraint(equalTo: topAnchor, constant: 81),
-            addLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            moneyBagImage.topAnchor.constraint(equalTo: topAnchor, constant: 73),
+            addLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 34),
+            addLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            addLabel.heightAnchor.constraint(equalToConstant: 36),
+            
+            moneyBagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 26),
             moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 4),
             moneyBagImage.heightAnchor.constraint(equalToConstant: 51),
             
             segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: 28),
-            segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 18),
-            segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            segmentedControl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            segmentedControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 28),
+            
+            saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -52),
+            saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            saveButton.heightAnchor.constraint(equalToConstant: 52),
             
             collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 26),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            collectionView.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
+            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: (safeAreaLayoutGuide.layoutFrame.height -   addLabel.frame.height - segmentedControl.frame.height  - collectionView.frame.height - saveButton.frame.height))
         ])
+    }
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - Actions
@@ -124,6 +170,20 @@ final class AddExpenseView: UIView {
         let selectedIndex = segmentedControl.selectedSegmentIndex
         let indexPath = IndexPath(item: selectedIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            scrollView.contentInset = contentInsets
+            scrollView.scrollIndicatorInsets = contentInsets
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
 }
 
@@ -138,6 +198,7 @@ extension AddExpenseView: UICollectionViewDataSource {
         let cell: AddExpenseCollectionViewCell = collectionView.dequeueCell(for: indexPath)
         let details = expenseDetails[indexPath.item]
         cell.setExpenseDetails(details)
+        cell.delegate = self
         return cell
     }
 }
@@ -157,3 +218,16 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
         inset
     }
 }
+
+// MARK: - AddExpenseCollectionViewCellDelegate
+
+extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
+    func didTapCategoryImage(in cell: AddExpenseCollectionViewCell) {
+        delegate?.didTapCategoryImage(in: cell)
+    }
+    
+    func didTapDateLabel(in cell: AddExpenseCollectionViewCell) {
+        delegate?.didTapDateLabel(in: cell)
+    }
+}
+

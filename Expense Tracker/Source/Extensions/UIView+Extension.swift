@@ -17,4 +17,11 @@ extension UIView {
     func addSubviews(_ views: [UIView]) {
         views.forEach { addSubview($0) }
     }
+    
+    func addTapGestureToEndEditing() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(UIView.endEditing(_:)))
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
 }
+
