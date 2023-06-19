@@ -10,6 +10,8 @@ import UIKit
 
 final class DetailTableViewCell: UITableViewCell {
     
+    // MARK: - Private properties
+    
     private var expenseDetail: ExpenseDetail?
     
     // MARK: - UI Elements

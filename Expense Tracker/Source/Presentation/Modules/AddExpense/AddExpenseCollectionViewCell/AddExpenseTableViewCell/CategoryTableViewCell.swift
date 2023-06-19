@@ -5,14 +5,20 @@
 //  Created by Ekaterina Volobueva on 22.05.2023.
 //
 
-import   UIKit
+import UIKit
 
 protocol CategoryTableViewCellDelegate: AnyObject {
-    func didTapCategoryImage(in cell: CategoryTableViewCell)
+    func didTapCategoryImage()
 }
 
 final class CategoryTableViewCell: UITableViewCell {
+    
+    // MARK: - Internal properties
+    
     weak var delegate: CategoryTableViewCellDelegate?
+    
+    // MARK: - Private properties
+    
     private var expenseDetail: ExpenseDetail?
 
     // MARK: - UI Elements
@@ -67,7 +73,7 @@ final class CategoryTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @objc private func categoryImageViewTapped() {
-        delegate?.didTapCategoryImage(in: self)
+        delegate?.didTapCategoryImage()
     }
     
     // MARK: - Private Methods

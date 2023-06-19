@@ -21,7 +21,7 @@ extension UIView {
     func addTapGestureToEndEditing() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(UIView.endEditing(_:)))
-        self.addGestureRecognizer(tapGestureRecognizer)
+        addGestureRecognizer(tapGestureRecognizer)
     }
 }
 

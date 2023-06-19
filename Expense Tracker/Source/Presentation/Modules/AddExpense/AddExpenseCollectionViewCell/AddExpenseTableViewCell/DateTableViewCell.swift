@@ -8,11 +8,17 @@
 import UIKit
 
 protocol DateTableViewCellDelegate: AnyObject {
-    func didTapDateLabel(in cell: DateTableViewCell)
+    func didTapDateLabel()
 }
 
 final class DateTableViewCell: UITableViewCell {
+    
+    // MARK: - Internal properties
+    
     weak var delegate: DateTableViewCellDelegate?
+    
+    // MARK: - Private properties
+    
     private var expenseDetail: ExpenseDetail?
     
     // MARK: - UI Elements
@@ -92,6 +98,6 @@ final class DateTableViewCell: UITableViewCell {
     // MARK: - Action
     
     @objc private func dateLabelTapped() {
-        delegate?.didTapDateLabel(in: self)
+        delegate?.didTapDateLabel()
     }
 }

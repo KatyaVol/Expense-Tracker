@@ -9,8 +9,8 @@ import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
-    func didTapCategoryImage(in cell: AddExpenseCollectionViewCell)
-    func didTapDateLabel(in cell: AddExpenseCollectionViewCell)
+    func didTapCategoryImage()
+    func didTapDateLabel()
 }
 
 final class AddExpenseView: UIView {
@@ -97,7 +97,7 @@ final class AddExpenseView: UIView {
         setupSubviews()
         setupAutoLayout()
         setupNotifications()
-        self.addTapGestureToEndEditing()
+        addTapGestureToEndEditing()
     }
 
     required init?(coder: NSCoder) {
@@ -131,7 +131,7 @@ final class AddExpenseView: UIView {
             
             addLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 34),
             addLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            addLabel.heightAnchor.constraint(equalToConstant: 36),
+            addLabel.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -35),
             
             moneyBagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 26),
             moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 4),
@@ -152,7 +152,7 @@ final class AddExpenseView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             collectionView.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
-            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: (safeAreaLayoutGuide.layoutFrame.height -   addLabel.frame.height - segmentedControl.frame.height  - collectionView.frame.height - saveButton.frame.height))
+            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: (safeAreaLayoutGuide.layoutFrame.height - addLabel.frame.height - segmentedControl.frame.height - collectionView.frame.height - saveButton.frame.height))
         ])
     }
     private func setupNotifications() {
@@ -222,12 +222,12 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
-    func didTapCategoryImage(in cell: AddExpenseCollectionViewCell) {
-        delegate?.didTapCategoryImage(in: cell)
+    func didTapCategoryImage() {
+        delegate?.didTapCategoryImage()
     }
     
-    func didTapDateLabel(in cell: AddExpenseCollectionViewCell) {
-        delegate?.didTapDateLabel(in: cell)
+    func didTapDateLabel() {
+        delegate?.didTapDateLabel()
     }
 }
 

@@ -8,11 +8,14 @@
 import UIKit
 
 protocol AddExpenseCollectionViewCellDelegate: AnyObject {
-    func didTapCategoryImage(in cell: AddExpenseCollectionViewCell)
-    func didTapDateLabel(in cell: AddExpenseCollectionViewCell)
+    func didTapCategoryImage()
+    func didTapDateLabel()
 }
 
-final class AddExpenseCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
+final class AddExpenseCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Internal properties
+    
     weak var delegate: AddExpenseCollectionViewCellDelegate?
     
     // MARK: - Private properties
@@ -112,8 +115,8 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
 // MARK: - CategoryTableViewCellDelegate
 
 extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
-    func didTapCategoryImage(in cell: CategoryTableViewCell) {
-        delegate?.didTapCategoryImage(in: self)
+    func didTapCategoryImage() {
+        delegate?.didTapCategoryImage()
     }
 }
 
@@ -121,8 +124,8 @@ extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
 
 extension AddExpenseCollectionViewCell: DateTableViewCellDelegate {
     
-    func didTapDateLabel(in cell: DateTableViewCell) {
-        delegate?.didTapDateLabel(in: self)
+    func didTapDateLabel() {
+        delegate?.didTapDateLabel()
     }
 }
 
