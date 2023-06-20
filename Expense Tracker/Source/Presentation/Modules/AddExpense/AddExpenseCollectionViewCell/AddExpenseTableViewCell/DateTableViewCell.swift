@@ -2,13 +2,20 @@
 //  DetailTableViewCell.swift
 //  Expense Tracker
 //
-//  Created by Ekaterina Volobueva on 14.06.2023.
+//  Created by Ekaterina Volobueva on 22.05.2023.
 //
-
 
 import UIKit
 
-final class DetailTableViewCell: UITableViewCell {
+protocol DateTableViewCellDelegate: AnyObject {
+    func didTapDateLabel()
+}
+
+final class DateTableViewCell: UITableViewCell {
+    
+    // MARK: - Internal properties
+    
+    weak var delegate: DateTableViewCellDelegate?
     
     // MARK: - Private properties
     
@@ -23,15 +30,19 @@ final class DetailTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var detailTextField: UITextField = {
-        let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .systemBackground
-        textField.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        textField.textColor = UIColor.customGrayColor
-        textField.textAlignment = .right
-        textField.delegate = self
-        return textField
+    private lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.textColor = UIColor.customGrayColor
+        label.textAlignment = .right
+        label.numberOfLines = 0
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(dateLabelTapped))
+        label.addGestureRecognizer(tapGestureRecognizer)
+        label.isUserInteractionEnabled = true
+        return label
     }()
     
     private let container: UIView = {
@@ -54,23 +65,17 @@ final class DetailTableViewCell: UITableViewCell {
     
     // MARK: - Public Methods
     
-    func setDetailText(expenseDetail: ExpenseDetail) {
+    func setDateText(expenseDetail: ExpenseDetail) {
         titleLabel.text = expenseDetail.title
-        detailTextField.placeholder = expenseDetail.text
-        
-        if expenseDetail.type == .amount {
-            detailTextField.keyboardType = .decimalPad
-        } else {
-            detailTextField.keyboardType = .default
-        }
+        dateLabel.text = expenseDetail.text
+        dateLabel.textColor =  UIColor.placeholderText
     }
     
     // MARK: - Private func
     
     private func layout() {
         contentView.addSubview(container)
-        container.addSubviews([titleLabel,
-                               detailTextField])
+        container.addSubviews([titleLabel, dateLabel])
         
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
@@ -81,20 +86,18 @@ final class DetailTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
             titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: detailTextField.leadingAnchor, constant: -106),
+            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -106),
             
-            detailTextField.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
-            detailTextField.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16),
-            detailTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
-            detailTextField.widthAnchor.constraint(equalToConstant: 110)
+            dateLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            dateLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16),
+            dateLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
+            dateLabel.widthAnchor.constraint(equalToConstant: 110)
         ])
     }
-}
-
-extension DetailTableViewCell: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.endEditing(true)
-        return true
+    
+    // MARK: - Action
+    
+    @objc private func dateLabelTapped() {
+        delegate?.didTapDateLabel()
     }
 }
-

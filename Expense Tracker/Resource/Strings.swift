@@ -24,4 +24,5 @@ enum LocalizedStrings {
     static let noteText = NSLocalizedString("note_text", comment: "")
     static let income = NSLocalizedString("income", comment: "")
     static let expense = NSLocalizedString("expense", comment: "")
+    static let saveEntry = NSLocalizedString("save_entry", comment: "")
 }

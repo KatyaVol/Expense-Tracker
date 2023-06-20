@@ -5,17 +5,34 @@
 //  Created by Ekaterina Volobueva on 22.05.2023.
 //
 
-import   UIKit
+import UIKit
+
+protocol CategoryTableViewCellDelegate: AnyObject {
+    func didTapCategoryImage()
+}
 
 final class CategoryTableViewCell: UITableViewCell {
     
+    // MARK: - Internal properties
+    
+    weak var delegate: CategoryTableViewCellDelegate?
+    
+    // MARK: - Private properties
+    
+    private var expenseDetail: ExpenseDetail?
+
     // MARK: - UI Elements
     
-    private let categoryImageView: UIImageView = {
+    private lazy var categoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .systemBackground
         imageView.contentMode = .scaleAspectFit
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(categoryImageViewTapped))
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -47,17 +64,23 @@ final class CategoryTableViewCell: UITableViewCell {
     
     //MARK: - Public Methods
     
-    func setCategoryImage(_ image: UIImage, text: String) {
-        categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
+    func setCategoryImage(expenseDetail: ExpenseDetail) {
+        categoryLabel.text = expenseDetail.title
+        categoryImageView.image = expenseDetail.image?.withRenderingMode(.alwaysTemplate)
         categoryImageView.tintColor = Colors.elementsGrayColor
-        categoryLabel.text = text
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func categoryImageViewTapped() {
+        delegate?.didTapCategoryImage()
     }
     
     // MARK: - Private Methods
     
     private func layout() {
         contentView.addSubview(container)
-            container.addSubviews([categoryImageView, categoryLabel])
+        container.addSubviews([categoryImageView, categoryLabel])
         
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
