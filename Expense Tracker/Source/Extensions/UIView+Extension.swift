@@ -25,3 +25,12 @@ extension UIView {
     }
 }
 
+extension UIView {
+    func setBorderColor(_ color: UIColor) {
+        if #available(iOS 13.0, *) {
+            layer.borderColor = color.resolvedColor(with: self.traitCollection).cgColor
+        } else {
+            layer.borderColor = color.cgColor
+        }
+    }
+}

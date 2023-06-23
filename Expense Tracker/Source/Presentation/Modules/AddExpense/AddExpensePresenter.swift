@@ -6,7 +6,9 @@
 //
 import UIKit
 
-protocol AddExpensePresenterProtocol: AnyObject {}
+protocol AddExpensePresenterProtocol: AnyObject {
+    func categoryImageTapped()
+}
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
     
@@ -14,4 +16,12 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     weak var view: AddExpenseViewControllerProtocol?
     var coordinator: AddExpenseCoordinatorProtocol?
+    
+    // MARK: - Internal methods
+    
+    internal func categoryImageTapped() {
+        let categoryPresenter = CategoryPresenter()
+        let categoryViewController = CategoryViewController(presenter: categoryPresenter)
+        coordinator?.pushController(categoryViewController, animated: true)
+    }
 }

@@ -59,6 +59,7 @@ extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
     
     func didTapCategoryImage() {
         print("Category Image View tapped in view controller!")
+        presenter.categoryImageTapped()
     }
 }
 

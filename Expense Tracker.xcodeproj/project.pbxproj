@@ -32,6 +32,10 @@
 		09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */; };
 		09DA2F832A1BA1B500758A46 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F822A1BA1B500758A46 /* DateTableViewCell.swift */; };
 		09DB34322A10E630001964D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB34312A10E630001964D5 /* Colors.swift */; };
+		09E16F762A4259C4007CD0A9 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F752A4259C4007CD0A9 /* CategoryView.swift */; };
+		09E16F782A4259EA007CD0A9 /* CategoryModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */; };
+		09E16F7A2A4259FD007CD0A9 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */; };
+		09E16F802A4339C0007CD0A9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F7F2A4339C0007CD0A9 /* CategoryCollectionViewCell.swift */; };
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
 		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
 		09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B112A06A30A00619F6B /* TabBarController.swift */; };
@@ -67,6 +71,10 @@
 		09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		09DA2F822A1BA1B500758A46 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		09DB34312A10E630001964D5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		09E16F752A4259C4007CD0A9 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModuleBuilder.swift; sourceTree = "<group>"; };
+		09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
+		09E16F7F2A4339C0007CD0A9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09F49B112A06A30A00619F6B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -161,7 +169,7 @@
 		097BFAAB29F5A39100945B9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				09ACC81A2A1511320082343F /* CategoryViewController.swift */,
+				09E16F742A42593F007CD0A9 /* Category */,
 				09234BEC29ED6D8E002A9E9C /* AddExpense */,
 			);
 			path = Modules;
@@ -242,6 +250,26 @@
 				09DB34312A10E630001964D5 /* Colors.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		09E16F742A42593F007CD0A9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				09ACC81A2A1511320082343F /* CategoryViewController.swift */,
+				09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */,
+				09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */,
+				09E16F752A4259C4007CD0A9 /* CategoryView.swift */,
+				09E16F7E2A433987007CD0A9 /* CategoryCollectionViewCell */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		09E16F7E2A433987007CD0A9 /* CategoryCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				09E16F7F2A4339C0007CD0A9 /* CategoryCollectionViewCell.swift */,
+			);
+			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		09F49B132A06E49E00619F6B /* TabBarController */ = {
@@ -403,14 +431,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E16F7A2A4259FD007CD0A9 /* CategoryPresenter.swift in Sources */,
 				09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
+				09E16F802A4339C0007CD0A9 /* CategoryCollectionViewCell.swift in Sources */,
 				09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */,
 				099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */,
 				09DA2F7E2A1B793900758A46 /* Expense.swift in Sources */,
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
+				09E16F782A4259EA007CD0A9 /* CategoryModuleBuilder.swift in Sources */,
 				0959077E2A39D03E004E8542 /* DetailTableViewCell.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */,
@@ -421,6 +452,7 @@
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
+				09E16F762A4259C4007CD0A9 /* CategoryView.swift in Sources */,
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
 				0916C49F2A312CB40016C7C1 /* UIFonts+Extension.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
