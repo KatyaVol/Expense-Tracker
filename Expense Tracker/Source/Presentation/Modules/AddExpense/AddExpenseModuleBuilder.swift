@@ -16,7 +16,8 @@ final class AddExpenseModuleBuilder {
         let viewController = AddExpenseViewController(presenter: presenter)
         presenter.view = viewController
         let navigationController = UINavigationController(rootViewController: viewController)
-        let coordinator = AddExpenseCoordinator(navigationController: navigationController)
+        let categoryModuleBuilder = CategoryModuleBuilder()
+        let coordinator = AddExpenseCoordinator(navigationController: navigationController, categoryModuleBuilder: categoryModuleBuilder)
         presenter.coordinator = coordinator
         return navigationController
     }

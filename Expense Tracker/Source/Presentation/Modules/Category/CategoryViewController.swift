@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol CategoryViewControllerProtocol: AnyObject {}
+protocol CategoryViewControllerProtocol: AnyObject {
+    func didSelectCategory(at index: Int)
+}
 
 final class CategoryViewController: UIViewController, CategoryViewControllerProtocol {
     
@@ -15,11 +17,13 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
     
     private let presenter: CategoryPresenterProtocol
     private lazy var categoryView = CategoryView(delegate: self)
+    private let coordinator: CategoryCoordinatorProtocol?
     
     // MARK: - Init
     
-    init(presenter: CategoryPresenterProtocol) {
+    init(presenter: CategoryPresenterProtocol, coordinator: CategoryCoordinatorProtocol) {
         self.presenter = presenter
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -43,4 +47,8 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
 }
 
 // MARK: - CategoryViewDelegate
-extension CategoryViewController: CategoryViewDelegate {}
+extension CategoryViewController: CategoryViewDelegate {
+    func didSelectCategory(at index: Int) {
+        coordinator?.didSelectCategory()    }
+}
+

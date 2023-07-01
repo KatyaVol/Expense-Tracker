@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol CategoryViewDelegate: AnyObject {}
+protocol CategoryViewDelegate: AnyObject {
+    func didSelectCategory(at index: Int)
+}
 
 final class CategoryView: UIView {
     
@@ -15,13 +17,12 @@ final class CategoryView: UIView {
     
     private weak var delegate: CategoryViewDelegate?
     private var categories: [Category] = Category.makeCategory()
-    
+   
     // MARK: - UI Elements
     
     private let coinImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "MONETS_GROUP")
         return imageView
     }()
@@ -44,7 +45,6 @@ final class CategoryView: UIView {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +67,7 @@ final class CategoryView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-  
+    
     // MARK: - Private methods
     
     private func setupSubviews() {
@@ -91,12 +91,12 @@ final class CategoryView: UIView {
             descriptionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 42),
             descriptionLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: 4),
             descriptionLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: -58),
-            descriptionLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: -4),
+            descriptionLabel.trailingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: -4),
             
             collectionView.topAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: 12),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
 }
@@ -110,13 +110,6 @@ extension CategoryView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CategoryCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-        
-        cell.layer.cornerRadius = 20.0
-        cell.layer.borderWidth = 2.0
-        cell.layer.masksToBounds = true
-        cell.backgroundColor = Colors.categoryCellColor
-        cell.setBorderColor(Colors.categoryCellBorderColor)
-        
         let category = categories[indexPath.item]
         cell.setCategory(category)
         return cell
@@ -127,20 +120,34 @@ extension CategoryView: UICollectionViewDataSource {
 
 extension CategoryView: UICollectionViewDelegateFlowLayout {
     
-    private var inset: CGFloat { return 15 }
+    private var spaceBetweenRows: CGFloat { return 14 }
+    private var spaceBetweenCell: CGFloat { return 15 }
+    private var sideInset: CGFloat { return 16 }
+    private var numberOfItemsPerRow: CGFloat {return 4}
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat = 32
-        let height = collectionView.bounds.height
-        let collectionViewSize = collectionView.frame.size.width - padding
-        return CGSize(width: collectionViewSize/4, height: height)
+        let width = (collectionView.bounds.width - (sideInset * 2) - (spaceBetweenCell * 3)) / numberOfItemsPerRow
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return inset
+        return spaceBetweenRows
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return spaceBetweenCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0,
+                     left: sideInset,
+                     bottom: 0,
+                     right: sideInset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectCategory(at: indexPath.item)
+        print("cell tapped Item \(indexPath.item)")
     }
 }
+

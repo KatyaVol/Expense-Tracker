@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCollectionViewCell: UICollectionViewCell {
+final class CategoryCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Elements
     
@@ -18,7 +18,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    let categoryLabel: UILabel = {
+    private let categoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -31,6 +31,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        customizeCell()
         setupSubviews()
         setupAutoLayout()
     }
@@ -39,16 +40,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Trait Collection
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        
-        if #available(iOS 13.0, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            setBorderColor(Colors.categoryCellBorderColor)
-        }
-    }
-
     //    MARK: - Public Methods
     
     public func setCategory (_ category: Category) {
@@ -59,6 +50,27 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     //    MARK: - Private Methods
     
+    private func customizeCell() {
+        contentView.layer.cornerRadius = 20.0
+        contentView.layer.borderWidth = 2.0
+        contentView.layer.masksToBounds = true
+        contentView.backgroundColor = Colors.categoryCellColor
+        updateBorderColor()
+    }
+    
+    private func updateBorderColor() {
+        let borderColor = traitCollection.userInterfaceStyle == .dark ? UIColor.darkTurquoiseColor : Colors.categoryCellBorderColor
+        contentView.layer.borderColor = borderColor.cgColor
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateBorderColor()
+        }
+    }
+
     private func setupSubviews() {
         contentView.addSubviews([categoryImageView,
                                  categoryLabel])
@@ -78,3 +90,4 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         ])
     }
 }
+

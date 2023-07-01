@@ -8,15 +8,15 @@
 import UIKit
 
 final class CategoryModuleBuilder {
-    static func build() -> UIViewController {
+    static func build(navigationController: UINavigationController) -> UIViewController {
         
         // MARK: - Assembly
         
         let presenter = CategoryPresenter()
-        let viewController = CategoryViewController(presenter: presenter)
+        let coordinator = CategoryCoordinator(navigationController: navigationController)
+        let viewController = CategoryViewController(presenter: presenter, coordinator: coordinator)
         presenter.view = viewController
-        let navigationController = UINavigationController(rootViewController: viewController)
-        return navigationController
+        return viewController
     }
 }
 

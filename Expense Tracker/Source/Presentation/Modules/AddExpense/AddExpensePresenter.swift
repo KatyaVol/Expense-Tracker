@@ -4,7 +4,7 @@
 //
 //  Created by Ekaterina Volobueva on 17.04.2023.
 //
-import UIKit
+import Foundation
 
 protocol AddExpensePresenterProtocol: AnyObject {
     func categoryImageTapped()
@@ -19,9 +19,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     // MARK: - Internal methods
     
-    internal func categoryImageTapped() {
-        let categoryPresenter = CategoryPresenter()
-        let categoryViewController = CategoryViewController(presenter: categoryPresenter)
-        coordinator?.pushController(categoryViewController, animated: true)
+    func categoryImageTapped() {
+        coordinator?.pushCategory()
     }
 }

@@ -53,12 +53,9 @@ extension AddExpenseViewController: AddExpenseViewDelegate {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
-    func didTapDateLabel() {
-        print("Date Label tapped in view controller!")
-    }
+    func didTapDateLabel() {}
     
     func didTapCategoryImage() {
-        print("Category Image View tapped in view controller!")
         presenter.categoryImageTapped()
     }
 }
