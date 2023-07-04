@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CategoryViewDelegate: AnyObject {
-    func didSelectCategory(at index: Int)
+    func didSelectCategory(at category: Category)
 }
 
 final class CategoryView: UIView {
@@ -123,7 +123,7 @@ extension CategoryView: UICollectionViewDelegateFlowLayout {
     private var spaceBetweenRows: CGFloat { return 14 }
     private var spaceBetweenCell: CGFloat { return 15 }
     private var sideInset: CGFloat { return 16 }
-    private var numberOfItemsPerRow: CGFloat {return 4}
+    private var numberOfItemsPerRow: CGFloat { return 4 }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.width - (sideInset * 2) - (spaceBetweenCell * 3)) / numberOfItemsPerRow
@@ -146,7 +146,8 @@ extension CategoryView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectCategory(at: indexPath.item)
+        let category = categories[indexPath.item]
+        delegate?.didSelectCategory(at: category)
         print("cell tapped Item \(indexPath.item)")
     }
 }

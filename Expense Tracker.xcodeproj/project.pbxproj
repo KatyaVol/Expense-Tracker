@@ -100,8 +100,8 @@
 		09234BEC29ED6D8E002A9E9C /* AddExpense */ = {
 			isa = PBXGroup;
 			children = (
-				09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */,
 				09234BEF29ED7221002A9E9C /* AddExpensePresenter.swift */,
+				09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */,
 				09234BF129ED7A63002A9E9C /* AddExpenseModuleBuilder.swift */,
 				09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */,
 				093E3C462A180F510086B7F7 /* AddExpenseCollectionViewCell */,
@@ -257,8 +257,8 @@
 		09E16F742A42593F007CD0A9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				09ACC81A2A1511320082343F /* CategoryViewController.swift */,
 				09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */,
+				09ACC81A2A1511320082343F /* CategoryViewController.swift */,
 				09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */,
 				09E16F752A4259C4007CD0A9 /* CategoryView.swift */,
 				09E16F7E2A433987007CD0A9 /* CategoryCollectionViewCell */,

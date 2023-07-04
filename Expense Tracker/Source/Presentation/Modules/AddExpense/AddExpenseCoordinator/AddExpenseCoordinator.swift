@@ -7,22 +7,27 @@
 
 import UIKit
 
-protocol AddExpenseCoordinatorProtocol: AnyObject {
+protocol AddExpenseCoordinatorProtocol: CoordinatorProtocol {
     func pushCategory()
     // Пока что здесь будет один метод . Может в будущем добавим сюда другие методы
 }
 
 final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
-    private(set) var navigationController: UINavigationController
-    private let categoryModuleBuilder: CategoryModuleBuilder
     
-    init(navigationController: UINavigationController, categoryModuleBuilder: CategoryModuleBuilder) {
+    // MARK: - Private properties
+    
+    private(set) var navigationController: UINavigationController
+    
+    // MARK: - Init
+    
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.categoryModuleBuilder = categoryModuleBuilder
     }
+    
+    // MARK: - Internal methods
     
     func pushCategory() {
         let categoryViewController = CategoryModuleBuilder.build(navigationController: navigationController)
-        navigationController.pushViewController(categoryViewController, animated: true)
+        pushController(categoryViewController, animated: true)
     }
 }

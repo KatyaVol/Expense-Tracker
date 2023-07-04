@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CategoryViewControllerProtocol: AnyObject {
-    func didSelectCategory(at index: Int)
+    func didSelectCategory(at category: Category)
 }
 
 final class CategoryViewController: UIViewController, CategoryViewControllerProtocol {
@@ -21,7 +21,7 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
     
     // MARK: - Init
     
-    init(presenter: CategoryPresenterProtocol, coordinator: CategoryCoordinatorProtocol) {
+    init(presenter: CategoryPresenterProtocol, coordinator: CategoryCoordinatorProtocol?) {
         self.presenter = presenter
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -42,13 +42,13 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.systemBackground
-        navigationController?.navigationBar.tintColor = Colors.whiteAndBlack
     }
 }
 
 // MARK: - CategoryViewDelegate
+
 extension CategoryViewController: CategoryViewDelegate {
-    func didSelectCategory(at index: Int) {
+    func didSelectCategory(at category: Category) {
         coordinator?.didSelectCategory()    }
 }
 

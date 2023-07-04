@@ -62,15 +62,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         let borderColor = traitCollection.userInterfaceStyle == .dark ? UIColor.darkTurquoiseColor : Colors.categoryCellBorderColor
         contentView.layer.borderColor = borderColor.cgColor
     }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-            updateBorderColor()
-        }
-    }
-
+    
     private func setupSubviews() {
         contentView.addSubviews([categoryImageView,
                                  categoryLabel])
@@ -88,6 +80,16 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
             categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
             categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
         ])
+    }
+    
+    // MARK: - Trait Collection Changes
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateBorderColor()
+        }
     }
 }
 

@@ -16,6 +16,9 @@ final class CategoryModuleBuilder {
         let coordinator = CategoryCoordinator(navigationController: navigationController)
         let viewController = CategoryViewController(presenter: presenter, coordinator: coordinator)
         presenter.view = viewController
+        
+        navigationController.navigationBar.tintColor = Colors.whiteAndBlack
+        
         return viewController
     }
 }

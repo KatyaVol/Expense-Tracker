@@ -7,17 +7,25 @@
 
 import UIKit
 
-protocol CategoryCoordinatorProtocol: AnyObject {
+protocol CategoryCoordinatorProtocol: CoordinatorProtocol {
     func didSelectCategory()
 }
 
 final class CategoryCoordinator: CategoryCoordinatorProtocol {
-    private weak var navigationController: UINavigationController?
+    
+    // MARK: - Private properties
+    
+    private(set) var navigationController: UINavigationController
+    
+    // MARK: - Init
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
+    
+    // MARK: - Internal methods
+    
     func didSelectCategory() {
-        navigationController?.popViewController(animated: true)
+        popController(animated: true)
     }
 }

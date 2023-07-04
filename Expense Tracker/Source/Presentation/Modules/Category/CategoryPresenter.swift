@@ -7,7 +7,7 @@
 import Foundation
 
 protocol CategoryPresenterProtocol: AnyObject {
-    func didSelectCategory(at index: Int)
+    func didSelectCategory(at category: Category)
 }
 
 final class CategoryPresenter: CategoryPresenterProtocol {
@@ -18,11 +18,8 @@ final class CategoryPresenter: CategoryPresenterProtocol {
     
     // MARK: - Internal methods
     
-    func didSelectCategory(at index: Int) {
-        let section = 0
-
-        view?.didSelectCategory(at: index)
-        print("category cell tapped \(section), \(index)")
+    func didSelectCategory(at category: Category) {
+        view?.didSelectCategory(at: category)
+        print("category cell tapped \(category)")
     }
-    
 }
