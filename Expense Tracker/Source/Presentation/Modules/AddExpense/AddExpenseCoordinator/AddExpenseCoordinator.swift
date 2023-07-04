@@ -8,18 +8,26 @@
 import UIKit
 
 protocol AddExpenseCoordinatorProtocol: CoordinatorProtocol {
-    func pushCategory(with model: Category)
+    func pushCategory()
     // Пока что здесь будет один метод . Может в будущем добавим сюда другие методы
 }
 
 final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
+    
+    // MARK: - Private properties
+    
     private(set) var navigationController: UINavigationController
+    
+    // MARK: - Init
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-    func pushCategory(with model: Category) {
-        //пока что останется пустой
+    // MARK: - Internal methods
+    
+    func pushCategory() {
+        let categoryViewController = CategoryModuleBuilder.build(navigationController: navigationController)
+        pushController(categoryViewController, animated: true)
     }
 }

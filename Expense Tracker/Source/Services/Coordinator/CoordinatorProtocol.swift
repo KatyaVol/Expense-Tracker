@@ -16,12 +16,15 @@ extension CoordinatorProtocol {
     func dismissController(animated: Bool) {
         navigationController.dismiss(animated: animated)
     }
+    
     func popController(animated: Bool) {
         navigationController.popViewController(animated: animated)
     }
+    
     func presentController(_ viewController: UIViewController, animated: Bool, completion: (() -> Void)?) {
         navigationController.present(viewController, animated: animated, completion: completion)
     }
+    
     func pushController(_ viewController: UIViewController, animated: Bool) {
         navigationController.pushViewController(viewController, animated: animated)
     }

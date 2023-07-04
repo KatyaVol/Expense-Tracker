@@ -4,9 +4,11 @@
 //
 //  Created by Ekaterina Volobueva on 17.04.2023.
 //
-import UIKit
+import Foundation
 
-protocol AddExpensePresenterProtocol: AnyObject {}
+protocol AddExpensePresenterProtocol: AnyObject {
+    func categoryImageTapped()
+}
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
     
@@ -14,4 +16,10 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     weak var view: AddExpenseViewControllerProtocol?
     var coordinator: AddExpenseCoordinatorProtocol?
+    
+    // MARK: - Internal methods
+    
+    func categoryImageTapped() {
+        coordinator?.pushCategory()
+    }
 }

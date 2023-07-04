@@ -14,4 +14,9 @@ struct Colors {
     
     static let elementsGrayColor = UIColor.colorWith(light: UIColor.customGrayColor, dark: .systemGray2)
     
+    static let whiteAndBlack = UIColor.colorWith(light: .black, dark: .white)
+    
+    static let categoryCellColor = UIColor.colorWith(light: .lightCategoryCellColor, dark: .customGrayColor)
+    
+    static let categoryCellBorderColor = UIColor.colorWith(light: .darkGray, dark: .darkTurquoiseColor)
 }
