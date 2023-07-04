@@ -16,7 +16,7 @@ final class CategoryView: UIView {
     // MARK: - Private properties
     
     private weak var delegate: CategoryViewDelegate?
-    private var categories: [Category] = Category.makeCategory()
+    private let categories: [Category] = Category.makeCategory()
    
     // MARK: - UI Elements
     
