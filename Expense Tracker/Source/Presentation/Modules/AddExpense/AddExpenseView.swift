@@ -19,6 +19,8 @@ final class AddExpenseView: UIView {
     
     private weak var delegate: AddExpenseViewDelegate?
     private var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
+    private var collectionViewBottomConstraint: NSLayoutConstraint?
+    
     
     // MARK: - UI Elements
     
@@ -34,13 +36,14 @@ final class AddExpenseView: UIView {
         view.backgroundColor = .systemBackground
         return view
     }()
-
+    
     private lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle(LocalizedStrings.saveEntry, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = Colors.turquoiseColor
         button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 12
         button.addTarget(self,
                          action: #selector(buttonTapped),
                          for: .touchUpInside)
@@ -64,9 +67,11 @@ final class AddExpenseView: UIView {
     private let addLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         label.text = LocalizedStrings.add
         label.font = UIFont.headerFont
         label.tintColor = .systemBackground
+        label.sizeToFit()
         return label
     }()
     
@@ -99,9 +104,17 @@ final class AddExpenseView: UIView {
         setupNotifications()
         addTapGestureToEndEditing()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Lifecycle
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let distance = calculateDistanceBetweenCollectionAndSaveButton()
+        collectionViewBottomConstraint?.constant = -distance
     }
     
     // MARK: - Private methods
@@ -114,9 +127,17 @@ final class AddExpenseView: UIView {
                                  addLabel,
                                  moneyBagImage,
                                  segmentedControl])
+        
+    }
+    
+    private func calculateDistanceBetweenCollectionAndSaveButton() -> CGFloat {
+        let distance = safeAreaLayoutGuide.layoutFrame.height - .addLabelTopConstraint -  addLabel.intrinsicContentSize.height - .segmentedControlTopConstraint - .segmentedControlHeight - .collectionViewTopConstraint - CGFloat(expenseDetails[0].count * 60) - .saveButtonHeight - .saveButtonBottom
+        return max(distance, 0)
     }
     
     private func setupAutoLayout() {
+        let distance = calculateDistanceBetweenCollectionAndSaveButton()
+        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
@@ -129,32 +150,35 @@ final class AddExpenseView: UIView {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             
-            addLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 34),
-            addLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            addLabel.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -35),
+            addLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .addLabelTopConstraint),
+            addLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
+            addLabel.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -.segmentedControlTopConstraint),
             
-            moneyBagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 26),
-            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: 4),
-            moneyBagImage.heightAnchor.constraint(equalToConstant: 51),
+            moneyBagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .moneyBagImageTopConstraint),
+            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: .moneyBagImageLeading),
+            moneyBagImage.heightAnchor.constraint(equalToConstant: .moneyBagImageHeight),
             
-            segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: 28),
-            segmentedControl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            segmentedControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 28),
+            segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: .segmentedControlTopToMoneyBagConstraint),
+            segmentedControl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
+            segmentedControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
+            segmentedControl.heightAnchor.constraint(equalToConstant: .segmentedControlHeight),
             
-            saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -52),
-            saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            saveButton.heightAnchor.constraint(equalToConstant: 52),
-            
-            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 26),
-            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .collectionViewTopConstraint),
+            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
-            collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: (safeAreaLayoutGuide.layoutFrame.height - addLabel.frame.height - segmentedControl.frame.height - collectionView.frame.height - saveButton.frame.height))
+            
+            saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.saveButtonBottom),
+            saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
+            saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
+            saveButton.heightAnchor.constraint(equalToConstant: .saveButtonHeight)
         ])
+        collectionViewBottomConstraint = collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -distance)
+        collectionViewBottomConstraint?.isActive = true
     }
+    
+    
     private func setupNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -179,7 +203,7 @@ final class AddExpenseView: UIView {
             scrollView.scrollIndicatorInsets = contentInsets
         }
     }
-
+    
     @objc private func keyboardWillHide(notification: NSNotification) {
         let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
@@ -231,3 +255,16 @@ extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
     }
 }
 
+private extension CGFloat {
+    static let addLabelTopConstraint: CGFloat = 37
+    static let moneyBagImageHeight: CGFloat = 51
+    static let segmentedControlTopConstraint: CGFloat = 35
+    static let segmentedControlHeight: CGFloat = 28
+    static let collectionViewTopConstraint: CGFloat = 26
+    static let saveButtonHeight: CGFloat = 52
+    static let saveButtonBottom: CGFloat = 52
+    static let sideInset: CGFloat = 16
+    static let segmentedControlTopToMoneyBagConstraint: CGFloat = 28
+    static let moneyBagImageLeading: CGFloat = 4
+    static let moneyBagImageTopConstraint: CGFloat = 26
+}
