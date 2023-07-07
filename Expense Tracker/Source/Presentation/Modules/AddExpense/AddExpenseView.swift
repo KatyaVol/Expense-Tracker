@@ -71,7 +71,6 @@ final class AddExpenseView: UIView {
         label.text = LocalizedStrings.add
         label.font = UIFont.headerFont
         label.tintColor = .systemBackground
-        label.sizeToFit()
         return label
     }()
     
@@ -136,7 +135,8 @@ final class AddExpenseView: UIView {
     }
     
     private func setupAutoLayout() {
-        let distance = calculateDistanceBetweenCollectionAndSaveButton()
+        
+        collectionViewBottomConstraint = collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -168,14 +168,14 @@ final class AddExpenseView: UIView {
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
             
+            collectionViewBottomConstraint!,
+            
             saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -.saveButtonBottom),
             saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
             saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
             saveButton.heightAnchor.constraint(equalToConstant: .saveButtonHeight)
         ])
-        collectionViewBottomConstraint = collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -distance)
-        collectionViewBottomConstraint?.isActive = true
     }
     
     
