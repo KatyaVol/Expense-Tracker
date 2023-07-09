@@ -9,6 +9,6 @@ target 'Expense Tracker' do
 
 # Pods for Expense Tracker
 # pod 'SwiftLint'
-
+pod 'FSCalendar'
 
 end
