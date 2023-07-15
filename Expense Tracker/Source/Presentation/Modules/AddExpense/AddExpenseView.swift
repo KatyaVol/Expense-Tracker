@@ -10,7 +10,7 @@ import UIKit
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
     func didTapCategoryImage()
-    func didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell)
 }
 
 final class AddExpenseView: UIView {
@@ -37,13 +37,9 @@ final class AddExpenseView: UIView {
         return view
     }()
     
-    private lazy var saveButton: UIButton = {
-        let button = UIButton()
+    private lazy var saveButton: CustomButton = {
+        let button = CustomButton()
         button.setTitle(LocalizedStrings.saveEntry, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = Colors.turquoiseColor
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
         button.addTarget(self,
                          action: #selector(buttonTapped),
                          for: .touchUpInside)
@@ -186,6 +182,7 @@ final class AddExpenseView: UIView {
     // MARK: - Actions
     
     @objc private func buttonTapped() {
+        saveButton.shortChangeAlpha(to: 0.4)
         delegate?.didTapSaveButton()
     }
     
@@ -249,8 +246,8 @@ extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
         delegate?.didTapCategoryImage()
     }
     
-    func didTapDateLabel() {
-        delegate?.didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell) {
+        delegate?.didTapDateLabel(cell: cell)
     }
 }
 
@@ -262,7 +259,7 @@ private extension CGFloat {
     static let collectionViewTopConstraint: CGFloat = 26
     static let saveButtonHeight: CGFloat = 52
     static let saveButtonBottom: CGFloat = 52
-    static let sideInset: CGFloat = 16
+    static let sideInset: CGFloat = 19
     static let segmentedControlTopToMoneyBagConstraint: CGFloat = 28
     static let moneyBagImageLeading: CGFloat = 4
     static let moneyBagImageTopConstraint: CGFloat = 26

@@ -8,6 +8,7 @@ import Foundation
 
 protocol AddExpensePresenterProtocol: AnyObject {
     func categoryImageTapped()
+    func dateLabelTapped(cell: DateTableViewCell)
 }
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
@@ -20,6 +21,10 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     // MARK: - Internal methods
     
     func categoryImageTapped() {
-        coordinator?.pushCategory()
+        coordinator?.pushCategory(coordinator: coordinator!)
+    }
+    
+    func dateLabelTapped(cell: DateTableViewCell) {
+        coordinator?.showCalendarPopover(coordinator: coordinator!, cell: cell)
     }
 }

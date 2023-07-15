@@ -9,8 +9,7 @@ import UIKit
 
 protocol AddExpenseViewControllerProtocol: AnyObject {}
 
-final class AddExpenseViewController: UIViewController,
-                                      AddExpenseViewControllerProtocol {
+final class AddExpenseViewController: UIViewController, AddExpenseViewControllerProtocol {
     
     // MARK: - Private properties
     
@@ -45,6 +44,7 @@ final class AddExpenseViewController: UIViewController,
 // MARK: - AddExpenseViewDelegate
 
 extension AddExpenseViewController: AddExpenseViewDelegate {
+    
     func didTapSaveButton() {
         print("Button tapped!")
     }
@@ -53,10 +53,13 @@ extension AddExpenseViewController: AddExpenseViewDelegate {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
-    func didTapDateLabel() {}
     
     func didTapCategoryImage() {
         presenter.categoryImageTapped()
+    }
+    
+    func didTapDateLabel(cell: DateTableViewCell) {
+        presenter.dateLabelTapped(cell: cell)
     }
 }
 

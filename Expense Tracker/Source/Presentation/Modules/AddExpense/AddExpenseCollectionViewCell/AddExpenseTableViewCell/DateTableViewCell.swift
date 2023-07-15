@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DateTableViewCellDelegate: AnyObject {
-    func didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell)
 }
 
 final class DateTableViewCell: UITableViewCell {
@@ -26,14 +26,14 @@ final class DateTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.tableViewFont
         return label
     }()
     
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.tableViewFont
         label.textColor = UIColor.customGrayColor
         label.textAlignment = .right
         label.numberOfLines = 0
@@ -85,7 +85,7 @@ final class DateTableViewCell: UITableViewCell {
             
             titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
-            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4),
             titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -106),
             
             dateLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
@@ -98,6 +98,6 @@ final class DateTableViewCell: UITableViewCell {
     // MARK: - Action
     
     @objc private func dateLabelTapped() {
-        delegate?.didTapDateLabel()
+        delegate?.didTapDateLabel(cell: self)
     }
 }

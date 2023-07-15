@@ -90,7 +90,7 @@ final class CategoryView: UIView {
             
             descriptionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 42),
             descriptionLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: 4),
-            descriptionLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: -58),
+            descriptionLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: -51),
             descriptionLabel.trailingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: -4),
             
             collectionView.topAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: 12),

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09145B062A5B11BA0089C1BC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09145B052A5B11BA0089C1BC /* CalendarViewController.swift */; };
+		09145B082A5B33FF0089C1BC /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09145B072A5B33FF0089C1BC /* CalendarView.swift */; };
+		09145B0A2A5B34160089C1BC /* CalendarModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09145B092A5B34160089C1BC /* CalendarModuleBuilder.swift */; };
+		09145B0C2A5B342A0089C1BC /* CalendarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09145B0B2A5B342A0089C1BC /* CalendarPresenter.swift */; };
 		0916C49F2A312CB40016C7C1 /* UIFonts+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */; };
 		091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */; };
 		09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */; };
@@ -19,6 +23,7 @@
 		096854A029F7FFF400969D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */; };
 		0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */; };
 		0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */; };
+		097AAA142A61AB2D00498201 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AAA132A61AB2D00498201 /* CustomButton.swift */; };
 		098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
 		099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CD29EAC585009F1A2E /* SceneDelegate.swift */; };
@@ -39,11 +44,14 @@
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
 		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
 		09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B112A06A30A00619F6B /* TabBarController.swift */; };
-		09F917912A501C5F00A30E4A /* CategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F917902A501C5F00A30E4A /* CategoryCoordinator.swift */; };
 		BD4BBDE6CCD27F7940F34E93 /* Pods_Expense_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604997D45E042619E849777C /* Pods_Expense_Tracker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09145B052A5B11BA0089C1BC /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		09145B072A5B33FF0089C1BC /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		09145B092A5B34160089C1BC /* CalendarModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModuleBuilder.swift; sourceTree = "<group>"; };
+		09145B0B2A5B342A0089C1BC /* CalendarPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPresenter.swift; sourceTree = "<group>"; };
 		0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFonts+Extension.swift"; sourceTree = "<group>"; };
 		091F6C352A24C5DF00C22E00 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
 		09234BED29ED6DCC002A9E9C /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +64,7 @@
 		0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		097AAA132A61AB2D00498201 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		099471CB29EAC585009F1A2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +88,6 @@
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09F49B112A06A30A00619F6B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		09F917902A501C5F00A30E4A /* CategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCoordinator.swift; sourceTree = "<group>"; };
 		604997D45E042619E849777C /* Pods_Expense_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expense_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2065F209B01B4AF2A81CE62 /* Pods-Expense Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		F68F0174143A973FF91DBF53 /* Pods-Expense Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.release.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +105,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09145B042A5B11920089C1BC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				09145B0B2A5B342A0089C1BC /* CalendarPresenter.swift */,
+				09145B052A5B11BA0089C1BC /* CalendarViewController.swift */,
+				09145B092A5B34160089C1BC /* CalendarModuleBuilder.swift */,
+				09145B072A5B33FF0089C1BC /* CalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		09234BEC29ED6D8E002A9E9C /* AddExpense */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +148,22 @@
 			path = AddExpenseCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		097AAA112A61A98C00498201 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				097AAA122A61A9BB00498201 /* CustomButton */,
+			);
+			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		097AAA122A61A9BB00498201 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				097AAA132A61AB2D00498201 /* CustomButton.swift */,
+			);
+			path = CustomButton;
+			sourceTree = "<group>";
+		};
 		097BFAA729F5A27700945B9D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +180,7 @@
 				09F49B142A06E51600619F6B /* Services */,
 				097BFAAA29F5A33D00945B9D /* Presentation */,
 				098BA6CE2A0EBD0C0007C633 /* Extensions */,
+				097AAA112A61A98C00498201 /* CustomComponents */,
 				09B84CB22A0C0DB900EB4B95 /* Models */,
 			);
 			path = Source;
@@ -171,8 +207,9 @@
 		097BFAAB29F5A39100945B9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				09E16F742A42593F007CD0A9 /* Category */,
 				09234BEC29ED6D8E002A9E9C /* AddExpense */,
+				09145B042A5B11920089C1BC /* Calendar */,
+				09E16F742A42593F007CD0A9 /* Category */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -262,7 +299,6 @@
 				09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */,
 				09E16F752A4259C4007CD0A9 /* CategoryView.swift */,
 				09E16F7E2A433987007CD0A9 /* CategoryCollectionViewCell */,
-				09F9178F2A501B4600A30E4A /*  CategoryCoordinator */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -298,14 +334,6 @@
 				092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */,
 			);
 			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		09F9178F2A501B4600A30E4A /*  CategoryCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-				09F917902A501C5F00A30E4A /* CategoryCoordinator.swift */,
-			);
-			path = " CategoryCoordinator";
 			sourceTree = "<group>";
 		};
 		4CA0293FDA8DEBBC03ECDD97 /* Frameworks */ = {
@@ -462,7 +490,9 @@
 			files = (
 				09E16F7A2A4259FD007CD0A9 /* CategoryPresenter.swift in Sources */,
 				09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */,
+				09145B082A5B33FF0089C1BC /* CalendarView.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
+				09145B0C2A5B342A0089C1BC /* CalendarPresenter.swift in Sources */,
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
 				09E16F802A4339C0007CD0A9 /* CategoryCollectionViewCell.swift in Sources */,
@@ -472,10 +502,11 @@
 				09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */,
 				09E16F782A4259EA007CD0A9 /* CategoryModuleBuilder.swift in Sources */,
 				0959077E2A39D03E004E8542 /* DetailTableViewCell.swift in Sources */,
-				09F917912A501C5F00A30E4A /* CategoryCoordinator.swift in Sources */,
+				09145B062A5B11BA0089C1BC /* CalendarViewController.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */,
 				09234BF029ED7221002A9E9C /* AddExpensePresenter.swift in Sources */,
+				097AAA142A61AB2D00498201 /* CustomButton.swift in Sources */,
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
 				0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */,
 				094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */,
@@ -490,6 +521,7 @@
 				091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */,
 				09DA2F832A1BA1B500758A46 /* DateTableViewCell.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
+				09145B0A2A5B34160089C1BC /* CalendarModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

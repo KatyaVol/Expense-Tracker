@@ -8,16 +8,16 @@
 import UIKit
 
 final class CategoryModuleBuilder {
-    static func build(navigationController: UINavigationController) -> UIViewController {
+    static func build(coordinator: AddExpenseCoordinatorProtocol) -> UIViewController {
         
         // MARK: - Assembly
         
         let presenter = CategoryPresenter()
-        let coordinator = CategoryCoordinator(navigationController: navigationController)
+     
         let viewController = CategoryViewController(presenter: presenter, coordinator: coordinator)
         presenter.view = viewController
         
-        navigationController.navigationBar.tintColor = Colors.whiteAndBlack
+        coordinator.navigationController.navigationBar.tintColor = Colors.whiteAndBlack
         
         return viewController
     }

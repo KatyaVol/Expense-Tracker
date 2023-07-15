@@ -19,7 +19,7 @@ final class DetailTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.tableViewFont
         return label
     }()
     
@@ -27,7 +27,7 @@ final class DetailTableViewCell: UITableViewCell {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .systemBackground
-        textField.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        textField.font = UIFont.tableViewFont
         textField.textColor = UIColor.customGrayColor
         textField.textAlignment = .right
         textField.delegate = self
@@ -80,7 +80,7 @@ final class DetailTableViewCell: UITableViewCell {
             
             titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
-            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4),
             titleLabel.trailingAnchor.constraint(equalTo: detailTextField.leadingAnchor, constant: -106),
             
             detailTextField.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
