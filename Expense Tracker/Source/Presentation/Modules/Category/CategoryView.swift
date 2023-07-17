@@ -82,7 +82,7 @@ final class CategoryView: UIView {
         coinImageView.alpha = 0
         UIView.animate(withDuration: 2.6, delay: 0.1, options: [.curveEaseInOut], animations: {
                self.coinImageView.alpha = 1.0
-           }, completion: nil)
+           })
     }
     
     private func setupAutoLayout() {
