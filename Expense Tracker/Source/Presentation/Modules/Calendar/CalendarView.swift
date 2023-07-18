@@ -42,11 +42,10 @@ final class CalendarView: UIView {
     }()
     
     private lazy var chooseButton: CustomButton = {
-        let button = CustomButton()
-        button.setTitle(LocalizedStrings.chooseButton, for: .normal)
-        button.addTarget(self,
-                         action: #selector(buttonTapped),
-                         for: .touchUpInside)
+        let button = CustomButton(title: LocalizedStrings.chooseButton)
+        button.buttonTappedCallback = {
+            print("ChooseButton tapped")
+        }
         return button
     }()
     
@@ -98,13 +97,6 @@ final class CalendarView: UIView {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         updateCalendarAppearance()
-    }
-    
-    // MARK: - Action
-    
-    @objc private func buttonTapped() {
-        chooseButton.shortChangeAlpha(to: 0.4)
-        print("Choose Button tapped")
     }
 }
 

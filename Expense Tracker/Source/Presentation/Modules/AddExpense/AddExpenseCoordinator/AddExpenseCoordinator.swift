@@ -8,13 +8,11 @@
 import UIKit
 
 protocol AddExpenseCoordinatorProtocol: CoordinatorProtocol {
-    func pushCategory(coordinator: AddExpenseCoordinatorProtocol)
-    func showCalendarPopover(coordinator: AddExpenseCoordinatorProtocol, cell: DateTableViewCell)
-    func didSelectCategory()
+    func pushCategory(coordinator: CoordinatorProtocol)
+    func showCalendarPopover(coordinator: CoordinatorProtocol, cell: DateTableViewCell)
 }
 
-final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol, UIPopoverPresentationControllerDelegate {
-    
+final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol {
     
     // MARK: - Private properties
     
@@ -29,35 +27,22 @@ final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol, UIPo
     
     // MARK: - Internal methods
     
-    func pushCategory(coordinator: AddExpenseCoordinatorProtocol) {
+    func pushCategory(coordinator: CoordinatorProtocol) {
         let categoryViewController = CategoryModuleBuilder.build(coordinator: self)
         pushController(categoryViewController, animated: true)
     }
     
-    func showCalendarPopover(coordinator: AddExpenseCoordinatorProtocol, cell: DateTableViewCell) {
+    func showCalendarPopover(coordinator: CoordinatorProtocol, cell: DateTableViewCell) {
         let dateTableViewCell = cell
-        let calendarViewController = CalendarModuleBuilder.build(coordinator: self)
-        calendarViewController.modalPresentationStyle = .popover
-        
-        let screenWidth = UIScreen.main.bounds.width
-        calendarViewController.preferredContentSize = CGSize(width: screenWidth, height: 270)
-        
-        let popoverPresentationController = calendarViewController.popoverPresentationController
-        popoverPresentationController?.delegate = self
-        popoverPresentationController?.sourceView = dateTableViewCell
-        popoverPresentationController?.sourceRect = CGRect(x: dateTableViewCell.bounds.midX,
-                                                           y: dateTableViewCell.bounds.maxY,
-                                                           width: 200,
-                                                           height: 0)
-        popoverPresentationController?.permittedArrowDirections = .left
+        let calendarViewController = CalendarModuleBuilder.build(coordinator: self, cell: dateTableViewCell)
         presentController(calendarViewController, animated: true, completion: nil)
     }
-    
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension AddExpenseCoordinator: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         .none
-    }
-    
-    func didSelectCategory() {
-        popController(animated: true)
     }
 }

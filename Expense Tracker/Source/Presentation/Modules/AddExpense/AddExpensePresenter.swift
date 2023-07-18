@@ -21,10 +21,14 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     // MARK: - Internal methods
     
     func categoryImageTapped() {
-        coordinator?.pushCategory(coordinator: coordinator!)
+        if let coordinator = coordinator {
+            coordinator.pushCategory(coordinator: coordinator)
+        }
     }
     
     func dateLabelTapped(cell: DateTableViewCell) {
-        coordinator?.showCalendarPopover(coordinator: coordinator!, cell: cell)
+        if let coordinator = coordinator {
+            coordinator.showCalendarPopover(coordinator: coordinator, cell: cell)
+        }
     }
 }

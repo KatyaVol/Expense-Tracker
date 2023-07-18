@@ -49,7 +49,7 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
 
 extension CategoryViewController: CategoryViewDelegate {
     func didSelectCategory(at category: Category) {
-        coordinator?.didSelectCategory()
+        coordinator?.popController(animated: true)
     }
 }
 

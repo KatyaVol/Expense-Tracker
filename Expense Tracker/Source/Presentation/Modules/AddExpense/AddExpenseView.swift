@@ -38,11 +38,10 @@ final class AddExpenseView: UIView {
     }()
     
     private lazy var saveButton: CustomButton = {
-        let button = CustomButton()
-        button.setTitle(LocalizedStrings.saveEntry, for: .normal)
-        button.addTarget(self,
-                         action: #selector(buttonTapped),
-                         for: .touchUpInside)
+        let button = CustomButton(title: LocalizedStrings.saveEntry)
+        button.buttonTappedCallback = {
+            print("SaveButton tapped")
+        }
         return button
     }()
     
@@ -182,7 +181,6 @@ final class AddExpenseView: UIView {
     // MARK: - Actions
     
     @objc private func buttonTapped() {
-        saveButton.shortChangeAlpha(to: 0.4)
         delegate?.didTapSaveButton()
     }
     
