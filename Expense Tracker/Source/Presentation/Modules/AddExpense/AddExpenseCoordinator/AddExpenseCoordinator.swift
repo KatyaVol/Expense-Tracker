@@ -17,7 +17,6 @@ final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol {
     // MARK: - Private properties
     
     private(set) var navigationController: UINavigationController
-    private var dateTableViewCell: DateTableViewCell?
     
     // MARK: - Init
     
@@ -33,8 +32,7 @@ final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol {
     }
     
     func showCalendarPopover(coordinator: CoordinatorProtocol, cell: DateTableViewCell) {
-        let dateTableViewCell = cell
-        let calendarViewController = CalendarModuleBuilder.build(coordinator: self, cell: dateTableViewCell)
+        let calendarViewController = CalendarModuleBuilder.build(coordinator: self, cell: cell)
         presentController(calendarViewController, animated: true, completion: nil)
     }
 }

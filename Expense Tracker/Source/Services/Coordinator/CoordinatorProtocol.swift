@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CoordinatorProtocol {
+protocol CoordinatorProtocol: UIPopoverPresentationControllerDelegate {
     var navigationController: UINavigationController { get }
     init(navigationController: UINavigationController)
 }
@@ -29,3 +29,4 @@ extension CoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: animated)
     }
 }
+

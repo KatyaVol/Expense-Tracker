@@ -9,20 +9,18 @@ import UIKit
 
 final class CustomButton: UIButton {
     
-    var title: String
     var buttonTappedCallback: (() -> Void)?
     
     init(title: String) {
-        self.title = title
         super.init(frame: .zero)
-        configureButton()
+        configureButton(title: title)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureButton() {
+    private func configureButton(title: String) {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = Colors.turquoiseColor
         setTitleColor(.white, for: .normal)

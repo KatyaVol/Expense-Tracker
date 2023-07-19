@@ -17,18 +17,15 @@ final class CalendarModuleBuilder {
         let viewController = CalendarViewController(presenter: presenter)
         presenter.view = viewController
         
-        let dateTableViewCell = cell
-        let calendarViewController =   viewController
-        calendarViewController.modalPresentationStyle = .popover
+        viewController.modalPresentationStyle = .popover
         
-        let screenWidth = UIScreen.main.bounds.width
-        calendarViewController.preferredContentSize = CGSize(width: screenWidth, height: 270)
+        viewController.preferredContentSize = CGSize(width: ScreenSize.width, height: 270)
         
-        let popoverPresentationController = calendarViewController.popoverPresentationController
-        popoverPresentationController?.delegate = coordinator as? UIPopoverPresentationControllerDelegate
-        popoverPresentationController?.sourceView = dateTableViewCell
-        popoverPresentationController?.sourceRect = CGRect(x: dateTableViewCell.bounds.midX,
-                                                           y: dateTableViewCell.bounds.maxY,
+        let popoverPresentationController = viewController.popoverPresentationController
+        popoverPresentationController?.delegate = coordinator 
+        popoverPresentationController?.sourceView = cell
+        popoverPresentationController?.sourceRect = CGRect(x: cell.bounds.midX,
+                                                           y: cell.bounds.maxY,
                                                            width: 200,
                                                            height: 0)
         popoverPresentationController?.permittedArrowDirections = .left

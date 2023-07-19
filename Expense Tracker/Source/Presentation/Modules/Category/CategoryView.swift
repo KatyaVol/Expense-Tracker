@@ -80,7 +80,7 @@ final class CategoryView: UIView {
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             
-            coinImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            coinImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             coinImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             coinImageView.heightAnchor.constraint(equalToConstant: 195),

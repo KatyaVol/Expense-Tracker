@@ -65,26 +65,22 @@ final class CalendarView: UIView {
     // MARK: - Private methods
     
     private func updateCalendarAppearance() {
-        if traitCollection.userInterfaceStyle == .dark {
-            calendar.appearance.titleDefaultColor = .white
-        } else {
-            calendar.appearance.titleDefaultColor = .black
-        }
+        calendar.appearance.titleDefaultColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
     }
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             
-            backgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
-            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            backgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: trailingAnchor),
             backgroundView.heightAnchor.constraint(equalToConstant: 300),
             
-            calendar.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor, constant: 0),
-            calendar.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 0),
+            calendar.topAnchor.constraint(equalTo: backgroundView.layoutMarginsGuide.topAnchor),
+            calendar.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
             calendar.heightAnchor.constraint(equalToConstant: 200),
             
-            chooseButton.topAnchor.constraint(equalTo: calendar.bottomAnchor, constant: 0),
+            chooseButton.topAnchor.constraint(equalTo: calendar.bottomAnchor),
             chooseButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             chooseButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 16),
             chooseButton.heightAnchor.constraint(equalToConstant: 50),

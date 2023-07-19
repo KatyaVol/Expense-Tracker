@@ -24,6 +24,7 @@
 		0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */; };
 		0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */; };
 		097AAA142A61AB2D00498201 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AAA132A61AB2D00498201 /* CustomButton.swift */; };
+		0987A2E92A68224B00B5E639 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0987A2E82A68224B00B5E639 /* ScreenSize.swift */; };
 		098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
 		099471CE29EAC585009F1A2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CD29EAC585009F1A2E /* SceneDelegate.swift */; };
@@ -65,6 +66,7 @@
 		0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		097AAA132A61AB2D00498201 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0987A2E82A68224B00B5E639 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		099471CB29EAC585009F1A2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		097BFAA929F5A31900945B9D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				0987A2E82A68224B00B5E639 /* ScreenSize.swift */,
 				09DB34302A10E603001964D5 /* Theme */,
 				09234BF329ED7BB0002A9E9C /* App */,
 			);
@@ -513,6 +516,7 @@
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
+				0987A2E92A68224B00B5E639 /* ScreenSize.swift in Sources */,
 				09E16F762A4259C4007CD0A9 /* CategoryView.swift in Sources */,
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
 				0916C49F2A312CB40016C7C1 /* UIFonts+Extension.swift in Sources */,
