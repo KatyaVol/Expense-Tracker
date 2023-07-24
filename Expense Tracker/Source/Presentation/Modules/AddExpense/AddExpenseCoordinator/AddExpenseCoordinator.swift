@@ -32,7 +32,7 @@ final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol {
     }
     
     func showCalendarPopover(coordinator: CoordinatorProtocol, cell: DateTableViewCell) {
-        let calendarViewController = CalendarModuleBuilder.build(coordinator: self, cell: cell)
+        let calendarViewController = CalendarModuleBuilder.build(coordinator: self, popoverDelegate: self, cell: cell)
         presentController(calendarViewController, animated: true, completion: nil)
     }
 }

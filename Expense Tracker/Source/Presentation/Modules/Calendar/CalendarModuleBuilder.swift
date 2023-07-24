@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 
 final class CalendarModuleBuilder {
-    static func build(coordinator: CoordinatorProtocol, cell: DateTableViewCell) -> UIViewController {
+    static func build(coordinator: AddExpenseCoordinatorProtocol, popoverDelegate: UIPopoverPresentationControllerDelegate, cell: DateTableViewCell) -> UIViewController {
         
         // MARK: - Assembly
         
@@ -22,7 +22,7 @@ final class CalendarModuleBuilder {
         viewController.preferredContentSize = CGSize(width: ScreenSize.width, height: 270)
         
         let popoverPresentationController = viewController.popoverPresentationController
-        popoverPresentationController?.delegate = coordinator 
+        popoverPresentationController?.delegate = popoverDelegate
         popoverPresentationController?.sourceView = cell
         popoverPresentationController?.sourceRect = CGRect(x: cell.bounds.midX,
                                                            y: cell.bounds.maxY,

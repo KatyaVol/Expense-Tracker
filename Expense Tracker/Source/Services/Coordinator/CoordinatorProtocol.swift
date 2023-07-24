@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CoordinatorProtocol: UIPopoverPresentationControllerDelegate {
+protocol CoordinatorProtocol {
     var navigationController: UINavigationController { get }
     init(navigationController: UINavigationController)
 }
