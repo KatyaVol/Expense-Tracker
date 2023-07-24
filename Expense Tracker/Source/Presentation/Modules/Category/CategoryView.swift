@@ -88,7 +88,7 @@ final class CategoryView: UIView {
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
             
-            coinImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            coinImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             coinImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             coinImageView.heightAnchor.constraint(equalToConstant: 195),
@@ -98,7 +98,7 @@ final class CategoryView: UIView {
             
             descriptionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 42),
             descriptionLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: 4),
-            descriptionLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: -58),
+            descriptionLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: -51),
             descriptionLabel.trailingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: -4),
             
             collectionView.topAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: 12),

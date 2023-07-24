@@ -29,3 +29,4 @@ extension CoordinatorProtocol {
         navigationController.pushViewController(viewController, animated: animated)
     }
 }
+

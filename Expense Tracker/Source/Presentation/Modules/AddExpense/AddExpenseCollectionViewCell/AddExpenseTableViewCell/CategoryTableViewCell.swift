@@ -39,7 +39,7 @@ final class CategoryTableViewCell: UITableViewCell {
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.tableViewFont
         label.numberOfLines = 0
         return label
     }()
@@ -95,7 +95,7 @@ final class CategoryTableViewCell: UITableViewCell {
             
             categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
-            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4),
             categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: 106)
         ])
     }

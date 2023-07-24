@@ -8,11 +8,11 @@
 import UIKit
 
 protocol AddExpenseCoordinatorProtocol: CoordinatorProtocol {
-    func pushCategory()
-    // Пока что здесь будет один метод . Может в будущем добавим сюда другие методы
+    func pushCategory(coordinator: CoordinatorProtocol)
+    func showCalendarPopover(coordinator: CoordinatorProtocol, cell: DateTableViewCell)
 }
 
-final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
+final class AddExpenseCoordinator: NSObject, AddExpenseCoordinatorProtocol {
     
     // MARK: - Private properties
     
@@ -26,8 +26,21 @@ final class AddExpenseCoordinator: AddExpenseCoordinatorProtocol {
     
     // MARK: - Internal methods
     
-    func pushCategory() {
-        let categoryViewController = CategoryModuleBuilder.build(navigationController: navigationController)
+    func pushCategory(coordinator: CoordinatorProtocol) {
+        let categoryViewController = CategoryModuleBuilder.build(coordinator: self)
         pushController(categoryViewController, animated: true)
+    }
+    
+    func showCalendarPopover(coordinator: CoordinatorProtocol, cell: DateTableViewCell) {
+        let calendarViewController = CalendarModuleBuilder.build(coordinator: self, popoverDelegate: self, cell: cell)
+        presentController(calendarViewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension AddExpenseCoordinator: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        .none
     }
 }

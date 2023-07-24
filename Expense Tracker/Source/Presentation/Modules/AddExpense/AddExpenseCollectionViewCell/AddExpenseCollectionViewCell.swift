@@ -9,7 +9,7 @@ import UIKit
 
 protocol AddExpenseCollectionViewCellDelegate: AnyObject {
     func didTapCategoryImage()
-    func didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell)
 }
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
@@ -123,10 +123,7 @@ extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
 // MARK: - DateTableViewCellDelegate
 
 extension AddExpenseCollectionViewCell: DateTableViewCellDelegate {
-    
-    func didTapDateLabel() {
-        delegate?.didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell) {
+        delegate?.didTapDateLabel(cell: cell)
     }
 }
-
-

@@ -51,4 +51,8 @@ enum LocalizedStrings {
     static let incomeCategory = NSLocalizedString("income", comment: "")
     static let petsCategory = NSLocalizedString("pets", comment: "")
     static let childrenCategory = NSLocalizedString("children", comment: "")
+    
+    // MARK: - Calendar
+    
+    static let chooseButton = NSLocalizedString("choose", comment: "")
 }

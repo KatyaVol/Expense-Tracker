@@ -15,4 +15,8 @@ extension UIFont {
     static var segmentedControlFont: UIFont {
             return UIFont.systemFont(ofSize: 15)
         }
+    
+    static var tableViewFont: UIFont {
+        return UIFont.systemFont(ofSize: 17, weight: .semibold)
+    }
 }

@@ -10,7 +10,7 @@ import UIKit
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
     func didTapCategoryImage()
-    func didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell)
 }
 
 final class AddExpenseView: UIView {
@@ -37,16 +37,11 @@ final class AddExpenseView: UIView {
         return view
     }()
     
-    private lazy var saveButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(LocalizedStrings.saveEntry, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = Colors.turquoiseColor
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 12
-        button.addTarget(self,
-                         action: #selector(buttonTapped),
-                         for: .touchUpInside)
+    private lazy var saveButton: CustomButton = {
+        let button = CustomButton(title: LocalizedStrings.saveEntry)
+        button.buttonTappedCallback = {
+            print("SaveButton tapped")
+        }
         return button
     }()
     
@@ -234,7 +229,7 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.bounds.height
-        return CGSize(width: UIScreen.main.bounds.width, height: height)
+        return CGSize(width: ScreenSize.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -249,8 +244,8 @@ extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
         delegate?.didTapCategoryImage()
     }
     
-    func didTapDateLabel() {
-        delegate?.didTapDateLabel()
+    func didTapDateLabel(cell: DateTableViewCell) {
+        delegate?.didTapDateLabel(cell: cell)
     }
 }
 
@@ -262,7 +257,7 @@ private extension CGFloat {
     static let collectionViewTopConstraint: CGFloat = 26
     static let saveButtonHeight: CGFloat = 52
     static let saveButtonBottom: CGFloat = 52
-    static let sideInset: CGFloat = 16
+    static let sideInset: CGFloat = 19
     static let segmentedControlTopToMoneyBagConstraint: CGFloat = 28
     static let moneyBagImageLeading: CGFloat = 4
     static let moneyBagImageTopConstraint: CGFloat = 26
