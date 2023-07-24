@@ -9,7 +9,11 @@ import UIKit
 
 final class CustomButton: UIButton {
     
+    // MARK: - Properties
+    
     var buttonTappedCallback: (() -> Void)?
+    
+    // MARK: - Init
     
     init(title: String) {
         super.init(frame: .zero)
@@ -19,6 +23,8 @@ final class CustomButton: UIButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func configureButton(title: String) {
         translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +41,7 @@ final class CustomButton: UIButton {
         }
     }
     
-    func animateButtonTap(to alpha: CGFloat, completion: (() -> Void)? = nil) {
+    private func animateButtonTap(to alpha: CGFloat, completion: (() -> Void)? = nil) {
         let originalAlpha = self.alpha
         
         UIView.animate(withDuration: 0.2) {
