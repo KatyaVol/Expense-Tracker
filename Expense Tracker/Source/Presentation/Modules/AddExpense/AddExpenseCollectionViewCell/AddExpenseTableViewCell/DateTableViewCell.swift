@@ -56,6 +56,9 @@ final class DateTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemBackground
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDateChosen(_:)), name: .dateWasChosen, object: nil)
+        
         layout()
     }
     
@@ -99,5 +102,14 @@ final class DateTableViewCell: UITableViewCell {
     
     @objc private func dateLabelTapped() {
         delegate?.didTapDateLabel(cell: self)
+    }
+    
+    @objc private func handleDateChosen(_ notification: Notification) {
+        if let date = notification.object as? Date {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YYYY"
+            let string = formatter.string(from: date)
+            dateLabel.text = string
+        }
     }
 }

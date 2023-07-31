@@ -24,6 +24,7 @@
 		0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */; };
 		0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */; };
 		097AAA142A61AB2D00498201 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AAA132A61AB2D00498201 /* CustomButton.swift */; };
+		0980BDC02A7694B800D59AD0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980BDBF2A7694B800D59AD0 /* Notification.Name+Extension.swift */; };
 		0987A2E92A68224B00B5E639 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0987A2E82A68224B00B5E639 /* ScreenSize.swift */; };
 		098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */; };
 		099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099471CB29EAC585009F1A2E /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 		0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		097AAA132A61AB2D00498201 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0980BDBF2A7694B800D59AD0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		0987A2E82A68224B00B5E639 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
 		098BA6CF2A0EBD390007C633 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		099471C829EAC585009F1A2E /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 				0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */,
 				0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */,
 				0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */,
+				0980BDBF2A7694B800D59AD0 /* Notification.Name+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				09145B0C2A5B342A0089C1BC /* CalendarPresenter.swift in Sources */,
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
+				0980BDC02A7694B800D59AD0 /* Notification.Name+Extension.swift in Sources */,
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
 				09E16F802A4339C0007CD0A9 /* CategoryCollectionViewCell.swift in Sources */,
 				09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */,

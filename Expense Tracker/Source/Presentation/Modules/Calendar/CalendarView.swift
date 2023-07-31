@@ -10,12 +10,14 @@ import FSCalendar
 
 protocol CalendarViewDelegate: AnyObject {
     func didSelectDate(date: Date)
+    func didTapChooseButton()
 }
 
 final class CalendarView: UIView {
     
     // MARK: - Private properties
     
+    private var selectedDate: Date?
     private weak var delegate: CalendarViewDelegate?
     
     // MARK: - UI Elements
@@ -43,12 +45,16 @@ final class CalendarView: UIView {
     
     private lazy var chooseButton: CustomButton = {
         let button = CustomButton(title: LocalizedStrings.chooseButton)
-        button.buttonTappedCallback = {
-            print("ChooseButton tapped")
+        button.buttonTappedCallback = { [weak self] in
+           
+            if let date = self?.selectedDate {
+                NotificationCenter.default.post(name: .dateWasChosen, object: date)
+                self?.delegate?.didTapChooseButton()
+            }
         }
         return button
     }()
-    
+
     // MARK: - Init
     
     init(delegate: CalendarViewDelegate) {
@@ -100,11 +106,7 @@ final class CalendarView: UIView {
 
 extension CalendarView: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = date
         delegate?.didSelectDate(date: date)
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE dd-MM-YYYY"
-        let string = formatter.string(from: date)
-        print("\(string)")
     }
 }

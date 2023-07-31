@@ -56,12 +56,15 @@ final class CategoryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemBackground
         layout()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCategoryImage(_:)), name: .selectedCategoryImage, object: nil)
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+  
     //MARK: - Public Methods
     
     func setCategoryImage(expenseDetail: ExpenseDetail) {
@@ -74,6 +77,12 @@ final class CategoryTableViewCell: UITableViewCell {
     
     @objc private func categoryImageViewTapped() {
         delegate?.didTapCategoryImage()
+    }
+    
+    @objc private func updateCategoryImage(_ notification: Notification) {
+        guard let image = notification.userInfo?["image"] as? UIImage else { return }
+        categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
+        categoryImageView.tintColor = Colors.elementsGrayColor
     }
     
     // MARK: - Private Methods

@@ -18,11 +18,13 @@ final class CalendarViewController: UIViewController, CalendarViewControllerProt
   
     private let presenter: CalendarPresenterProtocol
     private lazy var calendarView = CalendarView(delegate: self)
-  
+    private let coordinator: AddExpenseCoordinatorProtocol?
+    
     // MARK: - Init
     
-    init(presenter: CalendarPresenterProtocol) {
+    init(presenter: CalendarPresenterProtocol, coordinator: AddExpenseCoordinatorProtocol?) {
         self.presenter = presenter
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -48,6 +50,9 @@ final class CalendarViewController: UIViewController, CalendarViewControllerProt
     
 extension CalendarViewController: CalendarViewDelegate {
     func didSelectDate(date: Date) {}
+    func didTapChooseButton() {
+        coordinator?.dismissController(animated: true)
+    }
 }
 
 
