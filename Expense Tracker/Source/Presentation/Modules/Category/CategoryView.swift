@@ -17,7 +17,8 @@ final class CategoryView: UIView {
     
     private weak var delegate: CategoryViewDelegate?
     private let categories: [Category] = Category.makeCategory()
-   
+    private let presenter = CategoryPresenter()
+    
     // MARK: - UI Elements
     
     private let coinImageView: UIImageView = {
@@ -80,7 +81,10 @@ final class CategoryView: UIView {
     
     private func animateCoinAppearance() {
         coinImageView.alpha = 0
-        UIView.animate(withDuration: 3.0, delay: 0.0, options: [.curveEaseInOut], animations: {
+        UIView.animate(withDuration: 3.0,
+                       delay: 0.0,
+                       options: [.curveEaseInOut],
+                       animations: {
                self.coinImageView.alpha = 1.0
            })
     }
@@ -156,10 +160,7 @@ extension CategoryView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category = categories[indexPath.item]
         delegate?.didSelectCategory(at: category)
-        
-        NotificationCenter.default.post(name: .selectedCategoryImage, object: nil, userInfo: ["image": category.image as Any])
-
-        print("cell tapped Item \(indexPath.item)")
+        presenter.didSelectCategory(at: category)
     }
 }
 

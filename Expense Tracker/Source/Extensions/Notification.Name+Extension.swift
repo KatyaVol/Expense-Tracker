@@ -5,10 +5,9 @@
 //  Created by Ekaterina Volobueva on 30.07.2023.
 //
 
-import UIKit
+import Foundation
 
 extension Notification.Name {
-    static let selectedCategoryImage = Notification.Name("newCategoryImage")
-    
-    static let dateWasChosen = Notification.Name("dateWasChosen")
+    static let selectedCategory = Notification.Name("selectedCategory")
+    static let selectedDate = Notification.Name("selectedDate")
 }

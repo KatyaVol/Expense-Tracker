@@ -17,8 +17,8 @@ enum ExpenseDetailType {
 struct ExpenseDetail {
     let type: ExpenseDetailType
     let title: String
-    let image: UIImage?
-    let text: String?
+    var image: UIImage?
+    var text: String?
     
     static func makeExpenseDetails() -> [[ExpenseDetail]] {
         var expenseDetails: [[ExpenseDetail]] = []
@@ -26,7 +26,7 @@ struct ExpenseDetail {
         let categoryDetail = ExpenseDetail(type: .category,
                                            title: LocalizedStrings.categoryTitle,
                                            image: UIImage(named: "icon_operations"),
-                                           text: nil)
+                                           text: LocalizedStrings.categoryName)
         let dateDetail = ExpenseDetail(type: .date,
                                        title: LocalizedStrings.dateTitle,
                                        image: nil,

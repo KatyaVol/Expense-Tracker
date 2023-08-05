@@ -8,16 +8,19 @@
 import Foundation
 
 protocol CalendarPresenterProtocol: AnyObject {
-    func didSelectDate(date: Date)
+    func didTapChooseButton(date: Date)
 }
 
 final class CalendarPresenter: CalendarPresenterProtocol {
-
+    
     // MARK: - Properties
-
+    
     weak var view: CalendarViewControllerProtocol?
-
+    
     // MARK: - Internal methods
-
-    func didSelectDate(date: Date) {}
+    
+    func didTapChooseButton(date: Date) {
+        NotificationCenter.default.post(name: .selectedDate,
+                                        object: date)
+    }
 }

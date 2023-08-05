@@ -20,6 +20,8 @@ final class CategoryPresenter: CategoryPresenterProtocol {
     
     func didSelectCategory(at category: Category) {
         view?.didSelectCategory(at: category)
-        print("category cell tapped \(category)")
+        
+        NotificationCenter.default.post(name: .selectedCategory,
+                                        object: category)
     }
 }

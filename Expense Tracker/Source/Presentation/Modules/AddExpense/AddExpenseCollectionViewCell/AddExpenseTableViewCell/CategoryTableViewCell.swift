@@ -20,7 +20,7 @@ final class CategoryTableViewCell: UITableViewCell {
     // MARK: - Private properties
     
     private var expenseDetail: ExpenseDetail?
-
+    
     // MARK: - UI Elements
     
     private lazy var categoryImageView: UIImageView = {
@@ -28,12 +28,31 @@ final class CategoryTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .systemBackground
         imageView.contentMode = .scaleAspectFit
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                          action: #selector(categoryImageViewTapped))
-        imageView.addGestureRecognizer(tapGestureRecognizer)
-        imageView.isUserInteractionEnabled = true
         return imageView
+    }()
+    
+    private let categoryImageViewDescription: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.textColor = UIColor.placeholderText
+        return label
+    }()
+    
+    private lazy var categoryImageStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [categoryImageViewDescription, categoryImageView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        stackView.alignment = .center
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 4)
+        stackView.isLayoutMarginsRelativeArrangement = true
+       
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(categoryStackViewTapped))
+        stackView.addGestureRecognizer(tapGestureRecognizer)
+        stackView.isUserInteractionEnabled = true
+        return stackView
     }()
     
     private let categoryLabel: UILabel = {
@@ -56,40 +75,32 @@ final class CategoryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemBackground
         layout()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCategoryImage(_:)), name: .selectedCategoryImage, object: nil)
-
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-  
+    
     //MARK: - Public Methods
     
     func setCategoryImage(expenseDetail: ExpenseDetail) {
         categoryLabel.text = expenseDetail.title
         categoryImageView.image = expenseDetail.image?.withRenderingMode(.alwaysTemplate)
         categoryImageView.tintColor = Colors.elementsGrayColor
+        categoryImageViewDescription.text = expenseDetail.text
     }
     
     // MARK: - Actions
     
-    @objc private func categoryImageViewTapped() {
+    @objc private func categoryStackViewTapped() {
         delegate?.didTapCategoryImage()
-    }
-    
-    @objc private func updateCategoryImage(_ notification: Notification) {
-        guard let image = notification.userInfo?["image"] as? UIImage else { return }
-        categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
-        categoryImageView.tintColor = Colors.elementsGrayColor
     }
     
     // MARK: - Private Methods
     
     private func layout() {
         contentView.addSubview(container)
-        container.addSubviews([categoryImageView, categoryLabel])
+        container.addSubviews([categoryLabel, categoryImageStackView])
         
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -97,10 +108,12 @@ final class CategoryTableViewCell: UITableViewCell {
             container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            categoryImageView.topAnchor.constraint(equalTo: container.topAnchor, constant: 6),
-            categoryImageView.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -14),
-            categoryImageView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
+            categoryImageStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            categoryImageStackView.topAnchor.constraint(equalTo: container.topAnchor),
+            
             categoryImageView.widthAnchor.constraint(equalToConstant: 24),
+            
+            categoryImageViewDescription.topAnchor.constraint(equalTo: categoryLabel.topAnchor),
             
             categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),

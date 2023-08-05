@@ -7,14 +7,19 @@
 
 import UIKit
 
-protocol AddExpenseViewControllerProtocol: AnyObject {}
+protocol AddExpenseViewControllerProtocol: AnyObject {
+    func updateCategory(_ category: Category)
+    func updateDate(_ date: Date)
+}
 
-final class AddExpenseViewController: UIViewController, AddExpenseViewControllerProtocol {
+final class AddExpenseViewController: UIViewController {
     
     // MARK: - Private properties
     
     private let presenter: AddExpensePresenterProtocol
-    private lazy var addExpenseView = AddExpenseView(delegate: self)
+    private lazy var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
+    private lazy var addExpenseView = AddExpenseView(delegate: self, expenseDetails: expenseDetails)
+    
     
     // MARK: - Init
     
@@ -60,6 +65,16 @@ extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
     
     func didTapDateLabel(cell: DateTableViewCell) {
         presenter.dateLabelTapped(cell: cell)
+    }
+}
+
+extension AddExpenseViewController: AddExpenseViewControllerProtocol {
+    func updateCategory(_ category: Category) {
+        addExpenseView.updateCategory(category)
+    }
+    
+    func updateDate(_ date: Date) {
+        addExpenseView.updateDate(date)
     }
 }
 
