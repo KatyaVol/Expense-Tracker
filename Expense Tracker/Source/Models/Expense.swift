@@ -17,8 +17,8 @@ enum ExpenseDetailType {
 struct ExpenseDetail {
     let type: ExpenseDetailType
     let title: String
-    var image: UIImage?
-    var text: String?
+    let image: UIImage?
+    let text: String?
     
     static func makeExpenseDetails() -> [[ExpenseDetail]] {
         var expenseDetails: [[ExpenseDetail]] = []

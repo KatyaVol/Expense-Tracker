@@ -20,8 +20,9 @@ final class CategoryPresenter: CategoryPresenterProtocol {
     
     func didSelectCategory(at category: Category) {
         view?.didSelectCategory(at: category)
-        
         NotificationCenter.default.post(name: .selectedCategory,
                                         object: category)
     }
 }
+
+

@@ -8,8 +8,7 @@
 import UIKit
 
 protocol AddExpenseViewControllerProtocol: AnyObject {
-    func updateCategory(_ category: Category)
-    func updateDate(_ date: Date)
+    func updateModel(_ model: [[ExpenseDetail]])
 }
 
 final class AddExpenseViewController: UIViewController {
@@ -18,7 +17,7 @@ final class AddExpenseViewController: UIViewController {
     
     private let presenter: AddExpensePresenterProtocol
     private lazy var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
-    private lazy var addExpenseView = AddExpenseView(delegate: self, expenseDetails: expenseDetails)
+    private lazy var addExpenseView = AddExpenseView(delegate: self)
     
     
     // MARK: - Init
@@ -68,13 +67,12 @@ extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
     }
 }
 
+// MARK: - AddExpenseViewControllerProtocol
+
 extension AddExpenseViewController: AddExpenseViewControllerProtocol {
-    func updateCategory(_ category: Category) {
-        addExpenseView.updateCategory(category)
-    }
-    
-    func updateDate(_ date: Date) {
-        addExpenseView.updateDate(date)
+    func updateModel(_ model: [[ExpenseDetail]]) {
+        expenseDetails = model
+        addExpenseView.update(with: model)
     }
 }
 

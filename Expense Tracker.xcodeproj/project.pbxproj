@@ -21,6 +21,7 @@
 		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
 		0959077E2A39D03E004E8542 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959077D2A39D03E004E8542 /* DetailTableViewCell.swift */; };
 		096854A029F7FFF400969D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */; };
+		096AF39A2A83A5A5009B7012 /* ExpenseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */; };
 		0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */; };
 		0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */; };
 		097AAA142A61AB2D00498201 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AAA132A61AB2D00498201 /* CustomButton.swift */; };
@@ -65,6 +66,7 @@
 		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
 		0959077D2A39D03E004E8542 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDataStore.swift; sourceTree = "<group>"; };
 		0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		097AAA132A61AB2D00498201 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -152,6 +154,14 @@
 				09DA2F7F2A1B9ADA00758A46 /* AddExpenseTableViewCell */,
 			);
 			path = AddExpenseCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		096AF3982A83A574009B7012 /* ExpenseDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */,
+			);
+			path = ExpenseDataStore;
 			sourceTree = "<group>";
 		};
 		097AAA112A61A98C00498201 /* CustomComponents */ = {
@@ -331,6 +341,7 @@
 		09F49B142A06E51600619F6B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				096AF3982A83A574009B7012 /* ExpenseDataStore */,
 				09F49B152A06E52F00619F6B /* Coordinator */,
 			);
 			path = Services;
@@ -499,6 +510,7 @@
 			files = (
 				09E16F7A2A4259FD007CD0A9 /* CategoryPresenter.swift in Sources */,
 				09234BEE29ED6DCC002A9E9C /* AddExpenseViewController.swift in Sources */,
+				096AF39A2A83A5A5009B7012 /* ExpenseDataStore.swift in Sources */,
 				09145B082A5B33FF0089C1BC /* CalendarView.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				09145B0C2A5B342A0089C1BC /* CalendarPresenter.swift in Sources */,

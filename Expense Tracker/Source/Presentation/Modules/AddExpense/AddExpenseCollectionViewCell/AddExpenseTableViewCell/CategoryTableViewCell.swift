@@ -31,7 +31,7 @@ final class CategoryTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private let categoryImageViewDescription: UILabel = {
+    private let categoryLabelDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -40,7 +40,7 @@ final class CategoryTableViewCell: UITableViewCell {
     }()
     
     private lazy var categoryImageStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [categoryImageViewDescription, categoryImageView])
+        let stackView = UIStackView(arrangedSubviews: [categoryLabelDescription, categoryImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 10
@@ -87,7 +87,7 @@ final class CategoryTableViewCell: UITableViewCell {
         categoryLabel.text = expenseDetail.title
         categoryImageView.image = expenseDetail.image?.withRenderingMode(.alwaysTemplate)
         categoryImageView.tintColor = Colors.elementsGrayColor
-        categoryImageViewDescription.text = expenseDetail.text
+        categoryLabelDescription.text = expenseDetail.text
     }
     
     // MARK: - Actions
@@ -113,7 +113,7 @@ final class CategoryTableViewCell: UITableViewCell {
             
             categoryImageView.widthAnchor.constraint(equalToConstant: 24),
             
-            categoryImageViewDescription.topAnchor.constraint(equalTo: categoryLabel.topAnchor),
+            categoryLabelDescription.topAnchor.constraint(equalTo: categoryLabel.topAnchor),
             
             categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),

@@ -89,9 +89,8 @@ final class AddExpenseView: UIView {
     
     // MARK: - Init
     
-    init(delegate: AddExpenseViewDelegate, expenseDetails: [[ExpenseDetail]]) {
+    init(delegate: AddExpenseViewDelegate) {
         self.delegate = delegate
-        self.expenseDetails = expenseDetails
         super.init(frame: .zero)
         setupSubviews()
         setupAutoLayout()
@@ -112,30 +111,9 @@ final class AddExpenseView: UIView {
     }
     
     // MARK: - Public methods
-    
-    func updateCategory(_ category: Category) {
-        expenseDetails = expenseDetails.map { section in
-            section.map { detail in
-                guard detail.type == .category else { return detail }
-                return ExpenseDetail(type: detail.type,
-                                     title: detail.title,
-                                     image: category.image,
-                                     text: category.text)
-            }
-        }
-        collectionView.reloadData()
-    }
-    
-    func updateDate(_ date: Date) {
-        expenseDetails = expenseDetails.map { section in
-            section.map { detail in
-                guard detail.type == .date else { return detail }
-                return ExpenseDetail(type: detail.type,
-                                     title: detail.title,
-                                     image: detail.image,
-                                     text: DateFormatter.dateString(from: date))
-            }
-        }
+  
+    func update(with model: [[ExpenseDetail]]) {
+        expenseDetails = model
         collectionView.reloadData()
     }
 
