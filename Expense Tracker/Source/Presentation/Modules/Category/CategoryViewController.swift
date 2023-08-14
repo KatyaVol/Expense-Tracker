@@ -17,13 +17,11 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
     
     private let presenter: CategoryPresenterProtocol
     private lazy var categoryView = CategoryView(delegate: self)
-    private let coordinator: AddExpenseCoordinatorProtocol?
     
     // MARK: - Init
     
-    init(presenter: CategoryPresenterProtocol, coordinator: AddExpenseCoordinatorProtocol?) {
+    init(presenter: CategoryPresenterProtocol) {
         self.presenter = presenter
-        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,7 +47,7 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
 
 extension CategoryViewController: CategoryViewDelegate {
     func didSelectCategory(at category: Category) {
-        coordinator?.popController(animated: true)
+        presenter.didSelectCategory(at: category)
     }
 }
 

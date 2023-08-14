@@ -13,7 +13,7 @@ final class CalendarModuleBuilder {
         
         // MARK: - Assembly
         
-        let presenter = CalendarPresenter()
+        let presenter = CalendarPresenter( coordinator: coordinator)
         let viewController = CalendarViewController(presenter: presenter)
         presenter.view = viewController
         

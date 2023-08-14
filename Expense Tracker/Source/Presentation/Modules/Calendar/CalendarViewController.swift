@@ -8,9 +8,7 @@
 import UIKit
 import FSCalendar
 
-protocol CalendarViewControllerProtocol: AnyObject {
-    func didSelectDate(date: Date)
-}
+protocol CalendarViewControllerProtocol: AnyObject {}
 
 final class CalendarViewController: UIViewController, CalendarViewControllerProtocol {
     
@@ -18,7 +16,7 @@ final class CalendarViewController: UIViewController, CalendarViewControllerProt
   
     private let presenter: CalendarPresenterProtocol
     private lazy var calendarView = CalendarView(delegate: self)
-  
+    
     // MARK: - Init
     
     init(presenter: CalendarPresenterProtocol) {
@@ -47,7 +45,10 @@ final class CalendarViewController: UIViewController, CalendarViewControllerProt
 // MARK: - CalendarViewDelegate
     
 extension CalendarViewController: CalendarViewDelegate {
-    func didSelectDate(date: Date) {}
+    
+    func didTapChooseButton(date: Date) {
+        presenter.didTapChooseButton(date: date)
+    }
 }
 
 

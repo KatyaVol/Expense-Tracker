@@ -12,9 +12,9 @@ final class CategoryModuleBuilder {
         
         // MARK: - Assembly
         
-        let presenter = CategoryPresenter()
+        let presenter = CategoryPresenter(coordinator: coordinator)
      
-        let viewController = CategoryViewController(presenter: presenter, coordinator: coordinator)
+        let viewController = CategoryViewController(presenter: presenter)
         presenter.view = viewController
         
         coordinator.navigationController.navigationBar.tintColor = Colors.whiteAndBlack

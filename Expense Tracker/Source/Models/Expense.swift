@@ -26,7 +26,7 @@ struct ExpenseDetail {
         let categoryDetail = ExpenseDetail(type: .category,
                                            title: LocalizedStrings.categoryTitle,
                                            image: UIImage(named: "icon_operations"),
-                                           text: nil)
+                                           text: LocalizedStrings.categoryName)
         let dateDetail = ExpenseDetail(type: .date,
                                        title: LocalizedStrings.dateTitle,
                                        image: nil,

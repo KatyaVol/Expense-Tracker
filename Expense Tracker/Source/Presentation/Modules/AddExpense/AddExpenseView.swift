@@ -18,10 +18,10 @@ final class AddExpenseView: UIView {
     // MARK: - Private properties
     
     private weak var delegate: AddExpenseViewDelegate?
-    private var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
+    private let dataStore = ExpenseDataStore.shared
+    private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails 
     private var collectionViewBottomConstraint: NSLayoutConstraint?
-    
-    
+  
     // MARK: - UI Elements
     
     private lazy var scrollView: UIScrollView = {
@@ -102,7 +102,7 @@ final class AddExpenseView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+   
     // MARK: - View Lifecycle
     
     override func layoutSubviews() {
@@ -111,6 +111,13 @@ final class AddExpenseView: UIView {
         collectionViewBottomConstraint?.constant = -distance
     }
     
+    // MARK: - Public methods
+  
+    func update(with model: [[ExpenseDetail]]) {
+        expenseDetails = model
+        collectionView.reloadData()
+    }
+
     // MARK: - Private methods
     
     private func setupSubviews() {
