@@ -16,8 +16,8 @@ final class CalendarView: UIView {
     
     // MARK: - Private properties
     
-    private var selectedDate: Date?
     private weak var delegate: CalendarViewDelegate?
+    private var selectedDate: Date?
     
     // MARK: - UI Elements
     

@@ -18,9 +18,9 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     weak var view: AddExpenseViewControllerProtocol?
     var coordinator: AddExpenseCoordinatorProtocol?
-    var dataStore: ExpenseDataStore
+    private let dataStore: ExpenseDataStore
     
-    // MARK: - Init:
+    // MARK: - Init
     
     init(dataStore: ExpenseDataStore = ExpenseDataStore.shared) {
         self.dataStore = dataStore

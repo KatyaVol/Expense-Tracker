@@ -18,7 +18,8 @@ final class AddExpenseView: UIView {
     // MARK: - Private properties
     
     private weak var delegate: AddExpenseViewDelegate?
-    private var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
+    private let dataStore = ExpenseDataStore.shared
+    private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails 
     private var collectionViewBottomConstraint: NSLayoutConstraint?
   
     // MARK: - UI Elements

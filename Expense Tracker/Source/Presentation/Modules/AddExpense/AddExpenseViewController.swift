@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddExpenseViewControllerProtocol: AnyObject {
-    func updateModel(_ model: [[ExpenseDetail]])
+   func updateModel(_ model: [[ExpenseDetail]])
 }
 
 final class AddExpenseViewController: UIViewController {
@@ -16,7 +16,6 @@ final class AddExpenseViewController: UIViewController {
     // MARK: - Private properties
     
     private let presenter: AddExpensePresenterProtocol
-    private lazy var expenseDetails: [[ExpenseDetail]] = ExpenseDetail.makeExpenseDetails()
     private lazy var addExpenseView = AddExpenseView(delegate: self)
     
     
@@ -71,7 +70,6 @@ extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
 
 extension AddExpenseViewController: AddExpenseViewControllerProtocol {
     func updateModel(_ model: [[ExpenseDetail]]) {
-        expenseDetails = model
         addExpenseView.update(with: model)
     }
 }

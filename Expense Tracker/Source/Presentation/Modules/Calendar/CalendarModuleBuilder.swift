@@ -13,8 +13,8 @@ final class CalendarModuleBuilder {
         
         // MARK: - Assembly
         
-        let presenter = CalendarPresenter()
-        let viewController = CalendarViewController(presenter: presenter, coordinator: coordinator)
+        let presenter = CalendarPresenter( coordinator: coordinator)
+        let viewController = CalendarViewController(presenter: presenter)
         presenter.view = viewController
         
         viewController.modalPresentationStyle = .popover

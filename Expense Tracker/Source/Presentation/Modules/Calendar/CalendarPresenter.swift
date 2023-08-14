@@ -16,11 +16,21 @@ final class CalendarPresenter: CalendarPresenterProtocol {
     // MARK: - Properties
     
     weak var view: CalendarViewControllerProtocol?
+    private let coordinator: AddExpenseCoordinatorProtocol
+    
+    // MARK: - Init
+    
+    init(view: CalendarViewControllerProtocol? = nil,
+         coordinator: AddExpenseCoordinatorProtocol) {
+        self.view = view
+        self.coordinator = coordinator
+    }
     
     // MARK: - Internal methods
     
     func didTapChooseButton(date: Date) {
         NotificationCenter.default.post(name: .selectedDate,
                                         object: date)
+        coordinator.dismissController(animated: true)
     }
 }

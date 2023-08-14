@@ -17,7 +17,6 @@ final class CategoryView: UIView {
     
     private weak var delegate: CategoryViewDelegate?
     private let categories: [Category] = Category.makeCategory()
-    private let presenter = CategoryPresenter()
     
     // MARK: - UI Elements
     
@@ -160,7 +159,6 @@ extension CategoryView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category = categories[indexPath.item]
         delegate?.didSelectCategory(at: category)
-        presenter.didSelectCategory(at: category)
     }
 }
 
