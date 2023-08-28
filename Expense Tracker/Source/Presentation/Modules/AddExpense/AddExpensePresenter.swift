@@ -10,6 +10,8 @@ import Foundation
 protocol AddExpensePresenterProtocol: AnyObject {
     func categoryImageTapped()
     func dateLabelTapped(cell: DateTableViewCell)
+    func fetchData()
+    func saveData(with detailText: String?)
 }
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
@@ -19,11 +21,13 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     weak var view: AddExpenseViewControllerProtocol?
     var coordinator: AddExpenseCoordinatorProtocol?
     private let dataStore: ExpenseDataStore
+    private let storage: CoreDataStorage
     
     // MARK: - Init
     
-    init(dataStore: ExpenseDataStore = ExpenseDataStore.shared) {
+    init(dataStore: ExpenseDataStore = ExpenseDataStore.shared, storage: CoreDataStorage) {
         self.dataStore = dataStore
+        self.storage = storage
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateCategoryImage(_:)),
@@ -37,6 +41,28 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     }
     
     // MARK: - Internal methods
+    
+    func fetchData() {
+        let results = storage.fetchData()
+        for userInput in results {
+            print(userInput.inputText ?? "No data found")
+        }
+    }
+    
+    func saveData(with detailText: String?) {
+        let context = storage.context
+        do {
+            let userInputEntity = UserInput(context: context)
+            print("UserInput entity created.")
+            userInputEntity.inputText = detailText
+            print("Setting detail text: \(String(describing: detailText))")
+            try context.save()
+            print("Data saved successfully!")
+            fetchData()
+        } catch {
+            print("Ошибка: \(error)")
+        }
+    }
     
     func categoryImageTapped() {
         guard let coordinator = coordinator else { return }

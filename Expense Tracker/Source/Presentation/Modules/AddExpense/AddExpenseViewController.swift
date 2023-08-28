@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol AddExpenseViewControllerProtocol: AnyObject {
    func updateModel(_ model: [[ExpenseDetail]])
@@ -17,6 +18,7 @@ final class AddExpenseViewController: UIViewController {
     
     private let presenter: AddExpensePresenterProtocol
     private lazy var addExpenseView = AddExpenseView(delegate: self)
+    private var detailText: String?
     
     
     // MARK: - Init
@@ -41,15 +43,21 @@ final class AddExpenseViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.systemBackground
+        presenter.fetchData()
     }
 }
 
 // MARK: - AddExpenseViewDelegate
 
 extension AddExpenseViewController: AddExpenseViewDelegate {
+    func didUpdateDetailText(_ text: String?) {
+            self.detailText = text
+            print("Detail text updated In VC: \(String(describing: text))")
+        }
     
     func didTapSaveButton() {
         print("Button tapped!")
+        presenter.saveData(with: detailText)
     }
 }
 
@@ -73,4 +81,5 @@ extension AddExpenseViewController: AddExpenseViewControllerProtocol {
         addExpenseView.update(with: model)
     }
 }
+
 

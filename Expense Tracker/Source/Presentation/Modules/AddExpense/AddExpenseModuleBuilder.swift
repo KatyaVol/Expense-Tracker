@@ -12,7 +12,10 @@ final class AddExpenseModuleBuilder {
         
         // MARK: - Assembly
         
-        let presenter = AddExpensePresenter()
+        let container = CoreDataContainer()
+        let storage = CoreDataStorage(container: container)
+        
+        let presenter = AddExpensePresenter(storage: storage)
         let viewController = AddExpenseViewController(presenter: presenter)
         presenter.view = viewController
         let navigationController = UINavigationController(rootViewController: viewController)

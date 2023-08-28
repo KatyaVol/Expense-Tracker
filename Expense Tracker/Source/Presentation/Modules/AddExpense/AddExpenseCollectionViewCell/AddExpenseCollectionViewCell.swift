@@ -10,6 +10,7 @@ import UIKit
 protocol AddExpenseCollectionViewCellDelegate: AnyObject {
     func didTapCategoryImage()
     func didTapDateLabel(cell: DateTableViewCell)
+    func didUpdateDetailText(_ text: String?)
 }
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
@@ -98,6 +99,7 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
             
         case .amount, .note:
             let cell: DetailTableViewCell = tableView.dequeueCell(for: indexPath)
+            cell.delegate = self 
             cell.selectionStyle = .none
             cell.setDetailText(expenseDetail: expenseDetail)
             return cell
@@ -125,5 +127,14 @@ extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
 extension AddExpenseCollectionViewCell: DateTableViewCellDelegate {
     func didTapDateLabel(cell: DateTableViewCell) {
         delegate?.didTapDateLabel(cell: cell)
+    }
+}
+
+// MARK: - DetailTableViewCellDelegate
+
+extension AddExpenseCollectionViewCell: DetailTableViewCellDelegate {
+    func didUpdateDetailText(_ text: String?) {
+        delegate?.didUpdateDetailText(text)
+        print("Updated detail text in AddExpenseCollectionViewCell: \(String(describing: text))")
     }
 }
