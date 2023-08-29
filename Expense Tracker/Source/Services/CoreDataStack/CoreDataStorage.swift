@@ -28,8 +28,8 @@ final class CoreDataStorage {
     func fetchData() -> [UserInput] {
         let fetchRequest = NSFetchRequest<UserInput>(entityName: "UserInput")
         do {
-            let results = try context.fetch(fetchRequest)
-            return results
+            let dataFromCoreData = try context.fetch(fetchRequest)
+            return dataFromCoreData
         } catch {
             print("Ошибка при извлечении данных: \(error)")
             return []

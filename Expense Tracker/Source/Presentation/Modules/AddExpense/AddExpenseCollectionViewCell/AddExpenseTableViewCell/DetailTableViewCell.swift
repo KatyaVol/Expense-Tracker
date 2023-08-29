@@ -8,16 +8,11 @@
 
 import UIKit
 
-protocol DetailTableViewCellDelegate: AnyObject {
-    func didUpdateDetailText(_ text: String?)
-}
-
 final class DetailTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
     private var expenseDetail: ExpenseDetail?
-    weak var delegate: DetailTableViewCellDelegate?
     
     // MARK: - UI Elements
     
@@ -35,8 +30,6 @@ final class DetailTableViewCell: UITableViewCell {
         textField.font = UIFont.tableViewFont
         textField.textColor = UIColor.customGrayColor
         textField.textAlignment = .right
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -94,13 +87,6 @@ final class DetailTableViewCell: UITableViewCell {
             detailTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
             detailTextField.widthAnchor.constraint(equalToConstant: 110)
         ])
-    }
-    
-    // MARK: - Action
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        delegate?.didUpdateDetailText(textField.text)
-        print("Text changed to: \(String(describing: textField.text))")
     }
 }
 
