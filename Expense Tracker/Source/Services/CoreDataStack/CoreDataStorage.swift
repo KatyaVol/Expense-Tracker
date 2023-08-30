@@ -5,15 +5,18 @@
 //  Created by Ekaterina Volobueva on 16.08.2023.
 //
 
-import Foundation
 import CoreData
+
+protocol CoreDataStorageProtocol: AnyObject {
+    func fetchData() -> [UserInput]
+}
 
 final class CoreDataStorage {
     
     // MARK: - Properties
     
     private let container: CoreDataContainer
-    var context: NSManagedObjectContext {
+    private var context: NSManagedObjectContext {
         return container.context
     }
     
@@ -25,14 +28,14 @@ final class CoreDataStorage {
     
     // MARK: - Public Method
     
-    func fetchData() -> [UserInput] {
+    func fetchData() -> [UserInput]? {
         let fetchRequest = NSFetchRequest<UserInput>(entityName: "UserInput")
         do {
             let dataFromCoreData = try context.fetch(fetchRequest)
             return dataFromCoreData
         } catch {
             print("Ошибка при извлечении данных: \(error)")
-            return []
+            return nil
         }
     }
     
@@ -44,8 +47,8 @@ final class CoreDataStorage {
                 try context.save()
             } catch {
                 context.rollback()
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                let nserror = error
+                assertionFailure("Unresolved error \(nserror), \(nserror.localizedDescription)")
             }
         }
     }
