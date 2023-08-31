@@ -8,7 +8,6 @@
 
 import CoreData
 
-
 public class UserInput: NSManagedObject {
 
 }

@@ -8,7 +8,8 @@
 import UIKit
 
 protocol CategoryTableViewCellDelegate: AnyObject {
-    func didTapCategoryImage()
+    func didTapCategoryStackView()
+    func didPassCategoryData(with expenseDetail: ExpenseDetail)
 }
 
 final class CategoryTableViewCell: UITableViewCell {
@@ -84,6 +85,7 @@ final class CategoryTableViewCell: UITableViewCell {
     //MARK: - Public Methods
     
     func setCategoryImage(expenseDetail: ExpenseDetail) {
+        self.expenseDetail = expenseDetail
         categoryLabel.text = expenseDetail.title
         categoryImageView.image = expenseDetail.image?.withRenderingMode(.alwaysTemplate)
         categoryImageView.tintColor = Colors.elementsGrayColor
@@ -93,7 +95,10 @@ final class CategoryTableViewCell: UITableViewCell {
     // MARK: - Actions
     
     @objc private func categoryStackViewTapped() {
-        delegate?.didTapCategoryImage()
+        delegate?.didTapCategoryStackView()
+        if let expenseDetail = self.expenseDetail {
+            delegate?.didPassCategoryData(with: expenseDetail)
+        }
     }
     
     // MARK: - Private Methods

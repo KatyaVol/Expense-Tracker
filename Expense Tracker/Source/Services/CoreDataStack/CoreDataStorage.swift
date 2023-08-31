@@ -8,14 +8,14 @@
 import CoreData
 
 protocol CoreDataStorageProtocol: AnyObject {
-    func fetchData() -> [UserInput]
+    func fetchData() -> [UserInput]?
 }
 
-final class CoreDataStorage {
+final class CoreDataStorage: CoreDataStorageProtocol {
     
     // MARK: - Properties
     
-    private let container: CoreDataContainer
+    private let container: CoreDataContainerProtocol
     private var context: NSManagedObjectContext {
         return container.context
     }

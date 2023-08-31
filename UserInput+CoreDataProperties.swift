@@ -8,7 +8,6 @@
 
 import CoreData
 
-
 extension UserInput {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<UserInput> {

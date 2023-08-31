@@ -8,8 +8,9 @@
 import UIKit
 
 protocol AddExpenseCollectionViewCellDelegate: AnyObject {
-    func didTapCategoryImage()
+    func didTapCategoryStackView()
     func didTapDateLabel(cell: DateTableViewCell)
+    func didPassCategoryData(with expenseDetail: ExpenseDetail)
 }
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
@@ -115,8 +116,12 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
 // MARK: - CategoryTableViewCellDelegate
 
 extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
-    func didTapCategoryImage() {
-        delegate?.didTapCategoryImage()
+    func didPassCategoryData(with expenseDetail: ExpenseDetail) {
+        delegate?.didPassCategoryData(with: expenseDetail)
+    }
+       
+    func didTapCategoryStackView() {
+        delegate?.didTapCategoryStackView()
     }
 }
 

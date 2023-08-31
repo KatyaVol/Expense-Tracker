@@ -11,7 +11,7 @@ protocol CoreDataContainerProtocol: AnyObject {
     var context: NSManagedObjectContext { get }
 }
 
-final class CoreDataContainer {
+final class CoreDataContainer: CoreDataContainerProtocol {
     
     // MARK: - Properties
     

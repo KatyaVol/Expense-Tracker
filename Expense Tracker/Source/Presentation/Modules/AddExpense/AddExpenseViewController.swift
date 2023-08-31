@@ -47,20 +47,24 @@ final class AddExpenseViewController: UIViewController {
 
 extension AddExpenseViewController: AddExpenseViewDelegate {
     func didTapSaveButton() {
-        print("Save Button tapped!")
+        print("SaveButton tapped in AddExpenseViewController")
+        presenter.saveButtonTapped()
     }
 }
 
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
-    
-    func didTapCategoryImage() {
-        presenter.categoryImageTapped()
+    func didTapCategoryStackView() {
+        presenter.categoryStackViewTapped()
     }
     
     func didTapDateLabel(cell: DateTableViewCell) {
         presenter.dateLabelTapped(cell: cell)
+    }
+    
+    func didPassCategoryData(with expenseDetail: ExpenseDetail) {
+        presenter.categoryDataPassed(with: expenseDetail)
     }
 }
 

@@ -9,8 +9,10 @@ import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
-    func didTapCategoryImage()
+    func didTapCategoryStackView()
     func didTapDateLabel(cell: DateTableViewCell)
+    func didPassCategoryData(with expenseDetail: ExpenseDetail)
+    
 }
 
 final class AddExpenseView: UIView {
@@ -40,6 +42,7 @@ final class AddExpenseView: UIView {
     private lazy var saveButton: CustomButton = {
         let button = CustomButton(title: LocalizedStrings.saveEntry)
         button.buttonTappedCallback = { [weak self] in
+            print("SaveButton tapped in AddExpenseView")
             self?.delegate?.didTapSaveButton()
         }
         return button
@@ -247,8 +250,12 @@ extension AddExpenseView: UICollectionViewDelegateFlowLayout {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
-    func didTapCategoryImage() {
-        delegate?.didTapCategoryImage()
+    func didPassCategoryData(with expenseDetail: ExpenseDetail) {
+        delegate?.didPassCategoryData(with: expenseDetail)
+    }
+    
+    func didTapCategoryStackView() {
+        delegate?.didTapCategoryStackView()
     }
     
     func didTapDateLabel(cell: DateTableViewCell) {
