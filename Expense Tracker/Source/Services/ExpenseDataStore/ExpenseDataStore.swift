@@ -9,7 +9,7 @@ import UIKit
 
 final class ExpenseDataStore {
     static let shared = ExpenseDataStore()
-    
+  
     private init() {
         currentExpenseDetails = ExpenseDetail.makeExpenseDetails()
     }

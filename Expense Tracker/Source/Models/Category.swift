@@ -10,7 +10,7 @@ import UIKit
 struct Category {
     let image: UIImage?
     let text: String?
-    
+
     static func makeCategory() -> [Category] {
         return [
             Category(image: UIImage(named: "icon_food"),

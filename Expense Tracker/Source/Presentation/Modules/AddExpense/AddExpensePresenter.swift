@@ -24,7 +24,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     // MARK: - Init
     
-    init(dataStore: ExpenseDataStore = ExpenseDataStore.shared) {
+    init(dataStore: ExpenseDataStore = ExpenseDataStore.shared, storage: CoreDataStorage) {
         self.dataStore = dataStore
         
         NotificationCenter.default.addObserver(self,
@@ -64,7 +64,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
             break
         }
     }
-    
+ 
     func saveButtonTapped() {
         let updatedDataStoreDetails = dataStore.currentExpenseDetails
         for updatedDataStoreDetail in updatedDataStoreDetails {
@@ -94,7 +94,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         }
     }
     
-    // MARK: - Private methods
+   // MARK: - Private methods
     
     private func updateCategory(_ category: Category) {
         dataStore.changeModelWith(category: category)

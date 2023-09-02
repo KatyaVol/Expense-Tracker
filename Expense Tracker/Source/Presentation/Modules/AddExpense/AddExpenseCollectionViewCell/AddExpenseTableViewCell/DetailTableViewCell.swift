@@ -34,7 +34,6 @@ final class DetailTableViewCell: UITableViewCell {
         textField.font = UIFont.tableViewFont
         textField.textColor = UIColor.customGrayColor
         textField.textAlignment = .right
-        textField.delegate = self
         return textField
     }()
     

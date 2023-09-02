@@ -18,7 +18,6 @@ final class AddExpenseViewController: UIViewController {
     private let presenter: AddExpensePresenterProtocol
     private lazy var addExpenseView = AddExpenseView(delegate: self)
     
-    
     // MARK: - Init
     
     init(presenter: AddExpensePresenterProtocol) {
@@ -76,4 +75,5 @@ extension AddExpenseViewController: AddExpenseViewControllerProtocol {
         addExpenseView.update(with: model)
     }
 }
+
 
