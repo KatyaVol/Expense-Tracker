@@ -18,7 +18,6 @@ final class AddExpenseViewController: UIViewController {
     private let presenter: AddExpensePresenterProtocol
     private lazy var addExpenseView = AddExpenseView(delegate: self)
     
-    
     // MARK: - Init
     
     init(presenter: AddExpensePresenterProtocol) {
@@ -47,22 +46,25 @@ final class AddExpenseViewController: UIViewController {
 // MARK: - AddExpenseViewDelegate
 
 extension AddExpenseViewController: AddExpenseViewDelegate {
-    
     func didTapSaveButton() {
-        print("Button tapped!")
+        print("SaveButton tapped in AddExpenseViewController")
+        presenter.saveButtonTapped()
     }
 }
 
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
-    
-    func didTapCategoryImage() {
-        presenter.categoryImageTapped()
+    func didTapCategoryStackView() {
+        presenter.categoryStackViewTapped()
     }
     
     func didTapDateLabel(cell: DateTableViewCell) {
         presenter.dateLabelTapped(cell: cell)
+    }
+    
+    func didPassCategoryData(with expenseDetail: ExpenseDetail) {
+        presenter.categoryDataPassed(with: expenseDetail)
     }
 }
 
@@ -73,4 +75,5 @@ extension AddExpenseViewController: AddExpenseViewControllerProtocol {
         addExpenseView.update(with: model)
     }
 }
+
 
