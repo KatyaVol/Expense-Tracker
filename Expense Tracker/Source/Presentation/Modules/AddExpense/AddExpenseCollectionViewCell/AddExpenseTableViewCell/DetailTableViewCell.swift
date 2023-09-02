@@ -98,7 +98,6 @@ final class DetailTableViewCell: UITableViewCell {
 
 extension DetailTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("DetailTableViewCell: textField.text")
         guard let detailType = expenseDetail?.type else { return }
         delegate?.didPassTextfieldData(text: textField.text, type: detailType)
         }
