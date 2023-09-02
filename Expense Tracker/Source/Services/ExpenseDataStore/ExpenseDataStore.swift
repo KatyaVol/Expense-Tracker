@@ -40,4 +40,28 @@ final class ExpenseDataStore {
             }
         }
     }
+    
+    func changeModelWith(amount: String) {
+        currentExpenseDetails = currentExpenseDetails.map { section in
+            section.map { detail in
+                guard detail.type == .amount else { return detail }
+                return ExpenseDetail(type: detail.type,
+                                     title: detail.title,
+                                     image: detail.image,
+                                     text: amount)
+            }
+        }
+    }
+    
+    func changeModelWith(note: String) {
+        currentExpenseDetails = currentExpenseDetails.map { section in
+            section.map { detail in
+                guard detail.type == .note else { return detail }
+                return ExpenseDetail(type: detail.type,
+                                     title: detail.title,
+                                     image: detail.image,
+                                     text: note)
+            }
+        }
+    }
 }

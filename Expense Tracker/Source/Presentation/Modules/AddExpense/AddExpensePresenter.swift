@@ -8,12 +8,14 @@
 import Foundation
 
 protocol AddExpensePresenterProtocol: AnyObject {
-    func categoryImageTapped()
+    func categoryStackViewTapped()
     func dateLabelTapped(cell: DateTableViewCell)
+    func saveButtonTapped()
+    func textFieldDataPassed(text: String?, type: ExpenseDetailType)
 }
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
-    
+  
     // MARK: - Properties
     
     weak var view: AddExpenseViewControllerProtocol?
@@ -38,7 +40,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     
     // MARK: - Internal methods
     
-    func categoryImageTapped() {
+    func categoryStackViewTapped() {
         guard let coordinator = coordinator else { return }
         coordinator.pushCategory(coordinator: coordinator)
     }
@@ -48,6 +50,50 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         coordinator.showCalendarPopover(coordinator: coordinator, cell: cell)
     }
     
+    func textFieldDataPassed(text: String?, type: ExpenseDetailType) {
+        switch type {
+        case .amount:
+            if let amount = text {
+                dataStore.changeModelWith(amount: amount)
+            }
+        case .note:
+            if let note = text {
+                dataStore.changeModelWith(note: note)
+            }
+        default:
+            break
+        }
+    }
+    
+    func saveButtonTapped() {
+        let updatedDataStoreDetails = dataStore.currentExpenseDetails
+        for updatedDataStoreDetail in updatedDataStoreDetails {
+            for detail in updatedDataStoreDetail {
+                switch detail.type {
+                case .category:
+                    if let categoryText = detail.text {
+                        print("Category text: \(categoryText)")
+                    }
+                    if let categoryImage = detail.image {
+                        print("Category Image Address: \(categoryImage)")
+                    }
+                case .date:
+                    if let dateValue = detail.text {
+                        print("Date: \(dateValue)")
+                    }
+                case .amount:
+                    if let amountValue = detail.text {
+                        print("Amount: \(amountValue)")
+                    }
+                case .note:
+                    if let noteValue = detail.text {
+                        print("Note: \(noteValue)")
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Private methods
     
     private func updateCategory(_ category: Category) {
@@ -55,13 +101,25 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
-    
+
     private func updateDate(_ date: Date) {
         dataStore.changeModelWith(date: date)
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
-    
+
+    private func updateAmount(_ amount: String) {
+        dataStore.changeModelWith(amount: amount)
+        let updatedModel = dataStore.currentExpenseDetails
+        view?.updateModel(updatedModel)
+    }
+
+    private func updateNote(_ note: String) {
+        dataStore.changeModelWith(note: note)
+        let updatedModel = dataStore.currentExpenseDetails
+        view?.updateModel(updatedModel)
+    }
+  
     // MARK: - Actions
     
     @objc private func updateCategoryImage(_ notification: Notification) {

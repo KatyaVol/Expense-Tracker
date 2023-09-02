@@ -8,8 +8,9 @@
 import UIKit
 
 protocol AddExpenseCollectionViewCellDelegate: AnyObject {
-    func didTapCategoryImage()
+    func didTapCategoryStackView()
     func didTapDateLabel(cell: DateTableViewCell)
+    func didPassTextfieldData(text: String?, type: ExpenseDetailType)
 }
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
@@ -98,6 +99,7 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
             
         case .amount, .note:
             let cell: DetailTableViewCell = tableView.dequeueCell(for: indexPath)
+            cell.delegate = self
             cell.selectionStyle = .none
             cell.setDetailText(expenseDetail: expenseDetail)
             return cell
@@ -115,8 +117,8 @@ extension AddExpenseCollectionViewCell: UITableViewDataSource {
 // MARK: - CategoryTableViewCellDelegate
 
 extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
-    func didTapCategoryImage() {
-        delegate?.didTapCategoryImage()
+    func didTapCategoryStackView() {
+        delegate?.didTapCategoryStackView()
     }
 }
 
@@ -125,5 +127,13 @@ extension AddExpenseCollectionViewCell: CategoryTableViewCellDelegate {
 extension AddExpenseCollectionViewCell: DateTableViewCellDelegate {
     func didTapDateLabel(cell: DateTableViewCell) {
         delegate?.didTapDateLabel(cell: cell)
+    }
+}
+
+// MARK: - DateTableViewCellDelegate
+
+extension AddExpenseCollectionViewCell: DetailTableViewCellDelegate {
+    func didPassTextfieldData(text: String?, type: ExpenseDetailType) {
+        delegate?.didPassTextfieldData(text: text, type: type)
     }
 }
