@@ -75,7 +75,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
                         print("Category text: \(categoryText)")
                     }
                     if let categoryImage = detail.image {
-                        print("Category Image Address: \(categoryImage)")
+                        print("Category Image: \(categoryImage)")
                     }
                 case .date:
                     if let dateValue = detail.text {
