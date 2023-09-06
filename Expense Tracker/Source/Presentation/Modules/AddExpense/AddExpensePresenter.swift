@@ -53,67 +53,54 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     func textFieldDataPassed(text: String?, type: ExpenseDetailType) {
         switch type {
         case .amount:
-            if let amount = text {
-                dataStore.changeModelWith(amount: amount)
-            }
+            guard let amount = text else { return }
+            dataStore.changeModelWith(amount: amount)
         case .note:
-            if let note = text {
-                dataStore.changeModelWith(note: note)
-            }
+            guard let note = text else { return }
+            dataStore.changeModelWith(note: note)
         default:
             break
         }
     }
- 
+    
     func saveButtonTapped() {
-        let updatedDataStoreDetails = dataStore.currentExpenseDetails
-        for updatedDataStoreDetail in updatedDataStoreDetails {
-            for detail in updatedDataStoreDetail {
-                switch detail.type {
-                case .category:
-                    if let categoryText = detail.text {
-                        print("Category text: \(categoryText)")
-                    }
-                    if let categoryImage = detail.image {
-                        print("Category Image: \(categoryImage)")
-                    }
-                case .date:
-                    if let dateValue = detail.text {
-                        print("Date: \(dateValue)")
-                    }
-                case .amount:
-                    if let amountValue = detail.text {
-                        print("Amount: \(amountValue)")
-                    }
-                case .note:
-                    if let noteValue = detail.text {
-                        print("Note: \(noteValue)")
-                    }
-                }
-            }
-        }
+        guard let expense = dataStore.getCurrentExpense() else { return }
+        
+        guard let category = expense.category else { return }
+        print("Category: \(String(describing: category.text)), Image: \(String(describing: category.image))")
+        
+        guard let date = expense.date else { return }
+        let formattedDate = DateFormatter.dateString(from: date)
+        print("Date: \(formattedDate)")
+        
+        guard let amount = expense.amount else { return }
+        print("Amount: \(amount)")
+        
+        guard let note = expense.note else { return }
+        print("Note: \(note)")
     }
     
-   // MARK: - Private methods
+    
+    // MARK: - Private methods
     
     private func updateCategory(_ category: Category) {
         dataStore.changeModelWith(category: category)
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
-
+    
     private func updateDate(_ date: Date) {
         dataStore.changeModelWith(date: date)
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
-
+    
     private func updateAmount(_ amount: String) {
         dataStore.changeModelWith(amount: amount)
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
-
+    
     private func updateNote(_ note: String) {
         dataStore.changeModelWith(note: note)
         let updatedModel = dataStore.currentExpenseDetails

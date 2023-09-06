@@ -55,7 +55,7 @@ extension AddExpenseViewController: AddExpenseViewDelegate {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
-    func didPassTextfieldData(text: String?, type: ExpenseDetailType) {
+    func didPassTextFieldData(text: String?, type: ExpenseDetailType) {
         presenter.textFieldDataPassed(text: text, type: type)
     }
     

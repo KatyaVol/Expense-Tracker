@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailTableViewCellDelegate: AnyObject {
-    func didPassTextfieldData(text: String?, type: ExpenseDetailType)
+    func didPassTextFieldData(text: String?, type: ExpenseDetailType)
 }
 
 final class DetailTableViewCell: UITableViewCell {
@@ -99,7 +99,7 @@ final class DetailTableViewCell: UITableViewCell {
 extension DetailTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let detailType = expenseDetail?.type else { return }
-        delegate?.didPassTextfieldData(text: textField.text, type: detailType)
+        delegate?.didPassTextFieldData(text: textField.text, type: detailType)
         }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

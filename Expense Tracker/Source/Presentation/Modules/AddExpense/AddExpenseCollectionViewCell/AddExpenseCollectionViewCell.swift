@@ -10,7 +10,7 @@ import UIKit
 protocol AddExpenseCollectionViewCellDelegate: AnyObject {
     func didTapCategoryStackView()
     func didTapDateLabel(cell: DateTableViewCell)
-    func didPassTextfieldData(text: String?, type: ExpenseDetailType)
+    func didPassTextFieldData(text: String?, type: ExpenseDetailType)
 }
 
 final class AddExpenseCollectionViewCell: UICollectionViewCell {
@@ -133,7 +133,7 @@ extension AddExpenseCollectionViewCell: DateTableViewCellDelegate {
 // MARK: - DateTableViewCellDelegate
 
 extension AddExpenseCollectionViewCell: DetailTableViewCellDelegate {
-    func didPassTextfieldData(text: String?, type: ExpenseDetailType) {
-        delegate?.didPassTextfieldData(text: text, type: type)
+    func didPassTextFieldData(text: String?, type: ExpenseDetailType) {
+        delegate?.didPassTextFieldData(text: text, type: type)
     }
 }
