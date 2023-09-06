@@ -5,15 +5,19 @@
 //  Created by Ekaterina Volobueva on 14.06.2023.
 //
 
-
 import UIKit
+
+protocol DetailTableViewCellDelegate: AnyObject {
+    func didPassTextFieldData(text: String?, type: ExpenseDetailType)
+}
 
 final class DetailTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
     private var expenseDetail: ExpenseDetail?
-    
+    weak var delegate: DetailTableViewCellDelegate?
+
     // MARK: - UI Elements
     
     private let titleLabel: UILabel = {
@@ -30,6 +34,7 @@ final class DetailTableViewCell: UITableViewCell {
         textField.font = UIFont.tableViewFont
         textField.textColor = UIColor.customGrayColor
         textField.textAlignment = .right
+        textField.delegate = self
         return textField
     }()
     
@@ -54,6 +59,7 @@ final class DetailTableViewCell: UITableViewCell {
     // MARK: - Public Methods
     
     func setDetailText(expenseDetail: ExpenseDetail) {
+        self.expenseDetail = expenseDetail
         titleLabel.text = expenseDetail.title
         detailTextField.placeholder = expenseDetail.text
         
@@ -91,6 +97,11 @@ final class DetailTableViewCell: UITableViewCell {
 }
 
 extension DetailTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let detailType = expenseDetail?.type else { return }
+        delegate?.didPassTextFieldData(text: textField.text, type: detailType)
+        }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return true

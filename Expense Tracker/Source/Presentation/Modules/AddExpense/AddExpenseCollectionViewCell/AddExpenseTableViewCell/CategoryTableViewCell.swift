@@ -9,7 +9,6 @@ import UIKit
 
 protocol CategoryTableViewCellDelegate: AnyObject {
     func didTapCategoryStackView()
-    func didPassCategoryData(with expenseDetail: ExpenseDetail)
 }
 
 final class CategoryTableViewCell: UITableViewCell {
@@ -96,9 +95,6 @@ final class CategoryTableViewCell: UITableViewCell {
     
     @objc private func categoryStackViewTapped() {
         delegate?.didTapCategoryStackView()
-        if let expenseDetail = self.expenseDetail {
-            delegate?.didPassCategoryData(with: expenseDetail)
-        }
     }
     
     // MARK: - Private Methods

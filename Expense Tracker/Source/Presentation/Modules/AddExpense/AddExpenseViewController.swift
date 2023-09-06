@@ -55,16 +55,16 @@ extension AddExpenseViewController: AddExpenseViewDelegate {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
+    func didPassTextFieldData(text: String?, type: ExpenseDetailType) {
+        presenter.textFieldDataPassed(text: text, type: type)
+    }
+    
     func didTapCategoryStackView() {
         presenter.categoryStackViewTapped()
     }
     
     func didTapDateLabel(cell: DateTableViewCell) {
         presenter.dateLabelTapped(cell: cell)
-    }
-    
-    func didPassCategoryData(with expenseDetail: ExpenseDetail) {
-        presenter.categoryDataPassed(with: expenseDetail)
     }
 }
 

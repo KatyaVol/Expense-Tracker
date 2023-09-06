@@ -10,8 +10,8 @@ import Foundation
 protocol AddExpensePresenterProtocol: AnyObject {
     func categoryStackViewTapped()
     func dateLabelTapped(cell: DateTableViewCell)
-    func categoryDataPassed(with expenseDetail: ExpenseDetail)
     func saveButtonTapped()
+    func textFieldDataPassed(text: String?, type: ExpenseDetailType)
 }
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
@@ -21,13 +21,11 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     weak var view: AddExpenseViewControllerProtocol?
     var coordinator: AddExpenseCoordinatorProtocol?
     private let dataStore: ExpenseDataStore
-    private let storage: CoreDataStorageProtocol
     
     // MARK: - Init
     
     init(dataStore: ExpenseDataStore = ExpenseDataStore.shared, storage: CoreDataStorage) {
         self.dataStore = dataStore
-        self.storage = storage
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateCategoryImage(_:)),
@@ -52,51 +50,41 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         coordinator.showCalendarPopover(coordinator: coordinator, cell: cell)
     }
     
-    func categoryDataPassed(with expenseDetail: ExpenseDetail) {
-        // Выводим текст в консоль
-        if let textValue = expenseDetail.text {
-            print("Category Text in Presentor : \(textValue)")
-        } else {
-            print("Category Text in Presentor : None")
-        }
-        
-        // Выводим описание картинки в консоль
-        if let imageValue = expenseDetail.image {
-            print("Category Image Description in Presentor : \(imageValue.description)")
-        } else {
-            print("Category Image Description in Presentor : None")
+    func textFieldDataPassed(text: String?, type: ExpenseDetailType) {
+        switch type {
+        case .amount:
+            guard let amount = text else { return }
+            dataStore.changeModelWith(amount: amount)
+        case .note:
+            guard let note = text else { return }
+            dataStore.changeModelWith(note: note)
+        default:
+            break
         }
     }
     
     func saveButtonTapped() {
-        let currentExpenseDetails = dataStore.currentExpenseDetails
-        for expenseDetailArray in currentExpenseDetails {
-            for detail in expenseDetailArray {
-                if let textValue = detail.text, detail.type == .category {
-                    print("Category Text in Presenter: \(textValue)")
-                }
-                if let imageValue = detail.image {
-                    print("Category Image Description in Presenter: \(imageValue.description)")
-                }
-            }
-        }
+        guard let expense = dataStore.getCurrentExpense() else { return }
+        
+        guard let category = expense.category else { return }
+        print("Category: \(String(describing: category.text)), Image: \(String(describing: category.image))")
+        
+        guard let date = expense.date else { return }
+        let formattedDate = DateFormatter.dateString(from: date)
+        print("Date: \(formattedDate)")
+        
+        guard let amount = expense.amount else { return }
+        print("Amount: \(amount)")
+        
+        guard let note = expense.note else { return }
+        print("Note: \(note)")
     }
+    
     
     // MARK: - Private methods
     
     private func updateCategory(_ category: Category) {
-        print("Before update:")
-        print(dataStore.currentExpenseDetails.description)
-        print("--------------------------")
-    
-        
         dataStore.changeModelWith(category: category)
-        
-        // Выводим информацию после обновления
-        print("After update:")
-        print(dataStore.currentExpenseDetails.description)
-        print("--------------------------")
-        
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
@@ -107,6 +95,18 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         view?.updateModel(updatedModel)
     }
     
+    private func updateAmount(_ amount: String) {
+        dataStore.changeModelWith(amount: amount)
+        let updatedModel = dataStore.currentExpenseDetails
+        view?.updateModel(updatedModel)
+    }
+    
+    private func updateNote(_ note: String) {
+        dataStore.changeModelWith(note: note)
+        let updatedModel = dataStore.currentExpenseDetails
+        view?.updateModel(updatedModel)
+    }
+  
     // MARK: - Actions
     
     @objc private func updateCategoryImage(_ notification: Notification) {
