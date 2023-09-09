@@ -8,7 +8,8 @@
 import UIKit
 
 protocol AddExpenseViewControllerProtocol: AnyObject {
-   func updateModel(_ model: [[ExpenseDetail]])
+    func updateModel(_ model: [[ExpenseDetail]])
+    func printFetchedDataFromCoreData(_ data: [UserInput])
 }
 
 final class AddExpenseViewController: UIViewController {
@@ -40,6 +41,7 @@ final class AddExpenseViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.systemBackground
+        presenter.printFetchedDataFromCoreData()
     }
 }
 
@@ -73,6 +75,18 @@ extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
 extension AddExpenseViewController: AddExpenseViewControllerProtocol {
     func updateModel(_ model: [[ExpenseDetail]]) {
         addExpenseView.update(with: model)
+    }
+    
+    func printFetchedDataFromCoreData(_ data: [UserInput]) {
+        data.forEach { printFetchedData(from: $0) }
+    }
+    
+    private func printFetchedData(from data: UserInput) {
+        print("Fetched Category Text: \(String(describing: data.categoryText))")
+        print("Fetched Category Image: \(String(describing: data.categoryImage.flatMap { UIImage(data: $0) }))")
+        print("Fetched Date: \(String(describing: data.date.map { DateFormatter.dateString(from: $0) }))")
+        print("Fetched Amount: \(String(describing: data.amount))")
+        print("Fetched Note: \(String(describing: data.note))")
     }
 }
 

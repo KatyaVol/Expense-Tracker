@@ -15,7 +15,7 @@ final class AddExpenseModuleBuilder {
         let container = CoreDataContainer()
         let storage = CoreDataStorage(container: container)
         
-        let presenter = AddExpensePresenter(storage: storage)
+        let presenter = AddExpensePresenter(coreDataStorage: storage)
         let viewController = AddExpenseViewController(presenter: presenter)
         presenter.view = viewController
         let navigationController = UINavigationController(rootViewController: viewController)

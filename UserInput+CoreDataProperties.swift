@@ -2,7 +2,7 @@
 //  UserInput+CoreDataProperties.swift
 //  Expense Tracker
 //
-//  Created by Ekaterina Volobueva on 29.08.2023.
+//  Created by Ekaterina Volobueva on 07.09.2023.
 //
 //
 
@@ -14,10 +14,12 @@ extension UserInput {
         return NSFetchRequest<UserInput>(entityName: "UserInput")
     }
 
-    @NSManaged public var inputText: String?
+    @NSManaged public var categoryText: String?
+    @NSManaged public var categoryImage: Data?
+    @NSManaged public var date: Date?
+    @NSManaged public var amount: String?
+    @NSManaged public var note: String?
 
 }
 
-extension UserInput : Identifiable {
-
-}
+extension UserInput : Identifiable {}
