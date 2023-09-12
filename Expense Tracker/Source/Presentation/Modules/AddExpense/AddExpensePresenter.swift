@@ -83,7 +83,6 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         print("Note: \(note)")
         
         coreDataStorage.saveData(expense: expense)
-        print("Data saved successfully")
     }
     
     func printFetchedDataFromCoreData() {
