@@ -12,6 +12,7 @@ protocol AddExpensePresenterProtocol: AnyObject {
     func dateLabelTapped(cell: DateTableViewCell)
     func saveButtonTapped()
     func textFieldDataPassed(text: String?, type: ExpenseDetailType)
+    func printFetchedDataFromCoreData()
 }
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
@@ -21,11 +22,13 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     weak var view: AddExpenseViewControllerProtocol?
     var coordinator: AddExpenseCoordinatorProtocol?
     private let dataStore: ExpenseDataStore
+    private let coreDataStorage: CoreDataStorage
     
     // MARK: - Init
     
-    init(dataStore: ExpenseDataStore = ExpenseDataStore.shared, storage: CoreDataStorage) {
+    init(dataStore: ExpenseDataStore = ExpenseDataStore.shared, coreDataStorage: CoreDataStorage) {
         self.dataStore = dataStore
+        self.coreDataStorage = coreDataStorage
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateCategoryImage(_:)),
@@ -78,9 +81,18 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         
         guard let note = expense.note else { return }
         print("Note: \(note)")
+        
+        coreDataStorage.saveData(expense: expense)
     }
     
-    
+    func printFetchedDataFromCoreData() {
+        guard let fetchedData = coreDataStorage.fetchData() else {
+            print("No data fetched from CoreData")
+            return
+        }
+        view?.printFetchedDataFromCoreData(fetchedData)
+    }
+
     // MARK: - Private methods
     
     private func updateCategory(_ category: Category) {

@@ -28,6 +28,20 @@ final class CoreDataStorage: CoreDataStorageProtocol {
     
     // MARK: - Public Method
     
+    func saveData(expense: Expense) {
+        let userInput = UserInput(context: context)
+        
+        userInput.categoryText = expense.category?.text
+        userInput.date = expense.date
+        userInput.amount = expense.amount
+        userInput.note = expense.note
+        
+        if let categoryImage = expense.category?.image {
+            userInput.categoryImage = categoryImage.pngData()
+        }
+        saveContext()
+    }
+    
     func fetchData() -> [UserInput]? {
         let fetchRequest = NSFetchRequest<UserInput>(entityName: "UserInput")
         do {
