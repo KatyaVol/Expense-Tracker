@@ -24,6 +24,8 @@
 		096AF39A2A83A5A5009B7012 /* ExpenseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */; };
 		0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */; };
 		0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */; };
+		097808902AB18FB500B495C1 /* UserInput+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0978088E2AB18FB500B495C1 /* UserInput+CoreDataClass.swift */; };
+		097808912AB18FB500B495C1 /* UserInput+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0978088F2AB18FB500B495C1 /* UserInput+CoreDataProperties.swift */; };
 		097AAA142A61AB2D00498201 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097AAA132A61AB2D00498201 /* CustomButton.swift */; };
 		0980BDC02A7694B800D59AD0 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980BDBF2A7694B800D59AD0 /* Notification.Name+Extension.swift */; };
 		0987A2E92A68224B00B5E639 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0987A2E82A68224B00B5E639 /* ScreenSize.swift */; };
@@ -42,8 +44,6 @@
 		09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */; };
 		09DA2F832A1BA1B500758A46 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DA2F822A1BA1B500758A46 /* DateTableViewCell.swift */; };
 		09DB34322A10E630001964D5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB34312A10E630001964D5 /* Colors.swift */; };
-		09DB6F212AAA28BD00A0BA34 /* UserInput+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB6F1F2AAA28BD00A0BA34 /* UserInput+CoreDataClass.swift */; };
-		09DB6F222AAA28BD00A0BA34 /* UserInput+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB6F202AAA28BD00A0BA34 /* UserInput+CoreDataProperties.swift */; };
 		09E16F762A4259C4007CD0A9 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F752A4259C4007CD0A9 /* CategoryView.swift */; };
 		09E16F782A4259EA007CD0A9 /* CategoryModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */; };
 		09E16F7A2A4259FD007CD0A9 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */; };
@@ -74,6 +74,8 @@
 		096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDataStore.swift; sourceTree = "<group>"; };
 		0977EDC62A2798EE00E56822 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		0977EDC82A27991B00E56822 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		0978088E2AB18FB500B495C1 /* UserInput+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInput+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0978088F2AB18FB500B495C1 /* UserInput+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInput+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		097AAA132A61AB2D00498201 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		0980BDBF2A7694B800D59AD0 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
 		0987A2E82A68224B00B5E639 /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 		09DA2F802A1B9B1000758A46 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		09DA2F822A1BA1B500758A46 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		09DB34312A10E630001964D5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		09DB6F1F2AAA28BD00A0BA34 /* UserInput+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInput+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		09DB6F202AAA28BD00A0BA34 /* UserInput+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInput+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		09E16F752A4259C4007CD0A9 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModuleBuilder.swift; sourceTree = "<group>"; };
 		09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
@@ -289,8 +289,8 @@
 		09A52A6B2A8D249F00809CB1 /* CoreDataStack */ = {
 			isa = PBXGroup;
 			children = (
-				09DB6F1F2AAA28BD00A0BA34 /* UserInput+CoreDataClass.swift */,
-				09DB6F202AAA28BD00A0BA34 /* UserInput+CoreDataProperties.swift */,
+				0978088F2AB18FB500B495C1 /* UserInput+CoreDataProperties.swift */,
+				0978088E2AB18FB500B495C1 /* UserInput+CoreDataClass.swift */,
 				09A52A6E2A8D2FDE00809CB1 /* CoreDataContainer.swift */,
 				09A52A6C2A8D24C200809CB1 /* CoreDataStorage.swift */,
 			);
@@ -559,7 +559,7 @@
 				09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */,
 				0977EDC72A2798EE00E56822 /* UITableView+Extension.swift in Sources */,
 				094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */,
-				09DB6F222AAA28BD00A0BA34 /* UserInput+CoreDataProperties.swift in Sources */,
+				097808912AB18FB500B495C1 /* UserInput+CoreDataProperties.swift in Sources */,
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
@@ -573,7 +573,7 @@
 				09DA2F832A1BA1B500758A46 /* DateTableViewCell.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
 				09145B0A2A5B34160089C1BC /* CalendarModuleBuilder.swift in Sources */,
-				09DB6F212AAA28BD00A0BA34 /* UserInput+CoreDataClass.swift in Sources */,
+				097808902AB18FB500B495C1 /* UserInput+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  UserInput+CoreDataClass.swift
 //  Expense Tracker
 //
-//  Created by Ekaterina Volobueva on 07.09.2023.
+//  Created by Ekaterina Volobueva on 13.09.2023.
 //
 //
 
