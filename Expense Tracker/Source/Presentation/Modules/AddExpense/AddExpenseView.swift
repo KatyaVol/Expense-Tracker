@@ -76,19 +76,15 @@ final class AddExpenseView: UIView {
         return imageView
     }()
     
-    private lazy var segmentedControl: UISegmentedControl = {
-        let segmentedControl = UISegmentedControl(items: [
-            LocalizedStrings.income,
-            LocalizedStrings.expense
-        ])
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.segmentedControlFont], for: .normal)
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.addTarget(self,
-                                   action: #selector(segmentedControlValueChanged(_:)),
-                                   for: .valueChanged)
+    private lazy var segmentedControl: CustomSegmentedControl = {
+        let segmentedControl = CustomSegmentedControl()
+        segmentedControl.valueChangedCallBack = { [weak self] index in
+            let indexPath = IndexPath(item: index, section: 0)
+            self?.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
         return segmentedControl
     }()
-    
+
     // MARK: - Init
     
     init(delegate: AddExpenseViewDelegate) {
@@ -191,13 +187,7 @@ final class AddExpenseView: UIView {
     @objc private func buttonTapped() {
         delegate?.didTapSaveButton()
     }
-    
-    @objc private func segmentedControlValueChanged(_ segmentedControl: UISegmentedControl) {
-        let selectedIndex = segmentedControl.selectedSegmentIndex
-        let indexPath = IndexPath(item: selectedIndex, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
-    
+  
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
