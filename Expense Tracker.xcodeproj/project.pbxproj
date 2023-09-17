@@ -52,6 +52,7 @@
 		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
 		09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B112A06A30A00619F6B /* TabBarController.swift */; };
 		09F5FE2C2A7A90C4001139BF /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F5FE2B2A7A90C4001139BF /* DateFormatter+Extension.swift */; };
+		09F8B0402AB429CC001A11E4 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B03F2AB429CC001A11E4 /* CustomSegmentedControl.swift */; };
 		09FCCC752A8C34E800471764 /* Expense Tracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09FCCC732A8C34E800471764 /* Expense Tracker.xcdatamodeld */; };
 		BD4BBDE6CCD27F7940F34E93 /* Pods_Expense_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 604997D45E042619E849777C /* Pods_Expense_Tracker.framework */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09F49B112A06A30A00619F6B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		09F5FE2B2A7A90C4001139BF /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
+		09F8B03F2AB429CC001A11E4 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		09FCCC742A8C34E800471764 /* Expense Tracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Expense Tracker.xcdatamodel"; sourceTree = "<group>"; };
 		604997D45E042619E849777C /* Pods_Expense_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expense_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2065F209B01B4AF2A81CE62 /* Pods-Expense Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		097AAA112A61A98C00498201 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				09F8B03E2AB42987001A11E4 /* CustomSegmentedControl */,
 				097AAA122A61A9BB00498201 /* CustomButton */,
 			);
 			path = CustomComponents;
@@ -379,6 +382,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		09F8B03E2AB42987001A11E4 /* CustomSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				09F8B03F2AB429CC001A11E4 /* CustomSegmentedControl.swift */,
+			);
+			path = CustomSegmentedControl;
+			sourceTree = "<group>";
+		};
 		4CA0293FDA8DEBBC03ECDD97 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +549,7 @@
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				09145B0C2A5B342A0089C1BC /* CalendarPresenter.swift in Sources */,
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
+				09F8B0402AB429CC001A11E4 /* CustomSegmentedControl.swift in Sources */,
 				0980BDC02A7694B800D59AD0 /* Notification.Name+Extension.swift in Sources */,
 				09A52A6F2A8D2FDE00809CB1 /* CoreDataContainer.swift in Sources */,
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
