@@ -79,7 +79,7 @@ final class AddExpenseView: UIView {
     private lazy var segmentedControl: CustomSegmentedControl = {
         let segmentedControl = CustomSegmentedControl()
         segmentedControl.valueChangedCallBack = { [weak self] index in
-            let indexPath = IndexPath(item: index, section: 0)
+            let indexPath = IndexPath(item: index, section: .zero)
             self?.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
         return segmentedControl
