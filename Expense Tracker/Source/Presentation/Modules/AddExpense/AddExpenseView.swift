@@ -39,7 +39,8 @@ final class AddExpenseView: UIView {
     }()
     
     private lazy var saveButton: CustomButton = {
-        let button = CustomButton(title: LocalizedStrings.saveEntry)
+        let button = CustomButton(title: LocalizedStrings.saveEntry,
+                                  buttonState: .gray)
         button.buttonTappedCallback = { [weak self] in
             self?.delegate?.didTapSaveButton()
         }

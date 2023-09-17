@@ -13,11 +13,16 @@ final class CustomButton: UIButton {
     
     var buttonTappedCallback: (() -> Void)?
     
+    enum ButtonState {
+        case turquiose
+        case gray
+    }
+    
     // MARK: - Init
     
-    init(title: String) {
+    init(title: String, buttonState: ButtonState) {
         super.init(frame: .zero)
-        configureButton(title: title)
+        configureButton(title: title, buttonState: buttonState )
     }
     
     required init?(coder: NSCoder) {
@@ -26,9 +31,16 @@ final class CustomButton: UIButton {
     
     // MARK: - Private Methods
     
-    private func configureButton(title: String) {
+    private func configureButton(title: String, buttonState: ButtonState) {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = Colors.turquoiseColor
+        
+        switch buttonState {
+        case .turquiose:
+            backgroundColor = Colors.turquoiseColor
+        case .gray:
+            backgroundColor = Colors.buttonGrayColor
+        }
+        
         setTitleColor(.white, for: .normal)
         layer.cornerRadius = 12
         setTitle(title, for: .normal)

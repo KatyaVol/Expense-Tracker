@@ -43,7 +43,8 @@ final class CalendarView: UIView {
     }()
     
     private lazy var chooseButton: CustomButton = {
-        let button = CustomButton(title: LocalizedStrings.chooseButton)
+        let button = CustomButton(title: LocalizedStrings.chooseButton,
+                                  buttonState: .turquiose)
         button.buttonTappedCallback = { [weak self] in
             guard let date = self?.selectedDate else { return }
             self?.delegate?.didTapChooseButton(date: date)
