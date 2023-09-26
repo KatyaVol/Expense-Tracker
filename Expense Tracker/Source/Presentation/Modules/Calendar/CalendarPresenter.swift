@@ -16,12 +16,12 @@ final class CalendarPresenter: CalendarPresenterProtocol {
     // MARK: - Properties
     
     weak var view: CalendarViewControllerProtocol?
-    private let coordinator: AddExpenseCoordinatorProtocol
+    private let coordinator: ExpenseCollectionCoordinatorProtocol
     
     // MARK: - Init
     
     init(view: CalendarViewControllerProtocol? = nil,
-         coordinator: AddExpenseCoordinatorProtocol) {
+         coordinator: ExpenseCollectionCoordinatorProtocol) {
         self.view = view
         self.coordinator = coordinator
     }

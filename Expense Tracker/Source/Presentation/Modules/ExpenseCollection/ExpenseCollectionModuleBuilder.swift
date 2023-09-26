@@ -1,13 +1,13 @@
 //
-//  ModuleBuilder.swift
+//  ExpenseCollectionModuleBuilder.swift
 //  Expense Tracker
 //
-//  Created by Ekaterina Volobueva on 17.04.2023.
+//  Created by Ekaterina Volobueva on 25.09.2023.
 //
 
 import UIKit
 
-final class AddExpenseModuleBuilder {
+class ExpenseCollectionModuleBuilder {
     static func build() -> UIViewController {
         
         // MARK: - Assembly
@@ -15,8 +15,8 @@ final class AddExpenseModuleBuilder {
         let container = CoreDataContainer()
         let storage = CoreDataStorage(container: container)
         
-        let presenter = AddExpensePresenter(coreDataStorage: storage)
-        let viewController = AddExpenseViewController(presenter: presenter)
+        let presenter = ExpenseCollectionPresenter(coreDataStorage: storage)
+        let viewController = ExpenseCollectionViewController(presenter: presenter)
         presenter.view = viewController
         let navigationController = UINavigationController(rootViewController: viewController)
         let coordinator = ExpenseCollectionCoordinator(navigationController: navigationController)

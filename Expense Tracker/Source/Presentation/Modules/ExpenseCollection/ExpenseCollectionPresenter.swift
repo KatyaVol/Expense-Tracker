@@ -1,25 +1,23 @@
 //
-//  Presenter.swift
+//  ExpenseCollectionPresenter.swift
 //  Expense Tracker
 //
-//  Created by Ekaterina Volobueva on 17.04.2023.
+//  Created by Ekaterina Volobueva on 25.09.2023.
 //
 
 import Foundation
 
-protocol AddExpensePresenterProtocol: AnyObject {
+protocol ExpenseCollectionPresenterProtocol: AnyObject{
     func categoryStackViewTapped()
     func dateLabelTapped(cell: DateTableViewCell)
-    func saveButtonTapped()
     func textFieldDataPassed(text: String?, type: ExpenseDetailType)
-    func printFetchedDataFromCoreData()
 }
 
-final class AddExpensePresenter: AddExpensePresenterProtocol {
-  
+final class ExpenseCollectionPresenter: ExpenseCollectionPresenterProtocol {
+    
     // MARK: - Properties
     
-    weak var view: AddExpenseViewControllerProtocol?
+    weak var view: ExpenseCollectionViewControllerProtocol?
     var coordinator: ExpenseCollectionCoordinatorProtocol?
     private let dataStore: ExpenseDataStore
     private let coreDataStorage: CoreDataStorage
@@ -66,33 +64,6 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         }
     }
     
-    func saveButtonTapped() {
-        guard let expense = dataStore.getCurrentExpense() else { return }
-        
-        guard let category = expense.category else { return }
-        print("Category: \(String(describing: category.text)), Image: \(String(describing: category.image))")
-        
-        guard let date = expense.date else { return }
-        let formattedDate = DateFormatter.dateString(from: date)
-        print("Date: \(formattedDate)")
-        
-        guard let amount = expense.amount else { return }
-        print("Amount: \(amount)")
-        
-        guard let note = expense.note else { return }
-        print("Note: \(note)")
-        
-        coreDataStorage.saveData(expense: expense)
-    }
-    
-    func printFetchedDataFromCoreData() {
-        guard let fetchedData = coreDataStorage.fetchData() else {
-            print("No data fetched from CoreData")
-            return
-        }
-        view?.printFetchedDataFromCoreData(fetchedData)
-    }
-
     // MARK: - Private methods
     
     private func updateCategory(_ category: Category) {
@@ -118,7 +89,7 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         let updatedModel = dataStore.currentExpenseDetails
         view?.updateModel(updatedModel)
     }
-  
+    
     // MARK: - Actions
     
     @objc private func updateCategoryImage(_ notification: Notification) {

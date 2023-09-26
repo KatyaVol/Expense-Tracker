@@ -8,12 +8,12 @@
 import UIKit
 
 final class CategoryModuleBuilder {
-    static func build(coordinator: AddExpenseCoordinatorProtocol) -> UIViewController {
+    static func build(coordinator: ExpenseCollectionCoordinatorProtocol) -> UIViewController {
         
         // MARK: - Assembly
         
         let presenter = CategoryPresenter(coordinator: coordinator)
-     
+        
         let viewController = CategoryViewController(presenter: presenter)
         presenter.view = viewController
         

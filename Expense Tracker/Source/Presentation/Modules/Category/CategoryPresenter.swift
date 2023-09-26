@@ -15,12 +15,12 @@ final class CategoryPresenter: CategoryPresenterProtocol {
     // MARK: - Properties
     
     weak var view: CategoryViewControllerProtocol?
-    private let coordinator: AddExpenseCoordinatorProtocol
+    private let coordinator: ExpenseCollectionCoordinatorProtocol
     
     // MARK: - Init
     
     init(view: CategoryViewControllerProtocol? = nil,
-         coordinator: AddExpenseCoordinatorProtocol) {
+         coordinator: ExpenseCollectionCoordinatorProtocol) {
         self.view = view
         self.coordinator = coordinator
     }
