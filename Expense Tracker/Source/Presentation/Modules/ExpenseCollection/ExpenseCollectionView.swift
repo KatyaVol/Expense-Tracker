@@ -15,9 +15,12 @@ protocol ExpenseCollectionViewDelegate: AnyObject {
 
 class ExpenseCollectionView: UIView {
     
-    // MARK: - Private properties
+    // MARK: - Properties
     
     weak var delegate: ExpenseCollectionViewDelegate?
+    
+    // MARK: - Private properties
+    
     private let dataStore = ExpenseDataStore.shared
     private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails
     

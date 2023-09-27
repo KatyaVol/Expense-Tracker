@@ -14,9 +14,9 @@ protocol ExpenseCollectionCoordinatorProtocol: CoordinatorProtocol {
 
 final class ExpenseCollectionCoordinator: NSObject,ExpenseCollectionCoordinatorProtocol{
     
-    // MARK: - Private properties
+    // MARK: - Properties
     
-    private(set) var navigationController: UINavigationController
+    let navigationController: UINavigationController
     
     // MARK: - Init
     

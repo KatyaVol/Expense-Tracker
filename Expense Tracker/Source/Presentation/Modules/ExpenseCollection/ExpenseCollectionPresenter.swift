@@ -19,6 +19,9 @@ final class ExpenseCollectionPresenter: ExpenseCollectionPresenterProtocol {
     
     weak var view: ExpenseCollectionViewControllerProtocol?
     var coordinator: ExpenseCollectionCoordinatorProtocol?
+    
+    // MARK: - Private properties
+    
     private let dataStore: ExpenseDataStore
     private let coreDataStorage: CoreDataStorage
     
