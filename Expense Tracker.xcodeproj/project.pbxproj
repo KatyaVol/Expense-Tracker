@@ -19,6 +19,10 @@
 		092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */; };
 		094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094224F72A195FD000BEC368 /* UIView+Extension.swift */; };
 		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
+		0957D5B92AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */; };
+		0957D5BB2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */; };
+		0957D5BD2AC1D938006ADD16 /* ExpenseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5BC2AC1D938006ADD16 /* ExpenseCollectionView.swift */; };
+		0957D5C02AC1DBA1006ADD16 /* ExpenseCollectionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5BF2AC1DBA1006ADD16 /* ExpenseCollectionCoordinator.swift */; };
 		0959077E2A39D03E004E8542 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0959077D2A39D03E004E8542 /* DetailTableViewCell.swift */; };
 		096854A029F7FFF400969D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */; };
 		096AF39A2A83A5A5009B7012 /* ExpenseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */; };
@@ -48,6 +52,7 @@
 		09E16F782A4259EA007CD0A9 /* CategoryModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */; };
 		09E16F7A2A4259FD007CD0A9 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */; };
 		09E16F802A4339C0007CD0A9 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E16F7F2A4339C0007CD0A9 /* CategoryCollectionViewCell.swift */; };
+		09EA953A2AC07CE300961DB0 /* ExpenseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EA95392AC07CE300961DB0 /* ExpenseCollectionViewController.swift */; };
 		09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */; };
 		09F49B102A069E8000619F6B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B0F2A069E8000619F6B /* AppCoordinator.swift */; };
 		09F49B122A06A30A00619F6B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F49B112A06A30A00619F6B /* TabBarController.swift */; };
@@ -70,6 +75,10 @@
 		092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		094224F72A195FD000BEC368 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionPresenter.swift; sourceTree = "<group>"; };
+		0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionModuleBuilder.swift; sourceTree = "<group>"; };
+		0957D5BC2AC1D938006ADD16 /* ExpenseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionView.swift; sourceTree = "<group>"; };
+		0957D5BF2AC1DBA1006ADD16 /* ExpenseCollectionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionCoordinator.swift; sourceTree = "<group>"; };
 		0959077D2A39D03E004E8542 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		0968549F29F7FFF400969D59 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		096AF3992A83A5A5009B7012 /* ExpenseDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDataStore.swift; sourceTree = "<group>"; };
@@ -102,6 +111,7 @@
 		09E16F772A4259EA007CD0A9 /* CategoryModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModuleBuilder.swift; sourceTree = "<group>"; };
 		09E16F792A4259FD007CD0A9 /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
 		09E16F7F2A4339C0007CD0A9 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		09EA95392AC07CE300961DB0 /* ExpenseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionViewController.swift; sourceTree = "<group>"; };
 		09EE90EC2A03CBE80017CC3F /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		09F49B0F2A069E8000619F6B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		09F49B112A06A30A00619F6B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -166,6 +176,26 @@
 				09DA2F7F2A1B9ADA00758A46 /* AddExpenseTableViewCell */,
 			);
 			path = AddExpenseCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		0957D5B72AC1C54C006ADD16 /* ExpenseCollection */ = {
+			isa = PBXGroup;
+			children = (
+				0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */,
+				09EA95392AC07CE300961DB0 /* ExpenseCollectionViewController.swift */,
+				0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */,
+				0957D5BC2AC1D938006ADD16 /* ExpenseCollectionView.swift */,
+				0957D5BE2AC1DB6D006ADD16 /* ExpenseCollectionCoordinator */,
+			);
+			path = ExpenseCollection;
+			sourceTree = "<group>";
+		};
+		0957D5BE2AC1DB6D006ADD16 /* ExpenseCollectionCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0957D5BF2AC1DBA1006ADD16 /* ExpenseCollectionCoordinator.swift */,
+			);
+			path = ExpenseCollectionCoordinator;
 			sourceTree = "<group>";
 		};
 		096AF3982A83A574009B7012 /* ExpenseDataStore */ = {
@@ -237,6 +267,7 @@
 		097BFAAB29F5A39100945B9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0957D5B72AC1C54C006ADD16 /* ExpenseCollection */,
 				09234BEC29ED6D8E002A9E9C /* AddExpense */,
 				09145B042A5B11920089C1BC /* Calendar */,
 				09E16F742A42593F007CD0A9 /* Category */,
@@ -563,6 +594,7 @@
 				09FCCC752A8C34E800471764 /* Expense Tracker.xcdatamodeld in Sources */,
 				09E16F782A4259EA007CD0A9 /* CategoryModuleBuilder.swift in Sources */,
 				0959077E2A39D03E004E8542 /* DetailTableViewCell.swift in Sources */,
+				0957D5BD2AC1D938006ADD16 /* ExpenseCollectionView.swift in Sources */,
 				09145B062A5B11BA0089C1BC /* CalendarViewController.swift in Sources */,
 				09B84CB62A0C0EFC00EB4B95 /* AddExpenseCoordinator.swift in Sources */,
 				0977EDC92A27991B00E56822 /* UICollectionView+Extension.swift in Sources */,
@@ -575,12 +607,16 @@
 				09EE90ED2A03CBE80017CC3F /* AddExpenseView.swift in Sources */,
 				09ACC81B2A1511320082343F /* CategoryViewController.swift in Sources */,
 				09B84CB42A0C0DF100EB4B95 /* Category.swift in Sources */,
+				0957D5BB2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift in Sources */,
 				0987A2E92A68224B00B5E639 /* ScreenSize.swift in Sources */,
 				09E16F762A4259C4007CD0A9 /* CategoryView.swift in Sources */,
 				098BA6D02A0EBD390007C633 /* UIColor+Extension.swift in Sources */,
+				0957D5C02AC1DBA1006ADD16 /* ExpenseCollectionCoordinator.swift in Sources */,
 				0916C49F2A312CB40016C7C1 /* UIFonts+Extension.swift in Sources */,
 				09B264CD29F5CF1300FC1B2E /* Strings.swift in Sources */,
+				09EA953A2AC07CE300961DB0 /* ExpenseCollectionViewController.swift in Sources */,
 				09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */,
+				0957D5B92AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift in Sources */,
 				091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */,
 				09DA2F832A1BA1B500758A46 /* DateTableViewCell.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,

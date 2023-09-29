@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 
 final class CalendarModuleBuilder {
-    static func build(coordinator: AddExpenseCoordinatorProtocol, popoverDelegate: UIPopoverPresentationControllerDelegate, cell: DateTableViewCell) -> UIViewController {
+    static func build(coordinator: ExpenseCollectionCoordinatorProtocol, popoverDelegate: UIPopoverPresentationControllerDelegate, cell: DateTableViewCell) -> UIViewController {
         
         // MARK: - Assembly
         
@@ -17,7 +17,7 @@ final class CalendarModuleBuilder {
         let viewController = CalendarViewController(presenter: presenter)
         presenter.view = viewController
         
-        viewController.modalPresentationStyle = .popover
+        viewController.modalPresentationStyle = UIModalPresentationStyle.popover
         
         viewController.preferredContentSize = CGSize(width: ScreenSize.width, height: 270)
         
@@ -28,7 +28,8 @@ final class CalendarModuleBuilder {
                                                            y: cell.bounds.maxY,
                                                            width: 200,
                                                            height: 0)
-        popoverPresentationController?.permittedArrowDirections = .left
+        popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.left
+        
         
         return viewController
     }
