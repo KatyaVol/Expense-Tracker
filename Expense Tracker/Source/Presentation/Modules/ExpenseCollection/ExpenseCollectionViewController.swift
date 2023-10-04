@@ -9,6 +9,11 @@ import UIKit
 
 protocol ExpenseCollectionViewControllerProtocol: AnyObject {
     func updateModel(_ model: [[ExpenseDetail]])
+    func showValidationError(error: ExpenseValidationError)
+}
+
+protocol Scrollable {
+    func scrollTo(index: Int, animated: Bool)
 }
 
 final class ExpenseCollectionViewController: UIViewController {
@@ -46,6 +51,10 @@ final class ExpenseCollectionViewController: UIViewController {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension ExpenseCollectionViewController: ExpenseCollectionViewDelegate {
+    func didTapSaveButton() {
+        presenter.validateAndProcessExpense()
+    }
+    
     func didTapCategoryStackView() {
         presenter.categoryStackViewTapped()
     }
@@ -64,5 +73,25 @@ extension ExpenseCollectionViewController: ExpenseCollectionViewDelegate {
 extension ExpenseCollectionViewController: ExpenseCollectionViewControllerProtocol {
     func updateModel(_ model: [[ExpenseDetail]]) {
         expenseCollectionView.update(with: model)
+    }
+    
+    func showValidationError(error: ExpenseValidationError) {
+        let alert = UIAlertController(title: "\(LocalizedStrings.alert)",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "ОК",
+                                   style: .default,
+                                   handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+extension ExpenseCollectionViewController: Scrollable {
+    func scrollTo(index: Int, animated: Bool) {
+        let indexPath = IndexPath(item: index, section: 0)
+        expenseCollectionView.scrollToItem(at: indexPath,
+                                           at: .centeredHorizontally,
+                                           animated: animated)
     }
 }

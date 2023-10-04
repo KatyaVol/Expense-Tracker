@@ -19,6 +19,7 @@
 		092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */; };
 		094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094224F72A195FD000BEC368 /* UIView+Extension.swift */; };
 		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
+		09538C322ACC367A00426617 /* ExpenseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09538C312ACC367A00426617 /* ExpenseValidator.swift */; };
 		0957D5B92AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */; };
 		0957D5BB2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */; };
 		0957D5BD2AC1D938006ADD16 /* ExpenseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5BC2AC1D938006ADD16 /* ExpenseCollectionView.swift */; };
@@ -75,6 +76,7 @@
 		092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		094224F72A195FD000BEC368 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		09538C312ACC367A00426617 /* ExpenseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseValidator.swift; sourceTree = "<group>"; };
 		0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionPresenter.swift; sourceTree = "<group>"; };
 		0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionModuleBuilder.swift; sourceTree = "<group>"; };
 		0957D5BC2AC1D938006ADD16 /* ExpenseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionView.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				09EA95392AC07CE300961DB0 /* ExpenseCollectionViewController.swift */,
 				0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */,
 				0957D5BC2AC1D938006ADD16 /* ExpenseCollectionView.swift */,
+				09538C312ACC367A00426617 /* ExpenseValidator.swift */,
 				0957D5BE2AC1DB6D006ADD16 /* ExpenseCollectionCoordinator */,
 			);
 			path = ExpenseCollection;
@@ -622,6 +625,7 @@
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
 				09145B0A2A5B34160089C1BC /* CalendarModuleBuilder.swift in Sources */,
 				097808902AB18FB500B495C1 /* UserInput+CoreDataClass.swift in Sources */,
+				09538C322ACC367A00426617 /* ExpenseValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@ protocol ExpenseCollectionViewDelegate: AnyObject {
     func didTapCategoryStackView()
     func didTapDateLabel(cell: DateTableViewCell)
     func didPassTextFieldData(text: String?, type: ExpenseDetailType)
+    func didTapSaveButton()
 }
 
 class ExpenseCollectionView: UIView {
@@ -71,8 +72,24 @@ class ExpenseCollectionView: UIView {
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    
+    // MARK: - Public method
+    
+    func scrollToItem(at indexPath: IndexPath,
+                      at scrollPosition: UICollectionView.ScrollPosition,
+                      animated: Bool) {
+        collectionView.scrollToItem(at: indexPath,
+                                    at: scrollPosition,
+                                    animated: animated)
+    }
+    
+    // MARK: - Actions
+    
+    @objc func handleSaveButton() {
+        delegate?.didTapSaveButton()
     }
 }
 
