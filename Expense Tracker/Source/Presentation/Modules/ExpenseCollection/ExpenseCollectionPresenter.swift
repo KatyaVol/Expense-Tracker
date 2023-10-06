@@ -70,12 +70,14 @@ final class ExpenseCollectionPresenter: ExpenseCollectionPresenterProtocol {
     
     func validateAndProcessExpense() {
         guard let expense = ExpenseDataStore.shared.getCurrentExpense() else { return }
-        let validator = ExpenseValidator()
-        switch validator.validate(expense: expense) {
-        case .success(let validExpense):
-            print("\(validExpense) data ready for saving")
-        case .failure(let error):
-            view?.showValidationError(error: error)
+        
+        ExpenseValidator.validate(expense: expense) { result in
+            switch result {
+            case .success(let validExpense):
+                print("\(validExpense) data ready for saving")
+            case .failure(let error):
+                view?.showValidationError(error: error)
+            }
         }
     }
     

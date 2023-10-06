@@ -5,7 +5,7 @@
 //  Created by Ekaterina Volobueva on 03.10.2023.
 //
 
-import UIKit
+import Foundation
 
 enum ExpenseValidationError: Error {
     case missingCategory
@@ -14,17 +14,20 @@ enum ExpenseValidationError: Error {
 }
 
 struct ExpenseValidator {
-    func validate(expense: Expense) -> Result<Expense, ExpenseValidationError> {
+    static func validate(expense: Expense, completion: (Result<Expense, ExpenseValidationError>) -> Void) {
         if expense.category == nil {
-            return .failure(.missingCategory)
+            completion(.failure(.missingCategory))
+            return
         }
         if expense.date == nil {
-            return .failure(.missingDate)
+            completion(.failure(.missingDate))
+            return
         }
         if expense.amount == nil {
-            return .failure(.missingAmount)
+            completion(.failure(.missingAmount))
+            return
         }
-        return .success(expense)
+        completion(.success(expense))
     }
 }
 
