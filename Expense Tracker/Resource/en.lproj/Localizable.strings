@@ -24,6 +24,8 @@
 "save_entry" = "Save entry";
 "categories" = "Categories";
 "choose_category" = "Choose the most suitable category";
+"choose date" = "Choose date";
+"enter the amount" = "Enter the amount";
 "food" = "Food";
 "home" = "Home";
 "transport" = "Transport";
@@ -41,3 +43,4 @@
 "children" = "Children";
 "choose" = "Choose";
 "category_name" = "Category name";
+"alert" = "Alert";
