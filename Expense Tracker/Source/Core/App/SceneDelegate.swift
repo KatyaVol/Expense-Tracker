@@ -17,8 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        //let viewController = appCoordinator.startApplication()
-        let viewController = ExpenseCollectionModuleBuilder.build()
+        let viewController = appCoordinator.startApplication()
         self.window = UIWindow(windowScene: windowScene)
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()

@@ -89,7 +89,7 @@ extension ExpenseCollectionViewController: ExpenseCollectionViewControllerProtoc
 
 extension ExpenseCollectionViewController: Scrollable {
     func scrollTo(index: Int, animated: Bool) {
-        let indexPath = IndexPath(item: index, section: 0)
+        let indexPath = IndexPath(item: index, section: .zero)
         expenseCollectionView.scrollToItem(at: indexPath,
                                            at: .centeredHorizontally,
                                            animated: animated)
