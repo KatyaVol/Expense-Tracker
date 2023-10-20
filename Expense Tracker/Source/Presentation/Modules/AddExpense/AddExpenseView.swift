@@ -19,7 +19,8 @@ final class AddExpenseView: UIView {
     private let dataStore = ExpenseDataStore.shared
     private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails
     private var collectionViewBottomConstraint: NSLayoutConstraint?
-    private var childVC: UIViewController
+    private let childVC: ExpenseCollectionViewController
+
     
     // MARK: - UI Elements
     
@@ -64,13 +65,11 @@ final class AddExpenseView: UIView {
     private lazy var segmentedControl: CustomSegmentedControl = {
         let segmentedControl = CustomSegmentedControl()
         segmentedControl.valueChangedCallBack = { [weak self] index in
-            if let expenseCollectionVC = self?.childVC as? ExpenseCollectionViewController {
-                expenseCollectionVC.scrollTo(index: index, animated: true)
-            }
+            self?.childVC.scrollTo(index: index, animated: true)
         }
         return segmentedControl
     }()
-    
+
     // MARK: - Init
     
     init?(delegate: AddExpenseViewDelegate,

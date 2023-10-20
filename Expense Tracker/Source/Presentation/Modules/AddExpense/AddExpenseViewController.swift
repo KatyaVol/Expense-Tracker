@@ -44,10 +44,6 @@ final class AddExpenseViewController: UIViewController {
         view.backgroundColor = UIColor.systemBackground
         presenter.printFetchedDataFromCoreData()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
 }
 
 // MARK: - AddExpenseViewDelegate

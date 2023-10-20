@@ -8,7 +8,7 @@
 import UIKit
 
 final class ExpenseCollectionModuleBuilder {
-    static func build(navigationController: UINavigationController) -> UIViewController {
+    static func build(navigationController: UINavigationController) -> ExpenseCollectionViewController {
         
         // MARK: - Assembly
         
