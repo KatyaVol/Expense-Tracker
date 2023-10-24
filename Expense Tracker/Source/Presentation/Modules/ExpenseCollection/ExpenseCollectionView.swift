@@ -14,7 +14,7 @@ protocol ExpenseCollectionViewDelegate: AnyObject {
     func didTapSaveButton()
 }
 
-class ExpenseCollectionView: UIView {
+final class ExpenseCollectionView: UIView {
     
     // MARK: - Properties
     
@@ -24,7 +24,7 @@ class ExpenseCollectionView: UIView {
     
     private let dataStore = ExpenseDataStore.shared
     private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails
-    
+
     // MARK: - UI Elements
     
     private lazy var collectionView: UICollectionView = {

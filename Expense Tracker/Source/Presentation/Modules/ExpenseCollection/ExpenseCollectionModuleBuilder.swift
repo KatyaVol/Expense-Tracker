@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ExpenseCollectionModuleBuilder {
-    static func build() -> UIViewController {
+final class ExpenseCollectionModuleBuilder {
+    static func build(navigationController: UINavigationController) -> ExpenseCollectionViewController {
         
         // MARK: - Assembly
         
@@ -18,10 +18,9 @@ class ExpenseCollectionModuleBuilder {
         let presenter = ExpenseCollectionPresenter(coreDataStorage: storage)
         let viewController = ExpenseCollectionViewController(presenter: presenter)
         presenter.view = viewController
-        let navigationController = UINavigationController(rootViewController: viewController)
         let coordinator = ExpenseCollectionCoordinator(navigationController: navigationController)
         presenter.coordinator = coordinator
         
-        return navigationController
+        return viewController
     }
 }

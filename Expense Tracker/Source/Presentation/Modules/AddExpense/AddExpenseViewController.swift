@@ -8,7 +8,6 @@
 import UIKit
 
 protocol AddExpenseViewControllerProtocol: AnyObject {
-    func updateModel(_ model: [[ExpenseDetail]])
     func printFetchedDataFromCoreData(_ data: [UserInput])
 }
 
@@ -17,7 +16,8 @@ final class AddExpenseViewController: UIViewController {
     // MARK: - Private properties
     
     private let presenter: AddExpensePresenterProtocol
-    private lazy var addExpenseView = AddExpenseView(delegate: self)
+    private lazy var addExpenseView = AddExpenseView(delegate: self,
+                                                     navigationController: navigationController)
     
     // MARK: - Init
     
@@ -40,6 +40,7 @@ final class AddExpenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addExpenseView?.addChildViewController(to: self)
         view.backgroundColor = UIColor.systemBackground
         presenter.printFetchedDataFromCoreData()
     }
@@ -54,28 +55,9 @@ extension AddExpenseViewController: AddExpenseViewDelegate {
     }
 }
 
-// MARK: - AddExpenseCollectionViewCellDelegate
-
-extension AddExpenseViewController: AddExpenseCollectionViewCellDelegate {
-    func didPassTextFieldData(text: String?, type: ExpenseDetailType) {
-        presenter.textFieldDataPassed(text: text, type: type)
-    }
-    
-    func didTapCategoryStackView() {
-        presenter.categoryStackViewTapped()
-    }
-    
-    func didTapDateLabel(cell: DateTableViewCell) {
-        presenter.dateLabelTapped(cell: cell)
-    }
-}
-
 // MARK: - AddExpenseViewControllerProtocol
 
 extension AddExpenseViewController: AddExpenseViewControllerProtocol {
-    func updateModel(_ model: [[ExpenseDetail]]) {
-        addExpenseView.update(with: model)
-    }
     
     func printFetchedDataFromCoreData(_ data: [UserInput]) {
         data.forEach { printFetchedData(from: $0) }

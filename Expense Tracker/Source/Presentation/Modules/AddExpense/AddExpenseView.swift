@@ -9,9 +9,6 @@ import UIKit
 
 protocol AddExpenseViewDelegate: AnyObject {
     func didTapSaveButton()
-    func didTapCategoryStackView()
-    func didTapDateLabel(cell: DateTableViewCell)
-    func didPassTextFieldData(text: String?, type: ExpenseDetailType)
 }
 
 final class AddExpenseView: UIView {
@@ -20,9 +17,11 @@ final class AddExpenseView: UIView {
     
     weak var delegate: AddExpenseViewDelegate?
     private let dataStore = ExpenseDataStore.shared
-    private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails 
+    private lazy var expenseDetails: [[ExpenseDetail]] = dataStore.currentExpenseDetails
     private var collectionViewBottomConstraint: NSLayoutConstraint?
-  
+    private let childVC: ExpenseCollectionViewController
+
+    
     // MARK: - UI Elements
     
     private lazy var scrollView: UIScrollView = {
@@ -47,20 +46,6 @@ final class AddExpenseView: UIView {
         return button
     }()
     
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemBackground
-        collectionView.register(cell: AddExpenseCollectionViewCell.self)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.isScrollEnabled = false
-        return collectionView
-    }()
-    
     private let addLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -80,17 +65,20 @@ final class AddExpenseView: UIView {
     private lazy var segmentedControl: CustomSegmentedControl = {
         let segmentedControl = CustomSegmentedControl()
         segmentedControl.valueChangedCallBack = { [weak self] index in
-            let indexPath = IndexPath(item: index, section: .zero)
-            self?.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self?.childVC.scrollTo(index: index, animated: true)
         }
         return segmentedControl
     }()
 
     // MARK: - Init
     
-    init(delegate: AddExpenseViewDelegate) {
+    init?(delegate: AddExpenseViewDelegate,
+          navigationController: UINavigationController?) {
         self.delegate = delegate
+        guard let navigationController = navigationController else { return nil }
+        childVC = ExpenseCollectionModuleBuilder.build(navigationController: navigationController)
         super.init(frame: .zero)
+        
         setupSubviews()
         setupAutoLayout()
         setupNotifications()
@@ -100,7 +88,7 @@ final class AddExpenseView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-   
+    
     // MARK: - View Lifecycle
     
     override func layoutSubviews() {
@@ -110,19 +98,19 @@ final class AddExpenseView: UIView {
     }
     
     // MARK: - Public methods
-  
-    func update(with model: [[ExpenseDetail]]) {
-        expenseDetails = model
-        collectionView.reloadData()
+ 
+    func addChildViewController(to parentViewController: UIViewController) {
+        parentViewController.addChild(childVC)
+        childVC.didMove(toParent: parentViewController)
     }
-
+    
     // MARK: - Private methods
     
     private func setupSubviews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubviews([saveButton,
-                                 collectionView,
+                                 childVC.view,
                                  addLabel,
                                  moneyBagImage,
                                  segmentedControl])
@@ -135,8 +123,8 @@ final class AddExpenseView: UIView {
     }
     
     private func setupAutoLayout() {
-        
-        collectionViewBottomConstraint = collectionView.bottomAnchor.constraint(equalTo: saveButton.topAnchor)
+        childVC.view.translatesAutoresizingMaskIntoConstraints = false
+        collectionViewBottomConstraint = childVC.view.bottomAnchor.constraint(equalTo: saveButton.topAnchor)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -163,10 +151,10 @@ final class AddExpenseView: UIView {
             segmentedControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
             segmentedControl.heightAnchor.constraint(equalToConstant: .segmentedControlHeight),
             
-            collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .collectionViewTopConstraint),
-            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
+            childVC.view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .collectionViewTopConstraint),
+            childVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            childVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            childVC.view.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
             
             collectionViewBottomConstraint!,
             
@@ -188,7 +176,7 @@ final class AddExpenseView: UIView {
     @objc private func buttonTapped() {
         delegate?.didTapSaveButton()
     }
-  
+    
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
@@ -201,54 +189,6 @@ final class AddExpenseView: UIView {
         let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension AddExpenseView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return expenseDetails.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: AddExpenseCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-        let details = expenseDetails[indexPath.item]
-        cell.setExpenseDetails(details)
-        cell.delegate = self
-        return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension AddExpenseView: UICollectionViewDelegateFlowLayout {
-    
-    private var inset: CGFloat { return 8 }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.bounds.height
-        return CGSize(width: ScreenSize.width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        inset
-    }
-}
-
-// MARK: - AddExpenseCollectionViewCellDelegate
-
-extension AddExpenseView: AddExpenseCollectionViewCellDelegate {
-    func didPassTextFieldData(text: String?, type: ExpenseDetailType) {
-        delegate?.didPassTextFieldData(text: text, type: type)
-    }
-    
-    func didTapCategoryStackView() {
-        delegate?.didTapCategoryStackView()
-    }
-    
-    func didTapDateLabel(cell: DateTableViewCell) {
-        delegate?.didTapDateLabel(cell: cell)
     }
 }
 

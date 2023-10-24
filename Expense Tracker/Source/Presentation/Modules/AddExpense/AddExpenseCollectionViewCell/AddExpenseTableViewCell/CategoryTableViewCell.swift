@@ -106,20 +106,29 @@ final class CategoryTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
             
             categoryImageStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             categoryImageStackView.topAnchor.constraint(equalTo: container.topAnchor),
             
-            categoryImageView.widthAnchor.constraint(equalToConstant: 24),
+            categoryImageView.widthAnchor.constraint(equalToConstant: .widthAnchor),
             
             categoryLabelDescription.topAnchor.constraint(equalTo: categoryLabel.topAnchor),
             
-            categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
-            categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
-            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4),
-            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: 106)
+            categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: .topAnchor),
+            categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.bottomAnchor),
+            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .leadingAnchor),
+            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: .trailingAnchor)
         ])
     }
+}
+
+private extension CGFloat {
+    static let topAnchor: CGFloat = 10
+    static let bottomAnchor: CGFloat = 18
+    static let leadingAnchor: CGFloat = 4
+    static let widthAnchor: CGFloat = 24
+    static let trailingAnchor: CGFloat = 106
+    static let sideInset: CGFloat = 16
 }
