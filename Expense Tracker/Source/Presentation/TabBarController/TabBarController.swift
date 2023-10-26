@@ -12,7 +12,7 @@ final class TabBarController: UITabBarController {
     private let addExpenseViewController = AddExpenseModuleBuilder.build()
     private let reportViewController = ReportViewController()
     private let settingsViewController = SettingsViewController()
-    private let historyViewController = HistoryViewController()
+    private let historyViewController = HistoryModuleBuilder.build()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +69,6 @@ final class ReportViewController: UIViewController {
 }
 
 final class SettingsViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.systemBackground
-    }
-}
-
-final class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.systemBackground
