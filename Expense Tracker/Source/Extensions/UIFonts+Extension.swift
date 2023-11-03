@@ -19,4 +19,8 @@ extension UIFont {
     static var tableViewFont: UIFont {
         return UIFont.systemFont(ofSize: 17, weight: .semibold)
     }
+    
+    static var smallTextFont: UIFont {
+        return UIFont.systemFont(ofSize: 12, weight: .light)
+    }
 }

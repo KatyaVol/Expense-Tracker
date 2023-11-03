@@ -51,7 +51,7 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        customizeCell()
+        customizeTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -66,7 +66,7 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Methods
     
-    private func customizeCell() {
+    private func customizeTableView() {
         contentView.backgroundColor = .systemGray6
         contentView.addSubview(tableView)
         

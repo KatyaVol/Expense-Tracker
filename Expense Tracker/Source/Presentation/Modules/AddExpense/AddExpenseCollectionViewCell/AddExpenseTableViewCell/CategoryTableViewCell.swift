@@ -34,7 +34,7 @@ final class CategoryTableViewCell: UITableViewCell {
     private let categoryLabelDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         label.textColor = UIColor.placeholderText
         return label
     }()
@@ -43,9 +43,12 @@ final class CategoryTableViewCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [categoryLabelDescription, categoryImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = .stackViewSpacing
         stackView.alignment = .center
-        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 4)
+        stackView.layoutMargins = UIEdgeInsets(top: .layoutMargin,
+                                               left: .layoutMargin,
+                                               bottom: .layoutMargin,
+                                               right: .smallLayoutMargin)
         stackView.isLayoutMarginsRelativeArrangement = true
        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
@@ -59,7 +62,7 @@ final class CategoryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.tableViewFont
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -131,4 +134,7 @@ private extension CGFloat {
     static let widthAnchor: CGFloat = 24
     static let trailingAnchor: CGFloat = 106
     static let sideInset: CGFloat = 16
+    static let layoutMargin: CGFloat = 10
+    static let smallLayoutMargin: CGFloat = 4
+    static let stackViewSpacing: CGFloat = 10
 }
