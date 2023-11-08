@@ -80,8 +80,8 @@ final class DateTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing16),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing16),
             
             titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
             titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
@@ -89,7 +89,7 @@ final class DateTableViewCell: UITableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -106),
             
             dateLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
-            dateLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16),
+            dateLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacing16),
             dateLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
             dateLabel.widthAnchor.constraint(equalToConstant: 110)
         ])

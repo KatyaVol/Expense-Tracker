@@ -16,16 +16,12 @@ final class HistoryView: UIView {
         let label = UILabel()
         label.text = LocalizedStrings.history
         label.font = .headerFont
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var historyTableView: SelfSizingTableView = {
         let tableView = SelfSizingTableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(cell: HistoryTableViewCell.self)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .systemBackground
@@ -49,16 +45,16 @@ final class HistoryView: UIView {
         addSubviews([historyLabel, historyTableView])
         
         historyLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(CGFloat.topInset)
-            make.leading.equalTo(self).offset(CGFloat.standardInset)
-            make.trailing.equalTo(self).offset(-CGFloat.standardInset)
-            make.height.equalTo(CGFloat.topInset)
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(CGFloat.spacing36)
+            make.leading.equalTo(self).offset(CGFloat.spacing16)
+            make.trailing.equalTo(self).inset(CGFloat.spacing16)
+            make.height.equalTo(CGFloat.spacing36)
         }
         
         historyTableView.snp.makeConstraints { make in
-            make.top.equalTo(historyLabel.snp.bottom).offset(CGFloat.topInset)
-            make.leading.equalTo(self).offset(CGFloat.standardInset)
-            make.trailing.equalTo(self).offset(-CGFloat.standardInset)
+            make.top.equalTo(historyLabel.snp.bottom).offset(CGFloat.spacing36)
+            make.leading.equalTo(self).offset(CGFloat.spacing16)
+            make.trailing.equalTo(self).inset(CGFloat.spacing16)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
     }

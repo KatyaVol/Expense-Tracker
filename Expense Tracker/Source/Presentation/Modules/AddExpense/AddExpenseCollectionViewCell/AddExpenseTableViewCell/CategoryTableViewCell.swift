@@ -109,8 +109,8 @@ final class CategoryTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing16),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing16),
             
             categoryImageStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             categoryImageStackView.topAnchor.constraint(equalTo: container.topAnchor),
@@ -133,7 +133,6 @@ private extension CGFloat {
     static let leadingAnchor: CGFloat = 4
     static let widthAnchor: CGFloat = 24
     static let trailingAnchor: CGFloat = 106
-    static let sideInset: CGFloat = 16
     static let layoutMargin: CGFloat = 10
     static let smallLayoutMargin: CGFloat = 4
     static let stackViewSpacing: CGFloat = 10

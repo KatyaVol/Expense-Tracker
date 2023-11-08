@@ -85,9 +85,9 @@ final class CalendarView: UIView {
             
             chooseButton.topAnchor.constraint(equalTo: calendar.bottomAnchor),
             chooseButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            chooseButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 16),
+            chooseButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: .spacing16),
             chooseButton.heightAnchor.constraint(equalToConstant: 50),
-            calendar.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -16)
+            calendar.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -.spacing16)
         ])
     }
     

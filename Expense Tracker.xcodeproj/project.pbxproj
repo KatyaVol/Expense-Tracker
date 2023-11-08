@@ -479,7 +479,7 @@
 				099471C529EAC585009F1A2E /* Frameworks */,
 				099471C629EAC585009F1A2E /* Resources */,
 				0920CB7429F19F0A00872477 /* ShellScript */,
-				D388858C62B1C496BEF59F64 /* [CP] Embed Pods Frameworks */,
+				DB027950129A5845D80BD1E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -556,7 +556,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\n";
 		};
-		D388858C62B1C496BEF59F64 /* [CP] Embed Pods Frameworks */ = {
+		DB027950129A5845D80BD1E4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

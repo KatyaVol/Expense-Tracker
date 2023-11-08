@@ -8,6 +8,6 @@
 import Foundation
 
 extension CGFloat {
-    static let standardInset: CGFloat = 16
-    static let topInset: CGFloat = 36
+    static let spacing16: CGFloat = 16
+    static let spacing36: CGFloat = 36
 }

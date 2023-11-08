@@ -37,8 +37,6 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
         tableView.register(cell: DetailTableViewCell.self)
         tableView.dataSource = self
         tableView.isScrollEnabled = false
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
         tableView.backgroundColor = .systemBackground
         tableView.separatorInset = UIEdgeInsets(top: 0,
                                                 left: 17,
