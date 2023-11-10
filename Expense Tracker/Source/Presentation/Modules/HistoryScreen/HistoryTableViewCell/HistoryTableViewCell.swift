@@ -81,7 +81,7 @@ final class HistoryTableViewCell: UITableViewCell {
         historyImageView.snp.makeConstraints { make in
             make.top.equalTo(container.snp.top).offset(CGFloat.spacing6)
             make.leading.equalTo(container)
-            make.height.width.equalTo(CGFloat.imageHeight)
+            make.height.width.equalTo(CGFloat.spacing24)
         }
         
         dateLabel.snp.makeConstraints { make in
@@ -108,13 +108,4 @@ final class HistoryTableViewCell: UITableViewCell {
             make.trailing.equalTo(container.snp.trailing)
         }
     }
-}
-
-// MARK: - extension CGFloat
-
-private extension CGFloat {
-    static let spacing6: CGFloat = 6
-    static let spacing8: CGFloat = 8
-    static let spacing12: CGFloat = 12
-    static let imageHeight: CGFloat = 24
 }

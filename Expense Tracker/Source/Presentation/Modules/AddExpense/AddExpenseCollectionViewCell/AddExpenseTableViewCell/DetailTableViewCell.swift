@@ -78,20 +78,20 @@ final class DetailTableViewCell: UITableViewCell {
                                detailTextField])
         
         NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacing20),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing16),
             container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing16),
             
-            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
-            titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
-            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4),
-            titleLabel.trailingAnchor.constraint(equalTo: detailTextField.leadingAnchor, constant: -106),
+            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacing10),
+            titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacing18),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .spacing4),
+            titleLabel.trailingAnchor.constraint(equalTo: detailTextField.leadingAnchor, constant: -.spacing106),
             
-            detailTextField.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            detailTextField.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacing8),
             detailTextField.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacing16),
-            detailTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
-            detailTextField.widthAnchor.constraint(equalToConstant: 110)
+            detailTextField.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.spacing2),
+            detailTextField.widthAnchor.constraint(equalToConstant: .spacing110)
         ])
     }
 }

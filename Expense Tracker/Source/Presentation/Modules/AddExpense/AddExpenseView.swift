@@ -143,15 +143,15 @@ final class AddExpenseView: UIView {
             addLabel.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -.segmentedControlTopConstraint),
             
             moneyBagImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .moneyBagImageTopConstraint),
-            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: .moneyBagImageLeading),
+            moneyBagImage.leadingAnchor.constraint(equalTo: addLabel.trailingAnchor, constant: .spacing4),
             moneyBagImage.heightAnchor.constraint(equalToConstant: .moneyBagImageHeight),
             
-            segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: .segmentedControlTopToMoneyBagConstraint),
+            segmentedControl.topAnchor.constraint(equalTo: moneyBagImage.bottomAnchor, constant: .spacing28),
             segmentedControl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
             segmentedControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
-            segmentedControl.heightAnchor.constraint(equalToConstant: .segmentedControlHeight),
+            segmentedControl.heightAnchor.constraint(equalToConstant: .spacing28),
             
-            childVC.view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .collectionViewTopConstraint),
+            childVC.view.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: .spacing26),
             childVC.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             childVC.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             childVC.view.heightAnchor.constraint(equalToConstant: CGFloat(expenseDetails[0].count * 60)),
@@ -179,7 +179,10 @@ final class AddExpenseView: UIView {
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height, right: 0.0)
+            let contentInsets = UIEdgeInsets(top: 0.0, 
+                                             left: 0.0,
+                                             bottom: keyboardSize.height,
+                                             right: 0.0)
             scrollView.contentInset = contentInsets
             scrollView.scrollIndicatorInsets = contentInsets
         }
@@ -201,7 +204,5 @@ private extension CGFloat {
     static let saveButtonHeight: CGFloat = 52
     static let saveButtonBottom: CGFloat = 52
     static let sideInset: CGFloat = 19
-    static let segmentedControlTopToMoneyBagConstraint: CGFloat = 28
-    static let moneyBagImageLeading: CGFloat = 4
     static let moneyBagImageTopConstraint: CGFloat = 26
 }
