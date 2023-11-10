@@ -30,7 +30,6 @@ final class CalendarModuleBuilder {
                                                            height: 0)
         popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.left
         
-        
         return viewController
     }
 }

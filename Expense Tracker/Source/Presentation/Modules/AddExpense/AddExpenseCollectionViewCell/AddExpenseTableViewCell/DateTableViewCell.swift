@@ -36,7 +36,7 @@ final class DateTableViewCell: UITableViewCell {
         label.font = UIFont.tableViewFont
         label.textColor = UIColor.customGrayColor
         label.textAlignment = .right
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(dateLabelTapped))
@@ -78,20 +78,20 @@ final class DateTableViewCell: UITableViewCell {
         container.addSubviews([titleLabel, dateLabel])
         
         NSLayoutConstraint.activate([
-            container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            container.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacing20),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing16),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing16),
             
-            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 10),
-            titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -18),
-            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 4),
-            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -106),
+            titleLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacing10),
+            titleLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacing18),
+            titleLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .spacing4),
+            titleLabel.trailingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: -.spacing106),
             
-            dateLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
-            dateLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -16),
-            dateLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -2),
-            dateLabel.widthAnchor.constraint(equalToConstant: 110)
+            dateLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacing8),
+            dateLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacing16),
+            dateLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -.spacing2),
+            dateLabel.widthAnchor.constraint(equalToConstant: .spacing110)
         ])
     }
     

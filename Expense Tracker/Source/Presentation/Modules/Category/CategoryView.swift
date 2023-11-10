@@ -39,7 +39,7 @@ final class CategoryView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = LocalizedStrings.chooseCategory
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -92,19 +92,19 @@ final class CategoryView: UIView {
         NSLayoutConstraint.activate([
             
             coinImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            coinImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            coinImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .spacing16),
+            coinImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -.spacing16),
             coinImageView.heightAnchor.constraint(equalToConstant: 195),
             
             headerLabel.topAnchor.constraint(equalTo: coinImageView.topAnchor, constant: 22),
-            headerLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: 4),
+            headerLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: .spacing4),
             
             descriptionLabel.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 42),
-            descriptionLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: 4),
+            descriptionLabel.leadingAnchor.constraint(equalTo: coinImageView.leadingAnchor, constant: .spacing4),
             descriptionLabel.bottomAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: -51),
-            descriptionLabel.trailingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: -4),
+            descriptionLabel.trailingAnchor.constraint(equalTo: coinImageView.trailingAnchor, constant: -.spacing4),
             
-            collectionView.topAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: 12),
+            collectionView.topAnchor.constraint(equalTo: coinImageView.bottomAnchor, constant: .spacing12),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
@@ -150,9 +150,9 @@ extension CategoryView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0,
+        UIEdgeInsets(top: .zero,
                      left: sideInset,
-                     bottom: 0,
+                     bottom: .zero,
                      right: sideInset)
     }
     

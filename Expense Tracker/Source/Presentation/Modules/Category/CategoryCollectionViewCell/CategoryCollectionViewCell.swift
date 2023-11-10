@@ -70,15 +70,15 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     
     private func setupAutoLayout() {
         NSLayoutConstraint.activate([
-            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+            categoryImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .spacing14),
             categoryImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 28),
-            categoryImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -28),
+            categoryImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing28),
+            categoryImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing28),
             
             categoryLabel.topAnchor.constraint(equalTo: categoryImageView.bottomAnchor, constant: 3),
             categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -17),
-            categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4)
+            categoryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing4),
+            categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing4)
         ])
     }
     

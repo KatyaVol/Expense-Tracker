@@ -37,8 +37,6 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
         tableView.register(cell: DetailTableViewCell.self)
         tableView.dataSource = self
         tableView.isScrollEnabled = false
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
         tableView.backgroundColor = .systemBackground
         tableView.separatorInset = UIEdgeInsets(top: 0,
                                                 left: 17,
@@ -51,7 +49,7 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        customizeCell()
+        customizeTableView()
     }
     
     required init?(coder: NSCoder) {
@@ -66,7 +64,7 @@ final class AddExpenseCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private Methods
     
-    private func customizeCell() {
+    private func customizeTableView() {
         contentView.backgroundColor = .systemGray6
         contentView.addSubview(tableView)
         

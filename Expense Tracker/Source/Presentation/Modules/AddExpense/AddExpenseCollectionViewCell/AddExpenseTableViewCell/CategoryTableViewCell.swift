@@ -34,7 +34,7 @@ final class CategoryTableViewCell: UITableViewCell {
     private let categoryLabelDescription: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         label.textColor = UIColor.placeholderText
         return label
     }()
@@ -43,11 +43,14 @@ final class CategoryTableViewCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [categoryLabelDescription, categoryImageView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = .spacing10
         stackView.alignment = .center
-        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 4)
+        stackView.layoutMargins = UIEdgeInsets(top: .spacing10,
+                                               left: .spacing10,
+                                               bottom: .spacing10,
+                                               right: .spacing4)
         stackView.isLayoutMarginsRelativeArrangement = true
-       
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(categoryStackViewTapped))
         stackView.addGestureRecognizer(tapGestureRecognizer)
@@ -59,7 +62,7 @@ final class CategoryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.tableViewFont
-        label.numberOfLines = 0
+        label.numberOfLines = .zero
         return label
     }()
     
@@ -106,29 +109,20 @@ final class CategoryTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: contentView.topAnchor),
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .sideInset),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.sideInset),
+            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .spacing16),
+            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -.spacing16),
             
             categoryImageStackView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             categoryImageStackView.topAnchor.constraint(equalTo: container.topAnchor),
             
-            categoryImageView.widthAnchor.constraint(equalToConstant: .widthAnchor),
+            categoryImageView.widthAnchor.constraint(equalToConstant: .spacing24),
             
             categoryLabelDescription.topAnchor.constraint(equalTo: categoryLabel.topAnchor),
             
-            categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: .topAnchor),
-            categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.bottomAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .leadingAnchor),
-            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: .trailingAnchor)
+            categoryLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: .spacing10),
+            categoryLabel.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -.spacing18),
+            categoryLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: .spacing4),
+            categoryLabel.trailingAnchor.constraint(equalTo: categoryImageView.leadingAnchor, constant: .spacing106)
         ])
     }
-}
-
-private extension CGFloat {
-    static let topAnchor: CGFloat = 10
-    static let bottomAnchor: CGFloat = 18
-    static let leadingAnchor: CGFloat = 4
-    static let widthAnchor: CGFloat = 24
-    static let trailingAnchor: CGFloat = 106
-    static let sideInset: CGFloat = 16
 }

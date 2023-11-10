@@ -62,4 +62,5 @@ enum LocalizedStrings {
     static let chooseDate = NSLocalizedString("choose date", comment: "")
     static let enterTheAmount = NSLocalizedString("enter the amount", comment: "")
     static let alert = NSLocalizedString("alert", comment: "")
+    
 }

@@ -19,6 +19,9 @@
 		092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */; };
 		094224F82A195FD000BEC368 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094224F72A195FD000BEC368 /* UIView+Extension.swift */; };
 		09443AC02A16B473009291D8 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */; };
+		094D90C32AF39BE30016AD4E /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D90C22AF39BE30016AD4E /* HistoryTableViewCell.swift */; };
+		094D90C62AF410BD0016AD4E /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D90C52AF410BD0016AD4E /* CGFloat+Extensions.swift */; };
+		094D90C82AF4CA510016AD4E /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D90C72AF4CA510016AD4E /* HistoryView.swift */; };
 		09538C322ACC367A00426617 /* ExpenseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09538C312ACC367A00426617 /* ExpenseValidator.swift */; };
 		0957D5B92AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */; };
 		0957D5BB2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */; };
@@ -79,6 +82,9 @@
 		092D92452A0AED2900794A45 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		094224F72A195FD000BEC368 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		09443ABF2A16B473009291D8 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		094D90C22AF39BE30016AD4E /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		094D90C52AF410BD0016AD4E /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		094D90C72AF4CA510016AD4E /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		09538C312ACC367A00426617 /* ExpenseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseValidator.swift; sourceTree = "<group>"; };
 		0957D5B82AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionPresenter.swift; sourceTree = "<group>"; };
 		0957D5BA2AC1D922006ADD16 /* ExpenseCollectionModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionModuleBuilder.swift; sourceTree = "<group>"; };
@@ -183,6 +189,14 @@
 				09DA2F7F2A1B9ADA00758A46 /* AddExpenseTableViewCell */,
 			);
 			path = AddExpenseCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		094D90C12AF39BBD0016AD4E /* HistoryTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				094D90C22AF39BE30016AD4E /* HistoryTableViewCell.swift */,
+			);
+			path = HistoryTableViewCell;
 			sourceTree = "<group>";
 		};
 		0957D5B72AC1C54C006ADD16 /* ExpenseCollection */ = {
@@ -294,6 +308,7 @@
 				0916C49E2A312CB40016C7C1 /* UIFonts+Extension.swift */,
 				0980BDBF2A7694B800D59AD0 /* Notification.Name+Extension.swift */,
 				09F5FE2B2A7A90C4001139BF /* DateFormatter+Extension.swift */,
+				094D90C52AF410BD0016AD4E /* CGFloat+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,9 +406,11 @@
 			isa = PBXGroup;
 			children = (
 				09F12FC62AEA9FC400C5F23E /* HistoryViewModel.swift */,
+				094D90C72AF4CA510016AD4E /* HistoryView.swift */,
 				09F12FC82AEAA00100C5F23E /* HistoryViewController.swift */,
 				09F12FCC2AEAA81B00C5F23E /* HistoryModuleBuilder.swift */,
 				09F12FCA2AEAA13800C5F23E /* HistoryCoordinator.swift */,
+				094D90C12AF39BBD0016AD4E /* HistoryTableViewCell */,
 			);
 			path = HistoryScreen;
 			sourceTree = "<group>";
@@ -462,7 +479,7 @@
 				099471C529EAC585009F1A2E /* Frameworks */,
 				099471C629EAC585009F1A2E /* Resources */,
 				0920CB7429F19F0A00872477 /* ShellScript */,
-				D388858C62B1C496BEF59F64 /* [CP] Embed Pods Frameworks */,
+				DB027950129A5845D80BD1E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -539,7 +556,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\n";
 		};
-		D388858C62B1C496BEF59F64 /* [CP] Embed Pods Frameworks */ = {
+		DB027950129A5845D80BD1E4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -590,11 +607,13 @@
 				096AF39A2A83A5A5009B7012 /* ExpenseDataStore.swift in Sources */,
 				09145B082A5B33FF0089C1BC /* CalendarView.swift in Sources */,
 				09F12FC72AEA9FC400C5F23E /* HistoryViewModel.swift in Sources */,
+				094D90C32AF39BE30016AD4E /* HistoryTableViewCell.swift in Sources */,
 				099471CC29EAC585009F1A2E /* AppDelegate.swift in Sources */,
 				09F12FCD2AEAA81B00C5F23E /* HistoryModuleBuilder.swift in Sources */,
 				09145B0C2A5B342A0089C1BC /* CalendarPresenter.swift in Sources */,
 				092D92462A0AED2900794A45 /* CoordinatorProtocol.swift in Sources */,
 				09F8B0402AB429CC001A11E4 /* CustomSegmentedControl.swift in Sources */,
+				094D90C62AF410BD0016AD4E /* CGFloat+Extensions.swift in Sources */,
 				0980BDC02A7694B800D59AD0 /* Notification.Name+Extension.swift in Sources */,
 				09A52A6F2A8D2FDE00809CB1 /* CoreDataContainer.swift in Sources */,
 				09DB34322A10E630001964D5 /* Colors.swift in Sources */,
@@ -632,6 +651,7 @@
 				09F12FC92AEAA00100C5F23E /* HistoryViewController.swift in Sources */,
 				09DA2F812A1B9B1000758A46 /* CategoryTableViewCell.swift in Sources */,
 				0957D5B92AC1D8FE006ADD16 /* ExpenseCollectionPresenter.swift in Sources */,
+				094D90C82AF4CA510016AD4E /* HistoryView.swift in Sources */,
 				091F6C362A24C5DF00C22E00 /* SelfSizingTableView.swift in Sources */,
 				09DA2F832A1BA1B500758A46 /* DateTableViewCell.swift in Sources */,
 				09234BF229ED7A63002A9E9C /* AddExpenseModuleBuilder.swift in Sources */,
