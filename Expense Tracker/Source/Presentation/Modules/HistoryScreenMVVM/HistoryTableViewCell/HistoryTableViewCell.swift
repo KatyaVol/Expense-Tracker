@@ -14,30 +14,29 @@ final class HistoryTableViewCell: UITableViewCell {
     
     private let historyImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .systemBackground
         return imageView
     }()
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemBlue
+        label.backgroundColor = .systemBackground
         label.font = UIFont.tableViewFont
-        label.text = "сегодня"
         return label
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.smallTextFont
-        label.text = "название категории"
+        label.textColor = Colors.turquoiseColor
+        label.backgroundColor = .systemBackground
         return label
     }()
     
     private let expenseLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemGreen
+        label.backgroundColor = .systemBackground
         label.font = UIFont.tableViewFont
-        label.text = "3000 р."
         return label
     }()
     
@@ -49,7 +48,7 @@ final class HistoryTableViewCell: UITableViewCell {
     
     private let container: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemBackground
         return view
     }()
     
@@ -63,6 +62,34 @@ final class HistoryTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    
+    func configure(with item: UserInput) {
+        guard let categoryImage = item.categoryImage, let image = UIImage(data: categoryImage) else {
+            historyImageView.image = UIImage(named: "defaultImage")?.withRenderingMode(.alwaysTemplate)
+            historyImageView.tintColor = Colors.whiteAndBlack
+            return
+        }
+        
+        historyImageView.image = image.withRenderingMode(.alwaysTemplate)
+        historyImageView.tintColor = Colors.whiteAndBlack
+        
+        guard let date = item.date else {
+            dateLabel.text = ""
+            return
+        }
+        
+        dateLabel.text = DateFormatter.dateString(from: date)
+        nameLabel.text = item.categoryText
+        
+        guard let amount = item.amount else {
+            expenseLabel.text = "N/A"
+            return
+        }
+        
+        expenseLabel.text = amount + "р."
     }
     
     // MARK: - Private Methods

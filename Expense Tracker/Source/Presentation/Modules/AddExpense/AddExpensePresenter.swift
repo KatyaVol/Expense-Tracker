@@ -31,20 +31,19 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     // MARK: - Internal methods
     
     func saveButtonTapped() {
-        guard let expense = dataStore.getCurrentExpense() else { return }
+        guard let expense = dataStore.getCurrentExpense(),
+              let category = expense.category,
+              let date = expense.date,
+              let amount = expense.amount
+             // let note = expense.note
+        else { return }
         
-        guard let category = expense.category else { return }
-        print("Category: \(String(describing: category.text)), Image: \(String(describing: category.image))")
-        
-        guard let date = expense.date else { return }
         let formattedDate = DateFormatter.dateString(from: date)
-        print("Date: \(formattedDate)")
         
-        guard let amount = expense.amount else { return }
         print("Amount: \(amount)")
-        
-        guard let note = expense.note else { return }
-        print("Note: \(note)")
+        print("Date: \(formattedDate)")
+        print("Category: \(String(describing: category.text)), Image: \(String(describing: category.image))")
+        print("Note: \(expense.note ?? "")")
         
         coreDataStorage.saveData(expense: expense)
     }

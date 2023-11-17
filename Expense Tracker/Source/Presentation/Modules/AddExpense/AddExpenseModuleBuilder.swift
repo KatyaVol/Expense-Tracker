@@ -12,7 +12,7 @@ final class AddExpenseModuleBuilder {
         
         // MARK: - Assembly
         
-        let container = CoreDataContainer()
+        let container = CoreDataContainer.shared
         let storage = CoreDataStorage(container: container)
         
         let presenter = AddExpensePresenter(coreDataStorage: storage)

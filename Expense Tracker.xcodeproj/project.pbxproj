@@ -289,7 +289,7 @@
 		097BFAAB29F5A39100945B9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				09F12FC52AEA9F8B00C5F23E /* HistoryScreen */,
+				09F12FC52AEA9F8B00C5F23E /* HistoryScreenMVVM */,
 				0957D5B72AC1C54C006ADD16 /* ExpenseCollection */,
 				09234BEC29ED6D8E002A9E9C /* AddExpense */,
 				09145B042A5B11920089C1BC /* Calendar */,
@@ -402,7 +402,7 @@
 			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		09F12FC52AEA9F8B00C5F23E /* HistoryScreen */ = {
+		09F12FC52AEA9F8B00C5F23E /* HistoryScreenMVVM */ = {
 			isa = PBXGroup;
 			children = (
 				09F12FC62AEA9FC400C5F23E /* HistoryViewModel.swift */,
@@ -412,7 +412,7 @@
 				09F12FCA2AEAA13800C5F23E /* HistoryCoordinator.swift */,
 				094D90C12AF39BBD0016AD4E /* HistoryTableViewCell */,
 			);
-			path = HistoryScreen;
+			path = HistoryScreenMVVM;
 			sourceTree = "<group>";
 		};
 		09F49B132A06E49E00619F6B /* TabBarController */ = {

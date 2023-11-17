@@ -19,6 +19,7 @@ extension CGFloat {
     static let spacing18: CGFloat = 18
     static let spacing20: CGFloat = 20
     static let spacing24: CGFloat = 24
+    static let pencilImageSize: CGFloat = 24
     static let spacing26: CGFloat = 26
     static let spacing28: CGFloat = 28
     static let spacing36: CGFloat = 36
