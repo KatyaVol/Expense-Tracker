@@ -10,6 +10,7 @@ import Foundation
 protocol AddExpensePresenterProtocol: AnyObject {
     func saveButtonTapped()
     func printFetchedDataFromCoreData()
+    func validateAndProcessExpense()
 }
 
 final class AddExpensePresenter: AddExpensePresenterProtocol {
@@ -31,7 +32,12 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
     // MARK: - Internal methods
     
     func saveButtonTapped() {
-        guard let expense = dataStore.getCurrentExpense() else { return }
+        guard let expense = dataStore.getCurrentExpense(),
+              let category = expense.category,
+              let date = expense.date,
+              let amount = expense.amount
+              //let note = expense.note
+        else { return }
         
         guard let category = expense.category else { return }
         print("Category: \(String(describing: category.text)), Image: \(String(describing: category.image))")
@@ -47,6 +53,19 @@ final class AddExpensePresenter: AddExpensePresenterProtocol {
         print("Note: \(note)")
         
         coreDataStorage.saveData(expense: expense)
+    }
+    
+    func validateAndProcessExpense() {
+        guard let expense = ExpenseDataStore.shared.getCurrentExpense() else { return }
+        
+        ExpenseValidator.validate(expense: expense) { result in
+            switch result {
+            case .success(let validExpense):
+                print("\(validExpense) data ready for saving")
+            case .failure(let error):
+                view?.showValidationError(error: error)
+            }
+        }
     }
     
     func printFetchedDataFromCoreData() {
