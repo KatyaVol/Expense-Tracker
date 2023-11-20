@@ -63,4 +63,7 @@ enum LocalizedStrings {
     static let enterTheAmount = NSLocalizedString("enter the amount", comment: "")
     static let alert = NSLocalizedString("alert", comment: "")
     
+    // MARK: - HistoryScreen
+    
+    static let ruble = NSLocalizedString("ruble", comment: "")
 }

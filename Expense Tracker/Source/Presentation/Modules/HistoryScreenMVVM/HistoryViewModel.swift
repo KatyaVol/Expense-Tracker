@@ -7,40 +7,73 @@
 
 import Foundation
 
+protocol IHistoryViewModel {
+    var numbersOfItems: Int { get }
+    var stateDidChanged: ((State) -> Void)? { get set }
+    func item(at index: Int) -> UserInput
+    func changeState(_ action: Action)
+    func loadData()
+    func loadingState()
+    func clearData()
+}
+
 enum Action {
     case itemSelected(atIndex: Int)
     case itemDeleted(atIndex: Int)
 }
 
 enum State {
+    case loading
     case loaded([UserInput])
-    case error
+    case error([HistoryViewModelError])
 }
 
-final class HistoryViewModel {
+enum HistoryViewModelError: Error {
+    case dataLoadFailure
+    case unknownError
+}
+
+final class HistoryViewModel: IHistoryViewModel {
+  
+    // MARK: - Private Properties
     
     private let coreDataService: CoreDataStorageProtocol
     private var historyItems: [UserInput] = []
-    var stateDidChanged: ((State) -> Void)?
+    private var state: State = .loading {
+        didSet {
+            stateDidChanged?(state)
+        }
+    }
+    
+    // MARK: - Init
     
     init(coreDataService: CoreDataStorageProtocol) {
         self.coreDataService = coreDataService
     }
     
+    // MARK: - Properties
+    
+    var stateDidChanged: ((State) -> Void)?
     var numbersOfItems: Int {
         return historyItems.count
+    }
+    
+    // MARK: - Puplic Methods
+    
+    func loadingState() {
+        self.state = .loading
+    }
+    
+    func clearData() {
+        historyItems = []
+        notifyStateChange(.loaded([]))
     }
     
     func item(at index: Int) -> UserInput {
         return historyItems[index]
     }
     
-    func delete(at index: Int) {
-        coreDataService.delete(historyItems[index])
-        loadData()
-    }
-    
-    func sendAction(_ action: Action) {
+    func changeState(_ action: Action) {
         switch action {
         case .itemSelected(let index):
             print("Item selected at index: \(index)")
@@ -50,13 +83,25 @@ final class HistoryViewModel {
     }
     
     func loadData() {
+        state = .loading
         if let data = coreDataService.fetchData() {
             historyItems = data
             notifyStateChange(.loaded(data))
+        } else {
+            notifyStateChange(.error([HistoryViewModelError.dataLoadFailure]))
         }
     }
+    
+    // MARK: - Private Properties
     
     private func notifyStateChange(_ state: State) {
         stateDidChanged?(state)
     }
+    
+    // этот метод в теории может вернуть ошибку при сохранении контекста и надо бы обработать негативный кейс
+    
+        private func delete(at index: Int) {
+            coreDataService.delete(historyItems[index])
+            loadData()
+        }
 }

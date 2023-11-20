@@ -12,7 +12,7 @@ final class HistoryView: UIView {
     
     // MARK: - Private properties
     
-    private var historyViewModel: HistoryViewModel
+    private(set) var historyViewModel: IHistoryViewModel
     
     private let historyLabel: UILabel = {
         let label = UILabel()
@@ -21,7 +21,7 @@ final class HistoryView: UIView {
         return label
     }()
     
-    private lazy var historyTableView: SelfSizingTableView = {
+    private(set) lazy var historyTableView: SelfSizingTableView = {
         let tableView = SelfSizingTableView()
         tableView.register(cell: HistoryTableViewCell.self)
         tableView.dataSource = self
@@ -30,26 +30,56 @@ final class HistoryView: UIView {
         return tableView
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        return indicator
+    }()
+    
     // MARK: - Init
     
     init(historyViewModel: HistoryViewModel) {
         self.historyViewModel = historyViewModel
         super.init(frame: .zero)
         layout()
+        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateTableView(with items: [UserInput]) {
+    // MARK: - Private methods
+    
+    private func updateTableView(with items: [UserInput]) {
         historyTableView.reloadData()
     }
     
-    // MARK: - Private methods
+    private func bindViewModel() {
+        historyViewModel.stateDidChanged = { [weak self] state in
+            guard let self else { return }
+            switch state {
+            case .loading:
+                activityIndicator.startAnimating()
+            case .loaded(let items):
+                DispatchQueue.main.async { [weak self] in
+                    self?.activityIndicator.stopAnimating()
+                    self?.updateTableView(with: items)
+                }
+            case .error(let errors):
+                for error in errors {
+                    switch error {
+                    case .dataLoadFailure:
+                        debugPrint("Error loading data")
+                    case .unknownError:
+                        debugPrint("Unknown error")
+                    }
+                }
+            }
+        }
+    }
     
     private func layout() {
-        addSubviews([historyLabel, historyTableView])
+        addSubviews([historyLabel, historyTableView, activityIndicator])
         
         historyLabel.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(CGFloat.spacing36)
@@ -63,6 +93,10 @@ final class HistoryView: UIView {
             make.leading.equalTo(self).offset(CGFloat.spacing16)
             make.trailing.equalTo(self).inset(CGFloat.spacing16)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
     }
 }
@@ -89,7 +123,7 @@ extension HistoryView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row - \(indexPath.row)")
-        historyViewModel.sendAction(.itemSelected(atIndex: indexPath.row))
+        historyViewModel.changeState(.itemSelected(atIndex: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -99,7 +133,7 @@ extension HistoryView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print("row - \(indexPath.row) deleted")
-            historyViewModel.sendAction(.itemDeleted(atIndex: indexPath.row))
+            historyViewModel.changeState(.itemDeleted(atIndex: indexPath.row))
         }
     }
 }

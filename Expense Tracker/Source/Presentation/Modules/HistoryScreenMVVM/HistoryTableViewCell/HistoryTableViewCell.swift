@@ -67,29 +67,28 @@ final class HistoryTableViewCell: UITableViewCell {
     // MARK: - Public Methods
     
     func configure(with item: UserInput) {
-        guard let categoryImage = item.categoryImage, let image = UIImage(data: categoryImage) else {
-            historyImageView.image = UIImage(named: "defaultImage")?.withRenderingMode(.alwaysTemplate)
+        if let categoryImage = item.categoryImage,
+           let image = UIImage(data: categoryImage) {
+            historyImageView.image = image.withRenderingMode(.alwaysTemplate)
             historyImageView.tintColor = Colors.whiteAndBlack
-            return
+        } else {
+            historyImageView.image = UIImage(named: "icon_operations")?.withRenderingMode(.alwaysTemplate)
+            historyImageView.tintColor = Colors.whiteAndBlack
         }
         
-        historyImageView.image = image.withRenderingMode(.alwaysTemplate)
-        historyImageView.tintColor = Colors.whiteAndBlack
-        
-        guard let date = item.date else {
+        if let date = item.date  {
+            dateLabel.text = DateFormatter.dateString(from: date)
+        } else {
             dateLabel.text = ""
-            return
         }
-        
-        dateLabel.text = DateFormatter.dateString(from: date)
+    
         nameLabel.text = item.categoryText
         
-        guard let amount = item.amount else {
-            expenseLabel.text = "N/A"
-            return
+        if let amount = item.amount {
+            expenseLabel.text = amount + LocalizedStrings.ruble
+        } else {
+            expenseLabel.text = ""
         }
-        
-        expenseLabel.text = amount + "р."
     }
     
     // MARK: - Private Methods
