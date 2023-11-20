@@ -9,6 +9,7 @@ import UIKit
 
 protocol AddExpenseViewControllerProtocol: AnyObject {
     func printFetchedDataFromCoreData(_ data: [UserInput])
+    func showValidationError(error: ExpenseValidationError)
 }
 
 final class AddExpenseViewController: UIViewController {
@@ -52,6 +53,7 @@ extension AddExpenseViewController: AddExpenseViewDelegate {
     func didTapSaveButton() {
         print("SaveButton tapped in AddExpenseViewController")
         presenter.saveButtonTapped()
+        presenter.validateAndProcessExpense()
     }
 }
 
@@ -61,6 +63,16 @@ extension AddExpenseViewController: AddExpenseViewControllerProtocol {
     
     func printFetchedDataFromCoreData(_ data: [UserInput]) {
         data.forEach { printFetchedData(from: $0) }
+    }
+    func showValidationError(error: ExpenseValidationError) {
+        let alert = UIAlertController(title: "\(LocalizedStrings.alert)",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "ОК",
+                                   style: .default,
+                                   handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     private func printFetchedData(from data: UserInput) {

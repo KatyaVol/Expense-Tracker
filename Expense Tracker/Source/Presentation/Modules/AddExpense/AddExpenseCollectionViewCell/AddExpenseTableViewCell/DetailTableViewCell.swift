@@ -56,6 +56,15 @@ final class DetailTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - UITableViewCell Lifecycle
+    
+    override func prepareForReuse() {
+            super.prepareForReuse()
+            titleLabel.text = nil
+            detailTextField.text = nil
+            expenseDetail = nil
+        }
+    
     // MARK: - Public Methods
     
     func setDetailText(expenseDetail: ExpenseDetail) {

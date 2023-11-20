@@ -9,7 +9,7 @@ import UIKit
 
 protocol ExpenseCollectionViewControllerProtocol: AnyObject {
     func updateModel(_ model: [[ExpenseDetail]])
-    func showValidationError(error: ExpenseValidationError)
+   // func showValidationError(error: ExpenseValidationError)
 }
 
 protocol Scrollable {
@@ -51,9 +51,9 @@ final class ExpenseCollectionViewController: UIViewController {
 // MARK: - AddExpenseCollectionViewCellDelegate
 
 extension ExpenseCollectionViewController: ExpenseCollectionViewDelegate {
-    func didTapSaveButton() {
-        presenter.validateAndProcessExpense()
-    }
+//    func didTapSaveButton() {
+//        presenter.validateAndProcessExpense()
+//    }
     
     func didTapCategoryStackView() {
         presenter.categoryStackViewTapped()
