@@ -59,12 +59,12 @@ final class HistoryView: UIView {
             guard let self else { return }
             switch state {
             case .loading:
+                historyViewModel.clearData()
+                historyTableView.reloadData()
                 activityIndicator.startAnimating()
             case .loaded(let items):
-                DispatchQueue.main.async { [weak self] in
-                    self?.activityIndicator.stopAnimating()
-                    self?.updateTableView(with: items)
-                }
+                activityIndicator.stopAnimating()
+                updateTableView(with: items)
             case .error(let errors):
                 for error in errors {
                     switch error {

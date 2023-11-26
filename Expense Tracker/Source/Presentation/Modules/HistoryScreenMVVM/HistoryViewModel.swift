@@ -12,9 +12,8 @@ protocol IHistoryViewModel {
     var stateDidChanged: ((State) -> Void)? { get set }
     func item(at index: Int) -> UserInput
     func changeState(_ action: Action)
-    func loadData()
-    func loadingState()
     func clearData()
+    func loadData()
 }
 
 enum Action {
@@ -34,7 +33,7 @@ enum HistoryViewModelError: Error {
 }
 
 final class HistoryViewModel: IHistoryViewModel {
-  
+    
     // MARK: - Private Properties
     
     private let coreDataService: CoreDataStorageProtocol
@@ -60,13 +59,8 @@ final class HistoryViewModel: IHistoryViewModel {
     
     // MARK: - Puplic Methods
     
-    func loadingState() {
-        self.state = .loading
-    }
-    
     func clearData() {
         historyItems = []
-        notifyStateChange(.loaded([]))
     }
     
     func item(at index: Int) -> UserInput {
@@ -100,8 +94,8 @@ final class HistoryViewModel: IHistoryViewModel {
     
     // этот метод в теории может вернуть ошибку при сохранении контекста и надо бы обработать негативный кейс
     
-        private func delete(at index: Int) {
-            coreDataService.delete(historyItems[index])
-            loadData()
-        }
+    private func delete(at index: Int) {
+        coreDataService.delete(historyItems[index])
+        loadData()
+    }
 }

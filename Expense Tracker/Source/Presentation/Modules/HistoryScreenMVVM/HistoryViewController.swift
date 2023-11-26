@@ -27,7 +27,6 @@ final class HistoryViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func loadView() {
-        super.loadView()
         view = historyView
     }
     
@@ -38,11 +37,6 @@ final class HistoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        historyView.historyViewModel.clearData()
-        historyView.historyTableView.reloadData()
-        historyView.historyViewModel.loadingState()
-        DispatchQueue.main.async {
-            self.historyView.historyViewModel.loadData()
-        }
+        historyView.historyViewModel.loadData()
     }
 }
