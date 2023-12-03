@@ -12,7 +12,6 @@ protocol IHistoryViewModel {
     var stateDidChanged: ((State) -> Void)? { get set }
     func item(at index: Int) -> UserInput
     func changeState(_ action: Action)
-    func clearData()
     func loadData()
 }
 
@@ -59,10 +58,6 @@ final class HistoryViewModel: IHistoryViewModel {
     
     // MARK: - Puplic Methods
     
-    func clearData() {
-        historyItems = []
-    }
-    
     func item(at index: Int) -> UserInput {
         return historyItems[index]
     }
@@ -77,7 +72,9 @@ final class HistoryViewModel: IHistoryViewModel {
     }
     
     func loadData() {
-        state = .loading
+        historyItems = []
+        notifyStateChange(.loading)
+        
         if let data = coreDataService.fetchData() {
             historyItems = data
             notifyStateChange(.loaded(data))

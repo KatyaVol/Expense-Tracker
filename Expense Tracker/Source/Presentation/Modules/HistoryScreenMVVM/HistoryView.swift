@@ -11,7 +11,7 @@ import SnapKit
 final class HistoryView: UIView {
     
     // MARK: - Private properties
-    
+
     private(set) var historyViewModel: IHistoryViewModel
     
     private let historyLabel: UILabel = {
@@ -50,30 +50,30 @@ final class HistoryView: UIView {
     
     // MARK: - Private methods
     
-    private func updateTableView(with items: [UserInput]) {
-        historyTableView.reloadData()
-    }
-    
     private func bindViewModel() {
         historyViewModel.stateDidChanged = { [weak self] state in
             guard let self else { return }
             switch state {
             case .loading:
-                historyViewModel.clearData()
-                historyTableView.reloadData()
-                activityIndicator.startAnimating()
-            case .loaded(let items):
-                activityIndicator.stopAnimating()
-                updateTableView(with: items)
+                self.historyTableView.reloadData()
+                self.activityIndicator.startAnimating()
+            case .loaded:
+                self.activityIndicator.stopAnimating()
+                self.historyTableView.reloadData()
             case .error(let errors):
-                for error in errors {
-                    switch error {
-                    case .dataLoadFailure:
-                        debugPrint("Error loading data")
-                    case .unknownError:
-                        debugPrint("Unknown error")
-                    }
-                }
+                self.activityIndicator.stopAnimating()
+                self.handleError(errors: errors)
+            }
+        }
+    }
+    
+    private func handleError(errors: [HistoryViewModelError]) {
+        for error in errors {
+            switch error {
+            case .dataLoadFailure:
+                debugPrint("Error loading data")
+            case .unknownError:
+                debugPrint("Unknown error")
             }
         }
     }
