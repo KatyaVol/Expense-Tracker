@@ -11,7 +11,7 @@ protocol ExpenseCollectionPresenterProtocol: AnyObject{
     func categoryStackViewTapped()
     func dateLabelTapped(cell: DateTableViewCell)
     func textFieldDataPassed(text: String?, type: ExpenseDetailType)
-    func validateAndProcessExpense()
+    //func validateAndProcessExpense()
 }
 
 final class ExpenseCollectionPresenter: ExpenseCollectionPresenterProtocol {
@@ -68,18 +68,18 @@ final class ExpenseCollectionPresenter: ExpenseCollectionPresenterProtocol {
         }
     }
     
-    func validateAndProcessExpense() {
-        guard let expense = ExpenseDataStore.shared.getCurrentExpense() else { return }
-        
-        ExpenseValidator.validate(expense: expense) { result in
-            switch result {
-            case .success(let validExpense):
-                print("\(validExpense) data ready for saving")
-            case .failure(let error):
-                view?.showValidationError(error: error)
-            }
-        }
-    }
+//    func validateAndProcessExpense() {
+//        guard let expense = ExpenseDataStore.shared.getCurrentExpense() else { return }
+//
+//        ExpenseValidator.validate(expense: expense) { result in
+//            switch result {
+//            case .success(let validExpense):
+//                print("\(validExpense) data ready for saving")
+//            case .failure(let error):
+//                view?.showValidationError(error: error)
+//            }
+//        }
+//    }
     
     // MARK: - Private methods
     

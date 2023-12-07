@@ -11,7 +11,7 @@ protocol ExpenseCollectionViewDelegate: AnyObject {
     func didTapCategoryStackView()
     func didTapDateLabel(cell: DateTableViewCell)
     func didPassTextFieldData(text: String?, type: ExpenseDetailType)
-    func didTapSaveButton()
+   // func didTapSaveButton()
 }
 
 final class ExpenseCollectionView: UIView {
@@ -88,9 +88,9 @@ final class ExpenseCollectionView: UIView {
     
     // MARK: - Actions
     
-    @objc func handleSaveButton() {
-        delegate?.didTapSaveButton()
-    }
+//    @objc func handleSaveButton() {
+//        delegate?.didTapSaveButton()
+//    }
 }
 
 // MARK: - UICollectionViewDataSource
