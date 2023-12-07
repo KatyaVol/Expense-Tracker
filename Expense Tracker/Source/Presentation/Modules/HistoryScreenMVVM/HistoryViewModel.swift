@@ -70,13 +70,11 @@ final class HistoryViewModel: IHistoryViewModel {
         historyItems = []
         notifyStateChange(.loading)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if let data = self.coreDataService.fetchData() {
-                self.historyItems = data
-                self.notifyStateChange(.loaded)
-            } else {
-                self.notifyStateChange(.error([HistoryViewModelError.dataLoadFailure]))
-            }
+        if let data = coreDataService.fetchData() {
+            historyItems = data
+            notifyStateChange(.loaded)
+        } else {
+            notifyStateChange(.error([HistoryViewModelError.dataLoadFailure]))
         }
     }
     
