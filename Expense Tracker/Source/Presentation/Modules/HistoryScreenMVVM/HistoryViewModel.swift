@@ -22,7 +22,7 @@ enum Action {
 
 enum State {
     case loading
-    case loaded([UserInput])
+    case loaded
     case error([HistoryViewModelError])
 }
 
@@ -37,11 +37,6 @@ final class HistoryViewModel: IHistoryViewModel {
     
     private let coreDataService: CoreDataStorageProtocol
     private var historyItems: [UserInput] = []
-    private var state: State = .loading {
-        didSet {
-            stateDidChanged?(state)
-        }
-    }
     
     // MARK: - Init
     
@@ -75,11 +70,13 @@ final class HistoryViewModel: IHistoryViewModel {
         historyItems = []
         notifyStateChange(.loading)
         
-        if let data = coreDataService.fetchData() {
-            historyItems = data
-            notifyStateChange(.loaded(data))
-        } else {
-            notifyStateChange(.error([HistoryViewModelError.dataLoadFailure]))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if let data = self.coreDataService.fetchData() {
+                self.historyItems = data
+                self.notifyStateChange(.loaded)
+            } else {
+                self.notifyStateChange(.error([HistoryViewModelError.dataLoadFailure]))
+            }
         }
     }
     
