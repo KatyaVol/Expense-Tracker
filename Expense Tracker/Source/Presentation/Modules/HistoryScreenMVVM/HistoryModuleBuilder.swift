@@ -10,7 +10,9 @@ import UIKit
 final class HistoryModuleBuilder {
     static func build() -> UIViewController {
         
-        let historyViewModel = HistoryViewModel()
+        let coreDataContainer = CoreDataContainer.shared
+        let coreDataService = CoreDataStorage(container: coreDataContainer)
+        let historyViewModel = HistoryViewModel(coreDataService: coreDataService)
         let viewController = HistoryViewController(historyViewModel: historyViewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         

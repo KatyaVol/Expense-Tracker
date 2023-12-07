@@ -15,6 +15,8 @@ final class CoreDataContainer: CoreDataContainerProtocol {
     
     // MARK: - Properties
     
+    static let shared = CoreDataContainer()
+    
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Expense Tracker")
         container.loadPersistentStores(completionHandler: {(storeDescription, error) in
@@ -26,4 +28,6 @@ final class CoreDataContainer: CoreDataContainerProtocol {
     }()
     
     lazy var context: NSManagedObjectContext = { return persistentContainer.viewContext }()
+    
+    private init() {}
 }

@@ -11,14 +11,12 @@ final class HistoryViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private let historyViewModel: HistoryViewModel
     private let historyView: HistoryView
     
     // MARK: - Init
     
     init(historyViewModel: HistoryViewModel) {
-        self.historyViewModel = historyViewModel
-        self.historyView = HistoryView()
+        self.historyView = HistoryView(historyViewModel: historyViewModel)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -29,14 +27,16 @@ final class HistoryViewController: UIViewController {
     // MARK: - Lifecycle
     
     override func loadView() {
-        super.loadView()
         view = historyView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = .systemBackground
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        historyView.historyViewModel.loadData()
     }
 }
-
-

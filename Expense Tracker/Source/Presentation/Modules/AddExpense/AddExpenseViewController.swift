@@ -81,6 +81,7 @@ extension AddExpenseViewController: AddExpenseViewControllerProtocol {
         print("Fetched Date: \(String(describing: data.date.map { DateFormatter.dateString(from: $0) }))")
         print("Fetched Amount: \(String(describing: data.amount))")
         print("Fetched Note: \(String(describing: data.note))")
+        print("-----------------------------------")
     }
 }
 

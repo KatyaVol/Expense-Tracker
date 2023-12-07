@@ -9,6 +9,8 @@ import CoreData
 
 protocol CoreDataStorageProtocol: AnyObject {
     func fetchData() -> [UserInput]?
+    func saveData(expense: Expense)
+    func delete(_ object: NSManagedObject)
 }
 
 final class CoreDataStorage: CoreDataStorageProtocol {
@@ -53,6 +55,11 @@ final class CoreDataStorage: CoreDataStorageProtocol {
         }
     }
     
+    func delete(_ object: NSManagedObject) {
+        context.delete(object)
+        saveContext()
+    }
+    
     // MARK: - Private Methods
     
     private func saveContext() {
@@ -65,10 +72,5 @@ final class CoreDataStorage: CoreDataStorageProtocol {
                 assertionFailure("Unresolved error \(nserror), \(nserror.localizedDescription)")
             }
         }
-    }
-    
-    private func delete(_ object: NSManagedObject) {
-        context.delete(object)
-        saveContext()
     }
 }

@@ -11,6 +11,8 @@ import SnapKit
 final class HistoryView: UIView {
     
     // MARK: - Private properties
+
+    private(set) var historyViewModel: IHistoryViewModel
     
     private let historyLabel: UILabel = {
         let label = UILabel()
@@ -19,7 +21,7 @@ final class HistoryView: UIView {
         return label
     }()
     
-    private lazy var historyTableView: SelfSizingTableView = {
+    private(set) lazy var historyTableView: SelfSizingTableView = {
         let tableView = SelfSizingTableView()
         tableView.register(cell: HistoryTableViewCell.self)
         tableView.dataSource = self
@@ -28,11 +30,18 @@ final class HistoryView: UIView {
         return tableView
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        return indicator
+    }()
+    
     // MARK: - Init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(historyViewModel: HistoryViewModel) {
+        self.historyViewModel = historyViewModel
+        super.init(frame: .zero)
         layout()
+        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -41,8 +50,36 @@ final class HistoryView: UIView {
     
     // MARK: - Private methods
     
+    private func bindViewModel() {
+        historyViewModel.stateDidChanged = { [weak self] state in
+            guard let self else { return }
+            switch state {
+            case .loading:
+                self.historyTableView.reloadData()
+                self.activityIndicator.startAnimating()
+            case .loaded:
+                self.activityIndicator.stopAnimating()
+                self.historyTableView.reloadData()
+            case .error(let errors):
+                self.activityIndicator.stopAnimating()
+                self.handleError(errors: errors)
+            }
+        }
+    }
+    
+    private func handleError(errors: [HistoryViewModelError]) {
+        for error in errors {
+            switch error {
+            case .dataLoadFailure:
+                debugPrint("Error loading data")
+            case .unknownError:
+                debugPrint("Unknown error")
+            }
+        }
+    }
+    
     private func layout() {
-        addSubviews([historyLabel, historyTableView])
+        addSubviews([historyLabel, historyTableView, activityIndicator])
         
         historyLabel.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(CGFloat.spacing36)
@@ -57,6 +94,10 @@ final class HistoryView: UIView {
             make.trailing.equalTo(self).inset(CGFloat.spacing16)
             make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }
 
@@ -64,12 +105,14 @@ final class HistoryView: UIView {
 
 extension HistoryView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        return historyViewModel.numbersOfItems
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: indexPath) as! HistoryTableViewCell
         
+        let item = historyViewModel.item(at: indexPath.row)
+        cell.configure(with: item)
         return cell
     }
 }
@@ -80,6 +123,7 @@ extension HistoryView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("row - \(indexPath.row)")
+        historyViewModel.changeState(.itemSelected(atIndex: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -89,6 +133,7 @@ extension HistoryView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print("row - \(indexPath.row) deleted")
+            historyViewModel.changeState(.itemDeleted(atIndex: indexPath.row))
         }
     }
 }
