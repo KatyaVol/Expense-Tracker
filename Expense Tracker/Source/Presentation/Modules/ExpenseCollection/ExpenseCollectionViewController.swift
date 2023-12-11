@@ -37,7 +37,6 @@ final class ExpenseCollectionViewController: UIViewController {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = expenseCollectionView
     }
     

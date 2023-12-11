@@ -31,7 +31,6 @@ final class CalendarViewController: UIViewController, CalendarViewControllerProt
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = calendarView
     }
     

@@ -34,7 +34,6 @@ final class AddExpenseViewController: UIViewController {
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = addExpenseView
     }
     

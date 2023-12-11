@@ -32,7 +32,6 @@ final class CategoryViewController: UIViewController, CategoryViewControllerProt
     // MARK: - Life Cycle
     
     override func loadView() {
-        super.loadView()
         view = categoryView
     }
     
